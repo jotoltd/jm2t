@@ -12,6 +12,7 @@ import ServicesOverview from './components/ServicesOverview';
 import WhyChooseUs from './components/WhyChooseUs';
 import Testimonials from './components/Testimonials';
 import Process from './components/Process';
+import Pricing from './components/Pricing';
 import { GalleryRow1, GalleryRow2 } from './components/ImageGallery';
 import Footer from './components/Footer';
 import { MessageCircle } from 'lucide-react';
@@ -35,6 +36,7 @@ function HomePage() {
       <main>
         <Hero />
         <ServicesOverview />
+        <Pricing />
         <WhyChooseUs />
         <Process />
         <GalleryRow1 />

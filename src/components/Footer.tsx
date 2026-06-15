@@ -18,7 +18,7 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
                 Let's plan your<br /><em className="italic">project.</em>
               </h2>
               <p className="text-[#a8a39a] text-base leading-relaxed mb-8 max-w-sm">
-                Tell us what you have in mind and we'll arrange a free, no-obligation consultation.
+                Tell us what you have in mind and we'll arrange a free, no-obligation consultation. Prefer to talk it through? Give us a call.
               </p>
               <div className="space-y-4">
                 <a href="tel:+4407738427208" className="flex items-center gap-3 text-[#d6d3cc] hover:text-[#c9a84c] transition-colors">
@@ -28,11 +28,11 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
                     <p className="text-sm font-medium">07738 427208</p>
                   </div>
                 </a>
-                <a href="mailto:admin@jm2tilingco.com" className="flex items-center gap-3 text-[#d6d3cc] hover:text-[#c9a84c] transition-colors">
+                <a href="mailto:Enquiries@jm2tilingco.com" className="flex items-center gap-3 text-[#d6d3cc] hover:text-[#c9a84c] transition-colors">
                   <Mail className="w-4 h-4 text-[#c9a84c] shrink-0" />
                   <div>
                     <p className="text-[10px] font-mono uppercase tracking-widest text-[#6b6560] mb-0.5">Email</p>
-                    <p className="text-sm font-medium">admin@jm2tilingco.com</p>
+                    <p className="text-sm font-medium">Enquiries@jm2tilingco.com</p>
                   </div>
                 </a>
                 <div className="flex items-center gap-3 text-[#d6d3cc]">
@@ -86,7 +86,7 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
           <div className="flex items-center gap-3">
             <img src="/images/trans_logo.png" alt="JM2 Tiling Co" className="h-10 w-auto opacity-80" />
-            <p className="text-[#6b6560] text-xs font-mono">Your trusted tiling partner — Surrey &amp; West Sussex since 2022</p>
+            <p className="text-[#6b6560] text-xs font-mono">Your trusted tiling partner — tiling across Surrey &amp; West Sussex since 2022.</p>
           </div>
           <nav className="flex flex-wrap gap-x-6 gap-y-2">
             {([['Services', '/'], ['Projects', '/projects'], ['Quote', '/quote'], ['Contact', '/contact']] as [string, string][]).map(([label, href]) => (

@@ -2,12 +2,12 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 
 const services = [
-  { title: 'Floor Tiling', desc: 'Porcelain, ceramic and natural stone floors — herringbone and large-format, laid dead-level.', bullets: ['Herringbone & large-format', 'Residential & commercial', 'Built to last decades'], href: '/floor-tiling' },
-  { title: 'Bathroom Tiling', desc: 'Full bathroom renovations and custom shower enclosures — properly waterproofed to a spa-quality standard.', bullets: ['Wet rooms & showers', 'Waterproofing focus', 'Luxury, spa-inspired'], href: '/bathroom-tiling' },
-  { title: 'Wall Tiling', desc: 'Kitchen splashbacks, feature walls and full-height installs set out perfectly square.', bullets: ['Kitchen splashbacks', 'Feature walls', 'Flawless symmetry'], href: '/wall-tiling' },
-  { title: 'Re-grouting & Repair', desc: 'Discoloured grout renewed and loose tiles replaced — restoring surfaces and sealing out moisture.', bullets: ['Tile repair & replacement', 'Mould & moisture sealing', 'A fresh, modern finish'], href: '/regrouting' },
-  { title: 'Bespoke Countertops', desc: 'Made-to-measure tiled worktops and surfaces — a hard-wearing statement piece for your space.', bullets: ['Custom worktops', 'Statement surfaces', 'Premium materials'], href: '/quote' },
-  { title: 'Renovation & Restoration', desc: 'Older tiled areas brought back to life — from single-room refreshes to full property transformations.', bullets: ['Full transformations', 'Modern techniques', 'Sympathetic restoration'], href: '/quote' },
+  { title: 'Floor Tiling', desc: 'Porcelain, ceramic and natural stone floors for homes and commercial spaces — straight-lay, herringbone and large-format, laid dead-level.', bullets: ['Herringbone & large-format', 'Residential & commercial', 'Built to last decades'], href: '/floor-tiling' },
+  { title: 'Bathroom Tiling', desc: 'Full bathroom renovations, feature walls and custom shower enclosures — properly waterproofed and finished to a spa-quality standard.', bullets: ['Wet rooms & showers', 'Waterproofing focus', 'Luxury, spa-inspired'], href: '/bathroom-tiling' },
+  { title: 'Wall Tiling', desc: 'Kitchen splashbacks, feature walls and full-height installs set out perfectly square — from contemporary to decorative patterns.', bullets: ['Kitchen splashbacks', 'Feature walls', 'Flawless symmetry'], href: '/wall-tiling' },
+  { title: 'Re-grouting & Repair', desc: 'Discoloured, cracked or mouldy grout renewed and loose, chipped or broken tiles replaced — restoring tired surfaces and sealing out moisture.', bullets: ['Tile repair & replacement', 'Mould & moisture sealing', 'A fresh, modern finish'], href: '/regrouting' },
+  { title: 'Bespoke Tile Countertops', desc: 'Made-to-measure tiled worktops and surfaces — a hard-wearing statement piece designed around your kitchen or bathroom.', bullets: ['Custom worktops', 'Statement surfaces', 'Premium materials'], href: '/quote' },
+  { title: 'Renovation & Restoration', desc: 'Older tiled areas brought back to life with modern techniques and materials — from single-room refreshes to full property transformations.', bullets: ['Full transformations', 'Modern techniques', 'Sympathetic restoration'], href: '/quote' },
 ];
 
 export default function ServicesOverview() {

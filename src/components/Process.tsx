@@ -1,11 +1,11 @@
 import { motion } from 'motion/react';
 
 const steps = [
-  { num: '01', title: 'Free Consultation', desc: 'We visit, measure up and listen to exactly what you want — no obligation, no pressure.' },
-  { num: '02', title: 'Quote & Tile Advice', desc: 'A clear written quote, plus honest guidance on the right tiles, layout and materials.' },
+  { num: '01', title: 'Free Consultation', desc: 'We visit, measure up and listen to exactly what you want to achieve — no obligation, no pressure.' },
+  { num: '02', title: 'Quote & Tile Advice', desc: 'A clear written quote, plus honest guidance on the right tiles, layout and materials for your project.' },
   { num: '03', title: 'Surface Preparation', desc: 'Substrates levelled, primed and waterproofed properly — the unseen work that makes tiling last.' },
   { num: '04', title: 'Expert Installation', desc: 'Precise setting-out and craftsmanship from a fully qualified tiler who treats your home with care.' },
-  { num: '05', title: 'Finish & Clean Down', desc: 'Grouted, sealed, polished and left spotless — we do not leave until you are delighted.' },
+  { num: '05', title: 'Finish & Clean Down', desc: "Grouted, sealed, polished and left spotless — we don't leave until you're delighted with the result." },
 ];
 
 export default function Process() {

@@ -20,8 +20,9 @@ export default function Header() {
 
   const navLinks = [
     { label: 'Services', href: '#services' },
-    { label: 'Projects', href: '/projects', isPage: true },
+    { label: 'Pricing', href: '#pricing' },
     { label: 'Process', href: '#process' },
+    { label: 'Projects', href: '/projects', isPage: true },
     { label: 'Contact', href: '/contact', isPage: true },
   ];
 

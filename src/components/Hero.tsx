@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const stats = [
   { value: '2022', label: 'Tiling since' },
-  { value: '100%', label: 'Satisfaction focused' },
+  { value: '5★', label: 'Satisfaction focused' },
   { value: '20+', label: 'Areas covered' },
-  { value: '5★', label: 'Specialist services' },
+  { value: '4', label: 'Specialist services' },
 ];
 
 export default function Hero() {
@@ -38,7 +38,7 @@ export default function Hero() {
           </h1>
           <p className="text-[#a8a39a] text-lg sm:text-xl max-w-2xl leading-relaxed mb-10">
             Professional wall &amp; floor tiling in Surrey &amp; West Sussex. Porcelain and natural
-            stone specialists delivering premium installations for discerning homes and businesses.
+            stone specialists delivering premium wall &amp; floor installations for discerning homes and businesses.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link

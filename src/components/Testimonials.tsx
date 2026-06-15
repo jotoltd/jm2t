@@ -1,10 +1,10 @@
 import { motion } from 'motion/react';
 
 const reviews = [
-  { name: 'James R.', location: 'Crawley', text: 'Exceptional work throughout — the bathroom looks like something from a luxury hotel. Meticulous attention to detail and left the place spotless.', rating: 5 },
-  { name: 'Sarah M.', location: 'Horsham', text: 'Transformed our tired kitchen with beautiful floor tiles. Professional, punctual and the finish is perfect. Would recommend without hesitation.', rating: 5 },
-  { name: 'David & Claire T.', location: 'Reigate', text: 'Used JM² for a full bathroom renovation. The quality of work is outstanding — exactly what we wanted. Very knowledgeable throughout.', rating: 5 },
-  { name: 'Emily P.', location: 'Haywards Heath', text: 'The re-grouting has made such a difference — tiles look brand new. Quick, tidy and very reasonably priced. Will definitely use again.', rating: 5 },
+  { name: 'James R.', location: 'Crawley', text: 'Exceptional work throughout — the bathroom looks like something from a luxury hotel. Meticulous attention to detail and left the place spotless. Could not be happier.', rating: 5 },
+  { name: 'Sarah M.', location: 'Horsham', text: 'Transformed our tired kitchen with beautiful large-format floor tiles. Professional, punctual and the finish is absolutely perfect. Would recommend without hesitation.', rating: 5 },
+  { name: 'David & Claire T.', location: 'Reigate', text: 'Used JM² for a full bathroom renovation. The quality of work is outstanding — exactly what we envisioned. Very knowledgeable and tidy throughout.', rating: 5 },
+  { name: 'Emily P.', location: 'Haywards Heath', text: 'The re-grouting has made such a difference — tiles look completely brand new. Quick, tidy and very fairly priced. Will definitely be using again for our kitchen.', rating: 5 },
 ];
 
 export default function Testimonials() {
@@ -23,6 +23,7 @@ export default function Testimonials() {
             Trusted by homeowners<br />
             <em className="italic">who expect more.</em>
           </h2>
+          <p className="text-[#a8a39a] mt-4 text-base max-w-xl"></p>
         </motion.div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
           {reviews.map((t, i) => (
