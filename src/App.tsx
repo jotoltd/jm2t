@@ -22,6 +22,8 @@ import Quote from './pages/Quote';
 import { MessageCircle } from 'lucide-react';
 import ScrollToTop from './components/ScrollToTop';
 import PageTransition from './components/PageTransition';
+import SplashScreen from './components/SplashScreen';
+import { useState } from 'react';
 
 function HomePage() {
   return (
@@ -72,10 +74,20 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(() => !sessionStorage.getItem('splashShown'));
+
+  const handleSplashComplete = () => {
+    sessionStorage.setItem('splashShown', 'true');
+    setShowSplash(false);
+  };
+
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <AnimatedRoutes />
-    </BrowserRouter>
+    <>
+      {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
+      <BrowserRouter>
+        <ScrollToTop />
+        <AnimatedRoutes />
+      </BrowserRouter>
+    </>
   );
 }
