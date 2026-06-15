@@ -46,13 +46,13 @@ export default function ContactForm() {
               </div>
             </a>
 
-            <a href="mailto:Enquiries@jm2tilingco.com" className="flex items-center gap-5 border border-white/5 bg-neutral-900/50 p-5 hover:border-cyan-500 hover:bg-neutral-900 hover:shadow-[0_0_20px_rgba(77,238,255,0.1)] transition-all group">
+            <a href="mailto:admin@jm2tilingco.com" className="flex items-center gap-5 border border-white/5 bg-neutral-900/50 p-5 hover:border-cyan-500 hover:bg-neutral-900 hover:shadow-[0_0_20px_rgba(77,238,255,0.1)] transition-all group">
               <div className="w-14 h-14 bg-cyan-500 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(77,238,255,0.4)]">
                 <Mail className="w-6 h-6 text-black" />
               </div>
               <div>
                 <p className="text-neutral-500 text-[10px] uppercase tracking-[0.25em] font-mono">Email Us</p>
-                <p className="text-white font-black mt-0.5 group-hover:text-cyan-400 transition-colors">Enquiries@jm2tilingco.com</p>
+                <p className="text-white font-black mt-0.5 group-hover:text-cyan-400 transition-colors">admin@jm2tilingco.com</p>
               </div>
             </a>
 

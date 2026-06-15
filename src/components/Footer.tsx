@@ -33,13 +33,13 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
                   <p className="text-white font-black text-lg group-hover:text-cyan-400 transition-colors">07738 427208</p>
                 </div>
               </a>
-              <a href="mailto:Enquiries@jm2tilingco.com" className="flex items-center gap-4 border border-white/5 bg-neutral-900/50 p-4 hover:border-cyan-500 transition-all group">
+              <a href="mailto:admin@jm2tilingco.com" className="flex items-center gap-4 border border-white/5 bg-neutral-900/50 p-4 hover:border-cyan-500 transition-all group">
                 <div className="w-12 h-12 bg-cyan-500 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(77,238,255,0.4)]">
                   <Mail className="w-5 h-5 text-black" />
                 </div>
                 <div>
                   <p className="text-neutral-500 text-[10px] uppercase tracking-[0.25em] font-mono">Email Us</p>
-                  <p className="text-white font-black group-hover:text-cyan-400 transition-colors">Enquiries@jm2tilingco.com</p>
+                  <p className="text-white font-black group-hover:text-cyan-400 transition-colors">admin@jm2tilingco.com</p>
                 </div>
               </a>
               <div className="flex items-center gap-4 border border-white/5 bg-neutral-900/50 p-4">
@@ -200,7 +200,7 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
 
               {/* Email Connection */}
               <a 
-                href="mailto:Enquiries@jm2tilingco.com" 
+                href="mailto:admin@jm2tilingco.com" 
                 className="flex items-center gap-3.5 text-xs text-slate-400 hover:text-white transition-colors group"
               >
                 <div className="p-2 bg-neutral-900 rounded-none group-hover:bg-neutral-800 transition-colors border border-white/5 shrink-0">
@@ -208,7 +208,7 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
                 </div>
                 <div>
                   <span className="text-zinc-500 text-[9px] uppercase font-mono block">Email Us</span>
-                  <span className="font-bold text-white font-mono">Enquiries@jm2tilingco.com</span>
+                  <span className="font-bold text-white font-mono">admin@jm2tilingco.com</span>
                 </div>
               </a>
             </div>

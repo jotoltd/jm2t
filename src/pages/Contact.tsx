@@ -53,7 +53,7 @@ export default function Contact() {
                 <div className="space-y-5">
                   {[
                     { icon: Phone, label: 'Phone', value: '07738 427208', href: 'tel:+4407738427208' },
-                    { icon: Mail, label: 'Email', value: 'Enquiries@jm2tilingco.com', href: 'mailto:Enquiries@jm2tilingco.com' },
+                    { icon: Mail, label: 'Email', value: 'admin@jm2tilingco.com', href: 'mailto:admin@jm2tilingco.com' },
                     { icon: MapPin, label: 'Area', value: 'Surrey & West Sussex', href: null },
                     { icon: Clock, label: 'Hours', value: 'Mon–Sat: 7am – 6pm', href: null },
                   ].map(({ icon: Icon, label, value, href }) => (

@@ -48,9 +48,9 @@ export default function Header() {
               <Phone className="w-3.5 h-3.5" />
               <span>07738 427208</span>
             </a>
-            <a href="mailto:Enquiries@jm2tilingco.com" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
+            <a href="mailto:admin@jm2tilingco.com" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
               <Mail className="w-3.5 h-3.5" />
-              <span>Enquiries@jm2tilingco.com</span>
+              <span>admin@jm2tilingco.com</span>
             </a>
           </div>
         </div>
@@ -136,7 +136,7 @@ export default function Header() {
                 </a>
                 <span className="flex items-center gap-1.5">
                   <Mail className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>Enquiries@jm2tilingco.com</span>
+                  <span>admin@jm2tilingco.com</span>
                 </span>
               </div>
             </div>

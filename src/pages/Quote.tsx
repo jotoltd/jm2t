@@ -81,13 +81,13 @@ export default function Quote() {
                     <p className="text-white font-bold group-hover:text-cyan-400 transition-colors">07738 427208</p>
                   </div>
                 </a>
-                <a href="mailto:Enquiries@jm2tilingco.com" className="flex items-center gap-3 bg-neutral-900 border border-white/10 p-4 hover:border-cyan-500/50 transition-all group">
+                <a href="mailto:admin@jm2tilingco.com" className="flex items-center gap-3 bg-neutral-900 border border-white/10 p-4 hover:border-cyan-500/50 transition-all group">
                   <div className="w-10 h-10 bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center">
                     <Mail className="w-5 h-5 text-cyan-400" />
                   </div>
                   <div>
                     <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Email us</p>
-                    <p className="text-white font-bold text-sm group-hover:text-cyan-400 transition-colors">Enquiries@jm2tilingco.com</p>
+                    <p className="text-white font-bold text-sm group-hover:text-cyan-400 transition-colors">admin@jm2tilingco.com</p>
                   </div>
                 </a>
                 <a

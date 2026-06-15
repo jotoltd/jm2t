@@ -146,7 +146,7 @@ Thank you for choosing JM²TilingCo. We look forward to transforming your space!
 
   // Send native email client helper
   const handleSendEmail = () => {
-    const emailTo = "Enquiries@jm2tilingco.com";
+    const emailTo = "admin@jm2tilingco.com";
     const subject = encodeURIComponent(`JM²TilingCo Service Enquiry - ${formData.name || 'Inquiry'}`);
     const body = encodeURIComponent(generateMailContent());
     window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
