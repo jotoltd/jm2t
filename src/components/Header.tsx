@@ -66,31 +66,29 @@ export default function Header() {
           )}
         </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center gap-5">
+        {/* Right side: phone + CTA (desktop) / hamburger (mobile) */}
+        <div className="flex items-center gap-3 sm:gap-5">
           <a
             href="tel:+4407738427208"
-            className="flex items-center gap-2 text-sm text-[#a8a39a] hover:text-[#f5f0e8] transition-colors"
+            className="hidden sm:flex items-center gap-2 text-sm text-[#a8a39a] hover:text-[#f5f0e8] transition-colors"
           >
             <Phone className="w-4 h-4" />
             <span>07738 427208</span>
           </a>
           <Link
             to="/quote"
-            className="px-5 py-2.5 bg-[#c9a84c] hover:bg-[#e2c97e] text-[#0c0b0a] text-xs font-semibold tracking-widest uppercase transition-all duration-300"
+            className="hidden sm:inline-flex px-5 py-2.5 border border-[#c9a84c] text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#0c0b0a] text-xs font-semibold tracking-widest uppercase transition-all duration-300"
           >
             Get a Quote
           </Link>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 text-[#a8a39a] hover:text-[#f5f0e8] transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
-
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 text-[#a8a39a] hover:text-[#f5f0e8] transition-colors"
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
       </div>
 
       {/* Mobile drawer */}

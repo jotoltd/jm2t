@@ -10,28 +10,29 @@ const stats = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-end overflow-hidden bg-[#0c0b0a]">
+    <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#0c0b0a]">
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/Hero_1.jpeg"
+          src="/images/hero.jpeg"
           alt="Premium tiling work"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b0a] via-[#0c0b0a]/60 to-[#0c0b0a]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0c0b0a]/95 via-[#0c0b0a]/60 to-[#0c0b0a]/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b0a]/80 via-transparent to-transparent" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full pb-20 pt-40 sm:pt-48">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full flex flex-col justify-center min-h-screen pb-32 pt-32">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl"
+          className="max-w-xl"
         >
           <p className="text-[#c9a84c] text-xs font-mono tracking-[0.3em] uppercase mb-6">
             Surrey &amp; West Sussex — Est. 2022
           </p>
-          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-[#f5f0e8] leading-[1.0] mb-8">
+          <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl xl:text-[88px] text-[#f5f0e8] leading-[1.0] mb-8 font-medium">
             Tiling crafted to a{' '}
             <em className="italic text-[#c9a84c]">flawless</em>{' '}
             finish.
@@ -55,21 +56,21 @@ export default function Hero() {
             </a>
           </div>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-20 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-8"
-        >
-          {stats.map((stat) => (
-            <div key={stat.label}>
-              <div className="font-display text-3xl sm:text-4xl text-[#f5f0e8] mb-1">{stat.value}</div>
-              <div className="text-xs text-[#a8a39a] tracking-wider uppercase font-mono">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full pb-10 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6"
+      >
+        {stats.map((stat) => (
+          <div key={stat.label}>
+            <div className="font-display text-2xl sm:text-3xl text-[#f5f0e8] mb-0.5">{stat.value}</div>
+            <div className="text-[10px] text-[#a8a39a] tracking-widest uppercase font-mono">{stat.label}</div>
+          </div>
+        ))}
+      </motion.div>
     </section>
   );
 }
