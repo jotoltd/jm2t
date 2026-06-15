@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Mail, Phone, MapPin, Menu, X, Star, Hammer } from 'lucide-react';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(96);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +20,12 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
+  }, [isScrolled, mobileMenuOpen]);
+
   const menuItems = [
     { label: 'Home', href: '/' },
     { label: 'Projects', href: '/projects', isPage: true },
@@ -29,7 +37,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Top micro-bar for contact information */}
       <div className="bg-[#050507] text-neutral-400 py-1.5 px-4 sm:px-6 text-[11px] border-b border-white/10 font-mono">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 sm:gap-4">
@@ -108,14 +116,14 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-neutral-950/98 flex flex-col justify-center px-6 pt-24 animate-fade-in">
+        <div className="lg:hidden fixed inset-x-0 bottom-0 z-40 bg-neutral-950 overflow-y-auto flex flex-col px-6 py-8 animate-fade-in" style={{ top: `${headerHeight}px` }}>
           {/* Close button */}
           <button
             onClick={() => setMobileMenuOpen(false)}
-            className="absolute top-5 right-5 p-2 text-white hover:text-cyan-400 transition-colors"
+            className="absolute top-4 right-4 p-2 text-white hover:text-cyan-400 transition-colors"
             aria-label="Close menu"
           >
-            <X className="w-8 h-8" />
+            <X className="w-7 h-7" />
           </button>
           <nav className="flex flex-col gap-6 text-center">
             {menuItems.map((item) => (
