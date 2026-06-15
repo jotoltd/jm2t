@@ -48,7 +48,7 @@ export default function Header() {
               <Phone className="w-3.5 h-3.5" />
               <span>07738 427208</span>
             </a>
-            <a href="mailto:admin@jm2tilingco.com" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
+            <a href="mailto:admin@jm2tilingco.com" className="hidden sm:flex hover:text-cyan-400 transition-colors items-center gap-1">
               <Mail className="w-3.5 h-3.5" />
               <span>admin@jm2tilingco.com</span>
             </a>
@@ -68,7 +68,7 @@ export default function Header() {
             <img
               src="/images/trans_logo.png"
               alt="JM²TilingCo Logo"
-              className="h-24 w-auto object-contain shrink-0 drop-shadow-[0_0_10px_rgba(77,238,255,0.6)] group-hover:drop-shadow-[0_0_22px_rgba(77,238,255,1)] transition-all duration-300"
+              className="h-14 sm:h-20 md:h-24 w-auto object-contain shrink-0 drop-shadow-[0_0_10px_rgba(77,238,255,0.6)] group-hover:drop-shadow-[0_0_22px_rgba(77,238,255,1)] transition-all duration-300"
             />
           </a>
 

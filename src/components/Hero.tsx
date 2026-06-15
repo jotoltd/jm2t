@@ -47,7 +47,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="font-display text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.95] text-center select-none"
+            className="font-display text-3xl sm:text-5xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.95] text-center select-none"
           >
             Professional <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-cyan-300 to-cyan-500">
@@ -64,7 +64,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-none bg-cyan-950/40 border border-cyan-800/30 text-cyan-400 text-2xl sm:text-3xl font-mono font-bold tracking-[0.2em] uppercase backdrop-blur-sm mx-auto"
+            className="inline-flex items-center gap-2 px-4 py-2 sm:px-8 sm:py-4 rounded-none bg-cyan-950/40 border border-cyan-800/30 text-cyan-400 text-base sm:text-2xl lg:text-3xl font-mono font-bold tracking-[0.2em] uppercase backdrop-blur-sm mx-auto"
           >
             <Grid2x2 className="w-8 h-8 text-cyan-400" />
             <span>JM² Tiling Co</span>
@@ -85,7 +85,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.45 }}
-          className="flex flex-col sm:flex-row gap-4 pt-10 justify-center"
+          className="flex flex-col sm:flex-row gap-3 pt-8 justify-center px-4 sm:px-0"
         >
           {/* Our Services — subtle glow pulse */}
           <motion.a
@@ -182,15 +182,15 @@ export default function Hero() {
             animate={isHovered ? {} : { x: ["0%", "-50%"] }}
             transition={isHovered ? {} : { repeat: Infinity, duration: 25, ease: "linear" }}
           >
-            <span className={`font-black uppercase tracking-[0.15em] font-mono mx-10 transition-all duration-300 ${isHovered ? 'text-cyan-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl drop-shadow-[0_0_15px_rgba(77,238,255,0.8)]' : 'text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl'}`}>
+            <span className={`font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] font-mono mx-6 sm:mx-10 transition-all duration-300 ${isHovered ? 'text-cyan-400 text-lg sm:text-2xl md:text-3xl lg:text-4xl drop-shadow-[0_0_15px_rgba(77,238,255,0.8)]' : 'text-white text-base sm:text-xl md:text-2xl lg:text-3xl'}`}>
               CRAWLEY • HORSHAM • HAYWARDS HEATH • SOUTH LONDON • SURREY • WEST SUSSEX • REIGATE • REDHILL •
             </span>
-            <span className={`font-black uppercase tracking-[0.15em] font-mono mx-10 transition-all duration-300 ${isHovered ? 'text-cyan-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl drop-shadow-[0_0_15px_rgba(77,238,255,0.8)]' : 'text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl'}`}>
+            <span className={`font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] font-mono mx-6 sm:mx-10 transition-all duration-300 ${isHovered ? 'text-cyan-400 text-lg sm:text-2xl md:text-3xl lg:text-4xl drop-shadow-[0_0_15px_rgba(77,238,255,0.8)]' : 'text-white text-base sm:text-xl md:text-2xl lg:text-3xl'}`}>
               CRAWLEY • HORSHAM • HAYWARDS HEATH • SOUTH LONDON • SURREY • WEST SUSSEX • REIGATE • REDHILL •
             </span>
           </motion.div>
           <div className="flex justify-center border-t border-white/10 py-3 md:py-4">
-            <a href="tel:+4407738427208" className="text-cyan-400 hover:text-cyan-300 font-black text-lg sm:text-xl md:text-2xl uppercase tracking-[0.15em] font-mono text-center px-4 transition-colors">
+            <a href="tel:+4407738427208" className="text-cyan-400 hover:text-cyan-300 font-black text-xs sm:text-base md:text-xl uppercase tracking-[0.08em] sm:tracking-[0.15em] font-mono text-center px-4 transition-colors">
               📞 07738 427208 • PROFESSIONAL TILING • FREE QUOTES • FULLY INSURED
             </a>
           </div>

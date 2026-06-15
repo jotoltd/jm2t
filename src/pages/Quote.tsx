@@ -45,7 +45,7 @@ export default function Quote() {
 
       <section className="py-20 bg-[#09090b]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-[1fr_1px_1.6fr] gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1.6fr] gap-10 lg:gap-16">
 
             {/* LEFT — WHY GET A QUOTE */}
             <div className="space-y-8">
