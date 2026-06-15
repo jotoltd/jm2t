@@ -145,7 +145,7 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
               <Link to="/floor-tiling" className="hover:text-cyan-400 transition-colors">Floor Tiling</Link>
               <Link to="/bathroom-tiling" className="hover:text-cyan-400 transition-colors">Bathroom Tiling</Link>
               <Link to="/regrouting" className="hover:text-cyan-400 transition-colors">Re-grouting & Repair</Link>
-              <a href="#contact" className="hover:text-white transition-colors">Bespoke Countertops</a>
+              <a href="/quote" className="hover:text-white transition-colors">Bespoke Countertops</a>
               <Link to="/quote" className="hover:text-cyan-400 transition-colors">Get a Quote</Link>
               <span className="text-cyan-400 font-mono text-[10px] bg-cyan-950/40 border border-cyan-800/20 px-2 py-0.5 rounded-none w-fit uppercase">
                 Surrey & West Sussex

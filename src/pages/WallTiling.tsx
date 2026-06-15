@@ -68,7 +68,7 @@ export default function WallTiling() {
                   </li>
                 ))}
               </ul>
-              <a href="#contact" className="mt-6 w-full block text-center bg-cyan-500 hover:bg-cyan-400 text-black font-black uppercase tracking-widest py-3 text-sm transition-all shadow-[0_0_20px_rgba(77,238,255,0.3)]">
+              <a href="/quote" className="mt-6 w-full block text-center bg-cyan-500 hover:bg-cyan-400 text-black font-black uppercase tracking-widest py-3 text-sm transition-all shadow-[0_0_20px_rgba(77,238,255,0.3)]">
                 Get Free Quote
               </a>
             </motion.div>

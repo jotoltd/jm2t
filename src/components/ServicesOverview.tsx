@@ -39,7 +39,7 @@ const services = [
 
 export default function ServicesOverview() {
   return (
-    <section className="py-20 bg-[#050507] border-b border-white/10">
+    <section id="services" className="py-20 bg-[#050507] border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}

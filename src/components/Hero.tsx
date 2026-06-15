@@ -89,7 +89,7 @@ export default function Hero() {
         >
           {/* Our Services — subtle glow pulse */}
           <motion.a
-            href="#packages"
+            href="#services"
             animate={{ boxShadow: ['0 0 0px rgba(77,238,255,0)', '0 0 25px rgba(77,238,255,0.5)', '0 0 0px rgba(77,238,255,0)'] }}
             transition={{ repeat: Infinity, duration: 2.5, delay: 1 }}
             className="bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-none px-10 py-4 text-sm uppercase tracking-widest text-center transition-colors"
@@ -139,7 +139,7 @@ export default function Hero() {
 
         {/* SCROLL DOWN */}
         <motion.a
-          href="#services"
+          href="#services-section"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
