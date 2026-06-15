@@ -72,7 +72,7 @@ export default function Header() {
             href="tel:+4407738427208"
             className="hidden sm:flex items-center gap-2 text-sm text-[#a8a39a] hover:text-[#f5f0e8] transition-colors"
           >
-            <Phone className="w-4 h-4" />
+            <Phone className="w-4 h-4 text-[#c9a84c]" />
             <span>07738 427208</span>
           </a>
           <Link
