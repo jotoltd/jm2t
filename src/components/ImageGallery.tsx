@@ -30,6 +30,8 @@ function GalleryRow({ reversed = false }: { reversed?: boolean }) {
             src={img}
             alt={`Tiling work ${idx + 1}`}
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
             onError={(e) => { e.currentTarget.style.display = 'none'; }}
           />
           <div className="absolute inset-0 bg-cyan-400/0 group-hover:bg-cyan-400/15 transition-all duration-300" />

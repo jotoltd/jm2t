@@ -11,10 +11,10 @@ const projects = [
     description:
       'This stunning apartment features an elegant metro wall tile backsplash and a porcelain marble style floor in the bathroom. A sleek design that enhances the overall aesthetic. The unique tile layout creates a modern and sophisticated ambiance, perfect for urban living.',
     images: [
-      '/images/luxe_apartment_01.png',
-      '/images/luxe_apartment_02.png',
-      '/images/luxe_apartment_03.png',
-      '/images/luxe_apartment_04.png',
+      '/images/luxe_apartment_01.jpg',
+      '/images/luxe_apartment_02.jpg',
+      '/images/luxe_apartment_03.jpg',
+      '/images/luxe_apartment_04.jpg',
     ],
     tags: ['Bathroom', 'Wall Tiling', 'Floor Tiling', 'Porcelain'],
   },
@@ -23,10 +23,10 @@ const projects = [
     description:
       'In this project, we transformed a traditional kitchen with clean floor tiling that combines style and functionality. The durable tiles are perfect for high-traffic areas and add a touch of luxury with their 33% offset.',
     images: [
-      '/images/luxe_kitchen01.png',
-      '/images/luxe_kitchen02.png',
-      '/images/luxe_kitchen03.png',
-      '/images/luxe_kitchen04.png',
+      '/images/luxe_kitchen01.jpg',
+      '/images/luxe_kitchen02.jpg',
+      '/images/luxe_kitchen03.jpg',
+      '/images/luxe_kitchen04.jpg',
     ],
     tags: ['Kitchen', 'Floor Tiling', 'Porcelain'],
   },
