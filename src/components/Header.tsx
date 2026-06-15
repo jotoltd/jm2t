@@ -37,9 +37,9 @@ export default function Header() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group shrink-0">
           <img
-            src="/images/trans_logo.png"
+            src="/images/logo_icon.png"
             alt="JM² Tiling Co"
-            className="h-10 sm:h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+            className="h-14 sm:h-16 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"
           />
         </Link>
 

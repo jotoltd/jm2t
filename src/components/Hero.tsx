@@ -27,8 +27,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-2xl"
+          className="max-w-2xl mx-auto text-center"
         >
+          <img src="/images/new_logo_trans.png" alt="JM² Tiling Co" className="w-72 sm:w-96 h-auto mb-10 opacity-95 mx-auto" />
           <p className="text-[#c9a84c] text-xs font-mono tracking-[0.3em] uppercase mb-6">
             Surrey &amp; West Sussex — Est. 2022
           </p>
