@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean }) {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const handleSubmit = (e: FormEvent) => { e.preventDefault(); setSubmitted(true); };
 
@@ -13,7 +13,7 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
         <div className="max-w-7xl mx-auto px-5 sm:px-8 py-24">
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
-              <p className="text-[#c9a84c] text-xs font-mono tracking-[0.3em] uppercase mb-4">Get in touch</p>
+              <p className="text-[#c9a84c] text-xs font-mono tracking-[0.3em] uppercase mb-4">Get In Touch</p>
               <h2 className="font-display text-4xl sm:text-5xl text-[#f5f0e8] mb-6">
                 Let's plan your<br /><em className="italic">project.</em>
               </h2>
@@ -57,8 +57,8 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[10px] font-mono uppercase tracking-widest text-[#6b6560] mb-2">Name</label>
-                      <input required value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="w-full bg-[#1a1917] border border-white/10 text-[#f5f0e8] px-4 py-3 text-sm focus:outline-none focus:border-[#c9a84c]/50 transition-colors placeholder-[#3a3730]" placeholder="Your name" />
+                      <label className="block text-[10px] font-mono uppercase tracking-widest text-[#6b6560] mb-2">Full Name</label>
+                      <input required value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="w-full bg-[#1a1917] border border-white/10 text-[#f5f0e8] px-4 py-3 text-sm focus:outline-none focus:border-[#c9a84c]/50 transition-colors placeholder-[#3a3730]" placeholder="Your full name" />
                     </div>
                     <div>
                       <label className="block text-[10px] font-mono uppercase tracking-widest text-[#6b6560] mb-2">Phone</label>
@@ -66,15 +66,27 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
                     </div>
                   </div>
                   <div>
-                    <label className="block text-[10px] font-mono uppercase tracking-widest text-[#6b6560] mb-2">Email</label>
+                    <label className="block text-[10px] font-mono uppercase tracking-widest text-[#6b6560] mb-2">Email Address</label>
                     <input required type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="w-full bg-[#1a1917] border border-white/10 text-[#f5f0e8] px-4 py-3 text-sm focus:outline-none focus:border-[#c9a84c]/50 transition-colors placeholder-[#3a3730]" placeholder="your@email.com" />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-mono uppercase tracking-widest text-[#6b6560] mb-2">Message</label>
+                    <label className="block text-[10px] font-mono uppercase tracking-widest text-[#6b6560] mb-2">Service Needed</label>
+                    <select required value={form.service} onChange={e => setForm({...form, service: e.target.value})} className="w-full bg-[#1a1917] border border-white/10 text-[#f5f0e8] px-4 py-3 text-sm focus:outline-none focus:border-[#c9a84c]/50 transition-colors cursor-pointer">
+                      <option value="" disabled>Select a service...</option>
+                      <option>Floor Tiling</option>
+                      <option>Wall Tiling</option>
+                      <option>Bathroom Tiling</option>
+                      <option>Re-grouting &amp; Repair</option>
+                      <option>Bespoke Tile Countertops</option>
+                      <option>Renovation &amp; Restoration</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-mono uppercase tracking-widest text-[#6b6560] mb-2">Your Project</label>
                     <textarea rows={4} value={form.message} onChange={e => setForm({...form, message: e.target.value})} className="w-full bg-[#1a1917] border border-white/10 text-[#f5f0e8] px-4 py-3 text-sm focus:outline-none focus:border-[#c9a84c]/50 transition-colors resize-none placeholder-[#3a3730]" placeholder="Tell us about your project..." />
                   </div>
                   <button type="submit" className="w-full py-4 bg-[#c9a84c] hover:bg-[#e2c97e] text-[#0c0b0a] text-xs font-semibold tracking-widest uppercase transition-all duration-300">
-                    Send Enquiry
+                    Request Your Free Quote
                   </button>
                 </form>
               )}

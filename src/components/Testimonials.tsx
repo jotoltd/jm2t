@@ -1,10 +1,9 @@
 import { motion } from 'motion/react';
 
 const reviews = [
-  { name: 'James R.', location: 'Crawley', text: 'Exceptional work throughout — the bathroom looks like something from a luxury hotel. Meticulous attention to detail and left the place spotless. Could not be happier.', rating: 5 },
-  { name: 'Sarah M.', location: 'Horsham', text: 'Transformed our tired kitchen with beautiful large-format floor tiles. Professional, punctual and the finish is absolutely perfect. Would recommend without hesitation.', rating: 5 },
-  { name: 'David & Claire T.', location: 'Reigate', text: 'Used JM² for a full bathroom renovation. The quality of work is outstanding — exactly what we envisioned. Very knowledgeable and tidy throughout.', rating: 5 },
-  { name: 'Emily P.', location: 'Haywards Heath', text: 'The re-grouting has made such a difference — tiles look completely brand new. Quick, tidy and very fairly priced. Will definitely be using again for our kitchen.', rating: 5 },
+  { name: 'The Johnson Family', location: 'Crawley', text: 'JM2 TilingCo transformed my kitchen with stunning tile work! Highly recommend their services.', rating: 5 },
+  { name: 'Sarah & Mike', location: 'Horsham', text: 'Exceptional quality and professionalism. Our bathroom looks incredible!', rating: 5 },
+  { name: 'Emily Turner', location: 'Reigate', text: 'JM2 TilingCo was fantastic! They delivered beyond our expectations.', rating: 5 },
 ];
 
 export default function Testimonials() {
@@ -18,14 +17,14 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="text-[#c9a84c] text-xs font-mono tracking-[0.3em] uppercase mb-4">Client reviews</p>
+          <p className="text-[#c9a84c] text-xs font-mono tracking-[0.3em] uppercase mb-4">Client Words</p>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#f5f0e8]">
             Trusted by homeowners<br />
             <em className="italic">who expect more.</em>
           </h2>
           <p className="text-[#a8a39a] mt-4 text-base max-w-xl"></p>
         </motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
+        <div className="grid sm:grid-cols-3 gap-px bg-white/5">
           {reviews.map((t, i) => (
             <motion.div
               key={t.name}

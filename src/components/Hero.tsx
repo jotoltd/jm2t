@@ -2,10 +2,10 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 
 const stats = [
-  { value: '2022', label: 'Tiling since' },
-  { value: '5★', label: 'Satisfaction focused' },
-  { value: '20+', label: 'Areas covered' },
-  { value: '4', label: 'Specialist services' },
+  { value: '2,022', label: 'Tiling since' },
+  { value: '100%', label: 'Satisfaction focused' },
+  { value: '8+', label: 'Areas covered' },
+  { value: '6', label: 'Specialist services' },
 ];
 
 export default function Hero() {
@@ -41,7 +41,7 @@ export default function Hero() {
             Professional wall &amp; floor tiling in Surrey &amp; West Sussex. Porcelain and natural
             stone specialists delivering premium wall &amp; floor installations for discerning homes and businesses.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <Link
               to="/quote"
               className="inline-flex items-center justify-center px-8 py-4 bg-[#c9a84c] hover:bg-[#e2c97e] text-[#0c0b0a] text-sm font-semibold tracking-widest uppercase transition-all duration-300"
@@ -54,6 +54,14 @@ export default function Hero() {
             >
               Call Now
             </a>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6">
+            {['5-star rated locally', 'Fully insured & qualified', 'Free, no-obligation quotes'].map((t) => (
+              <div key={t} className="flex items-center gap-2">
+                <span className="w-1 h-1 rounded-full bg-[#c9a84c]" />
+                <span className="text-[#a8a39a] text-xs font-mono tracking-wide">{t}</span>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>
