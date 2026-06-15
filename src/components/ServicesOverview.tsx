@@ -1,86 +1,54 @@
 import { motion } from 'motion/react';
-import { Layers, Grid2x2, Hammer, Wrench } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const services = [
-  {
-    icon: Layers,
-    emoji: '🧱',
-    title: 'Wall Tiling',
-    desc: 'Kitchens, bathrooms & splashbacks — precise, clean, lasting.',
-    href: '/wall-tiling',
-    price: 'From £50/m²',
-  },
-  {
-    icon: Grid2x2,
-    emoji: '🏠',
-    title: 'Floor Tiling',
-    desc: 'Bathrooms, kitchens & hallways — durable & stylish.',
-    href: '/floor-tiling',
-    price: 'From £60/m²',
-  },
-  {
-    icon: Hammer,
-    emoji: '🚿',
-    title: 'Bathroom Tiling',
-    desc: 'Full renovations to feature walls & shower enclosures.',
-    href: '/bathroom-tiling',
-    price: 'Bespoke quote',
-  },
-  {
-    icon: Wrench,
-    emoji: '🔧',
-    title: 'Re-grouting & Repair',
-    desc: 'Restore tired tiles — re-grout, fix & replace.',
-    href: '/regrouting',
-    price: '£200/day',
-  },
+  { title: 'Floor Tiling', desc: 'Porcelain, ceramic and natural stone floors — herringbone and large-format, laid dead-level.', bullets: ['Herringbone & large-format', 'Residential & commercial', 'Built to last decades'], href: '/floor-tiling' },
+  { title: 'Bathroom Tiling', desc: 'Full bathroom renovations and custom shower enclosures — properly waterproofed to a spa-quality standard.', bullets: ['Wet rooms & showers', 'Waterproofing focus', 'Luxury, spa-inspired'], href: '/bathroom-tiling' },
+  { title: 'Wall Tiling', desc: 'Kitchen splashbacks, feature walls and full-height installs set out perfectly square.', bullets: ['Kitchen splashbacks', 'Feature walls', 'Flawless symmetry'], href: '/wall-tiling' },
+  { title: 'Re-grouting & Repair', desc: 'Discoloured grout renewed and loose tiles replaced — restoring surfaces and sealing out moisture.', bullets: ['Tile repair & replacement', 'Mould & moisture sealing', 'A fresh, modern finish'], href: '/regrouting' },
+  { title: 'Bespoke Countertops', desc: 'Made-to-measure tiled worktops and surfaces — a hard-wearing statement piece for your space.', bullets: ['Custom worktops', 'Statement surfaces', 'Premium materials'], href: '/quote' },
+  { title: 'Renovation & Restoration', desc: 'Older tiled areas brought back to life — from single-room refreshes to full property transformations.', bullets: ['Full transformations', 'Modern techniques', 'Sympathetic restoration'], href: '/quote' },
 ];
 
 export default function ServicesOverview() {
   return (
-    <section id="services" className="py-20 bg-[#050507] border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+    <section id="services" className="py-28 bg-[#0c0b0a]">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center font-display text-5xl sm:text-6xl lg:text-7xl font-black text-white uppercase mb-16"
+          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          Our Tiling Services
-        </motion.h2>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, idx) => (
+          <p className="text-[#c9a84c] text-xs font-mono tracking-[0.3em] uppercase mb-4">What we do</p>
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#f5f0e8]">
+            A complete tiling service,<br />
+            <em className="italic">finished to perfection.</em>
+          </h2>
+        </motion.div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
+          {services.map((s, i) => (
             <motion.div
-              key={idx}
+              key={s.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
+              className="bg-[#0c0b0a] p-8 group hover:bg-[#111110] transition-colors"
             >
-              <Link
-                to={service.href}
-                className="group flex flex-col bg-neutral-900 border-2 border-white/10 p-8 hover:border-cyan-500 hover:shadow-[0_0_40px_rgba(77,238,255,0.25)] hover:-translate-y-1 transition-all duration-300 h-full"
-              >
-                {/* Icon area */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shrink-0 group-hover:bg-cyan-500/20 group-hover:border-cyan-400 transition-all">
-                    <service.icon className="w-7 h-7 text-cyan-400" />
-                  </div>
-                  <span className="text-4xl">{service.emoji}</span>
-                </div>
-
-                <h3 className="font-display text-2xl font-black text-white uppercase mb-3 leading-tight group-hover:text-cyan-400 transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-neutral-400 text-base leading-relaxed flex-1">{service.desc}</p>
-
-                <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
-                  <span className="text-cyan-400 font-mono text-xs font-bold uppercase tracking-widest">{service.price}</span>
-                  <span className="text-neutral-500 text-xs font-mono uppercase tracking-widest group-hover:text-cyan-400 transition-colors">View →</span>
-                </div>
+              <p className="text-[#c9a84c] text-xs font-mono tracking-[0.2em] uppercase mb-4">0{i + 1}</p>
+              <h3 className="font-display text-2xl text-[#f5f0e8] mb-3">{s.title}</h3>
+              <p className="text-[#a8a39a] text-sm leading-relaxed mb-5">{s.desc}</p>
+              <ul className="space-y-1.5 mb-6">
+                {s.bullets.map((b) => (
+                  <li key={b} className="flex items-center gap-2 text-xs text-[#6b6560]">
+                    <span className="w-1 h-1 rounded-full bg-[#c9a84c] shrink-0" />{b}
+                  </li>
+                ))}
+              </ul>
+              <Link to={s.href} className="text-xs text-[#c9a84c] tracking-widest uppercase hover:text-[#e2c97e] transition-colors">
+                Learn more &rarr;
               </Link>
             </motion.div>
           ))}

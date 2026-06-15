@@ -11,6 +11,7 @@ import Hero from './components/Hero';
 import ServicesOverview from './components/ServicesOverview';
 import WhyChooseUs from './components/WhyChooseUs';
 import Testimonials from './components/Testimonials';
+import Process from './components/Process';
 import { GalleryRow1, GalleryRow2 } from './components/ImageGallery';
 import Footer from './components/Footer';
 import { MessageCircle } from 'lucide-react';
@@ -29,19 +30,16 @@ const Quote = lazy(() => import('./pages/Quote'));
 
 function HomePage() {
   return (
-    <div className="min-h-screen bg-neutral-950 font-sans selection:bg-cyan-500 selection:text-black">
+    <div className="min-h-screen bg-[#0c0b0a] font-sans selection:bg-[#c9a84c] selection:text-[#0c0b0a]">
       <Header />
       <main>
         <Hero />
-        <div className="h-1 bg-cyan-400 shadow-[0_0_12px_rgba(77,238,255,0.7)]" />
         <ServicesOverview />
-        <div className="h-1 bg-cyan-400 shadow-[0_0_12px_rgba(77,238,255,0.7)]" />
         <WhyChooseUs />
+        <Process />
         <GalleryRow1 />
-        <div className="h-1 bg-cyan-400 shadow-[0_0_12px_rgba(77,238,255,0.7)]" />
         <Testimonials />
         <GalleryRow2 />
-        <div className="h-1 bg-cyan-400 shadow-[0_0_12px_rgba(77,238,255,0.7)]" />
       </main>
       <Footer />
       <a
