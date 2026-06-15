@@ -52,7 +52,7 @@ export default function Projects() {
   }, [lightbox, close, prev, next]);
 
   return (
-    <div className="min-h-screen bg-neutral-950 font-sans text-neutral-100">
+    <div className="min-h-screen bg-[#0c0b0a]">
       <Header />
 
       {/* LIGHTBOX */}
@@ -66,7 +66,7 @@ export default function Projects() {
             onClick={close}
           >
             {/* Close */}
-            <button onClick={close} className="absolute top-4 right-4 text-white hover:text-cyan-400 transition-colors z-10">
+            <button onClick={close} className="absolute top-4 right-4 text-white hover:text-[#c9a84c] transition-colors z-10">
               <X className="w-8 h-8" />
             </button>
 
@@ -78,7 +78,7 @@ export default function Projects() {
             {/* Prev */}
             <button
               onClick={(e) => { e.stopPropagation(); prev(); }}
-              className="absolute left-4 text-white hover:text-cyan-400 transition-colors z-10 bg-black/40 p-2"
+              className="absolute left-4 text-white hover:text-[#c9a84c] transition-colors z-10 bg-black/40 p-2"
             >
               <ChevronLeft className="w-8 h-8" />
             </button>
@@ -99,7 +99,7 @@ export default function Projects() {
             {/* Next */}
             <button
               onClick={(e) => { e.stopPropagation(); next(); }}
-              className="absolute right-4 text-white hover:text-cyan-400 transition-colors z-10 bg-black/40 p-2"
+              className="absolute right-4 text-white hover:text-[#c9a84c] transition-colors z-10 bg-black/40 p-2"
             >
               <ChevronRight className="w-8 h-8" />
             </button>
@@ -110,7 +110,7 @@ export default function Projects() {
                 <button
                   key={i}
                   onClick={(e) => { e.stopPropagation(); setLightbox(l => l ? { ...l, index: i } : l); }}
-                  className={`w-12 h-12 overflow-hidden border-2 transition-all ${i === lightbox.index ? 'border-cyan-400' : 'border-white/20 opacity-50 hover:opacity-80'}`}
+                  className={`w-12 h-12 overflow-hidden border-2 transition-all ${i === lightbox.index ? 'border-[#c9a84c]' : 'border-white/20 opacity-50 hover:opacity-80'}`}
                 >
                   <img src={img} alt="" className="w-full h-full object-cover" />
                 </button>
@@ -120,30 +120,19 @@ export default function Projects() {
         )}
       </AnimatePresence>
 
-      {/* HERO */}
-      <section className="relative bg-[#050507] pt-32 pb-20 border-b border-white/10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-          <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-cyan-400 font-mono text-xs font-bold tracking-[0.3em] uppercase">
-            JM²TilingCo
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-white uppercase mt-4 leading-tight"
-          >
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-b from-cyan-300 to-cyan-500">Projects</span>
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-neutral-400 mt-6 text-base sm:text-lg max-w-xl mx-auto">
-            A selection of our completed tiling projects across Surrey & West Sussex.
-          </motion.p>
+      <section className="pt-40 pb-20 border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <p className="text-[#c9a84c] text-xs font-mono tracking-[0.3em] uppercase mb-4">Selected Work</p>
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-[#f5f0e8] font-medium leading-tight mb-6">
+              Recent projects<br /><em className="italic">across the South East.</em>
+            </h1>
+            <p className="text-[#a8a39a] text-lg max-w-xl leading-relaxed">A selection of our completed tiling projects across Surrey &amp; West Sussex.</p>
+          </motion.div>
         </div>
       </section>
 
-      <div className="h-1 bg-cyan-400 shadow-[0_0_12px_rgba(77,238,255,0.7)]" />
-
-      {/* PROJECTS */}
-      <section className="py-20 bg-[#09090b]">
+      <section className="py-20 bg-[#0c0b0a]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-24">
           {projects.map((project, pIdx) => (
             <motion.div
@@ -155,11 +144,11 @@ export default function Projects() {
             >
               {/* Project header */}
               <div className="mb-8">
-                <p className="text-cyan-400 font-mono text-xs uppercase tracking-[0.3em] mb-2">Project {String(pIdx + 1).padStart(2, '0')}</p>
-                <h2 className="font-display text-4xl sm:text-5xl font-black text-white uppercase">{project.title}</h2>
+                <p className="text-[#c9a84c] font-mono text-xs uppercase tracking-[0.3em] mb-2">Project {String(pIdx + 1).padStart(2, '0')}</p>
+                <h2 className="font-display text-4xl sm:text-5xl text-[#f5f0e8] font-medium">{project.title}</h2>
                 <div className="flex flex-wrap gap-2 mt-4">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="text-[10px] font-mono uppercase tracking-widest text-cyan-400 border border-cyan-500/30 bg-cyan-500/5 px-3 py-1">
+                    <span key={tag} className="text-[10px] font-mono uppercase tracking-widest text-[#c9a84c] border border-[#c9a84c]/20 px-3 py-1">
                       {tag}
                     </span>
                   ))}
@@ -172,7 +161,7 @@ export default function Projects() {
                   <div
                     key={iIdx}
                     onClick={() => img && setLightbox({ images: project.images.filter(Boolean) as string[], index: iIdx })}
-                    className={`relative aspect-square bg-neutral-900 border border-white/10 flex items-center justify-center overflow-hidden group ${img ? 'cursor-zoom-in' : ''}`}
+                    className={`relative aspect-square bg-[#111110] border border-white/5 flex items-center justify-center overflow-hidden group ${img ? 'cursor-zoom-in' : ''}`}
                   >
                     {img ? (
                       <>
@@ -182,11 +171,11 @@ export default function Projects() {
                         </div>
                       </>
                     ) : (
-                      <div className="flex flex-col items-center gap-2 text-neutral-700">
-                        <div className="w-10 h-10 border-2 border-dashed border-neutral-700 flex items-center justify-center">
-                          <span className="text-lg font-black">{iIdx + 1}</span>
+                      <div className="flex flex-col items-center gap-2 text-[#3a3730]">
+                        <div className="w-10 h-10 border border-dashed border-[#3a3730] flex items-center justify-center">
+                          <span className="text-lg">{iIdx + 1}</span>
                         </div>
-                        <span className="text-[10px] font-mono uppercase tracking-widest">Image coming soon</span>
+                        <span className="text-[10px] font-mono uppercase tracking-widest">Coming soon</span>
                       </div>
                     )}
                   </div>
@@ -194,20 +183,18 @@ export default function Projects() {
               </div>
 
               {/* Description */}
-              <p className="text-neutral-300 text-base leading-relaxed max-w-3xl">
+              <p className="text-[#a8a39a] text-base leading-relaxed max-w-3xl">
                 {project.description}
               </p>
 
               {/* Divider between projects */}
               {pIdx < projects.length - 1 && (
-                <div className="mt-24 h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent shadow-[0_0_8px_rgba(77,238,255,0.5)]" />
+                <div className="mt-24 h-px bg-white/5" />
               )}
             </motion.div>
           ))}
         </div>
       </section>
-
-      <div className="h-1 bg-cyan-400 shadow-[0_0_12px_rgba(77,238,255,0.7)]" />
 
       <Footer />
     </div>
