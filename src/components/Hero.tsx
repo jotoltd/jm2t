@@ -41,7 +41,7 @@ export default function Hero() {
 
 
       {/* CONTENT ON TOP */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-20 w-full text-center pt-16 sm:pt-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-20 w-full text-center pt-28 sm:pt-32 lg:pt-24">
         <div className="space-y-6">
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
