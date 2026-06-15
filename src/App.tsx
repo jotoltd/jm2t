@@ -1,0 +1,81 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'motion/react';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import ServicesOverview from './components/ServicesOverview';
+import WhyChooseUs from './components/WhyChooseUs';
+import Testimonials from './components/Testimonials';
+import { GalleryRow1, GalleryRow2 } from './components/ImageGallery';
+import Footer from './components/Footer';
+import FloorTiling from './pages/FloorTiling';
+import BathroomTiling from './pages/BathroomTiling';
+import WallTiling from './pages/WallTiling';
+import Regrouting from './pages/Regrouting';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
+import Quote from './pages/Quote';
+import { MessageCircle } from 'lucide-react';
+import ScrollToTop from './components/ScrollToTop';
+import PageTransition from './components/PageTransition';
+
+function HomePage() {
+  return (
+    <div className="min-h-screen bg-neutral-950 font-sans selection:bg-cyan-500 selection:text-black">
+      <Header />
+      <main>
+        <Hero />
+        <div className="h-1 bg-cyan-400 shadow-[0_0_12px_rgba(77,238,255,0.7)]" />
+        <ServicesOverview />
+        <div className="h-1 bg-cyan-400 shadow-[0_0_12px_rgba(77,238,255,0.7)]" />
+        <WhyChooseUs />
+        <GalleryRow1 />
+        <div className="h-1 bg-cyan-400 shadow-[0_0_12px_rgba(77,238,255,0.7)]" />
+        <Testimonials />
+        <GalleryRow2 />
+        <div className="h-1 bg-cyan-400 shadow-[0_0_12px_rgba(77,238,255,0.7)]" />
+      </main>
+      <Footer />
+      <a
+        href="https://wa.me/4407738427208?text=Hi%20JM²TilingCo,%20I'm%20interested%20in%20a%20tiling%20quote"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20bd5a] text-white p-4 rounded-full shadow-2xl shadow-black/50 transition-all duration-300 hover:scale-110 flex items-center gap-2 group"
+      >
+        <MessageCircle className="w-6 h-6 fill-current" />
+        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap text-sm font-bold">
+          Chat on WhatsApp
+        </span>
+      </a>
+    </div>
+  );
+}
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <Routes location={location}>
+      <Route path="/" element={<PageTransition><HomePage /></PageTransition>} />
+      <Route path="/floor-tiling" element={<PageTransition><FloorTiling /></PageTransition>} />
+      <Route path="/bathroom-tiling" element={<PageTransition><BathroomTiling /></PageTransition>} />
+      <Route path="/wall-tiling" element={<PageTransition><WallTiling /></PageTransition>} />
+      <Route path="/regrouting" element={<PageTransition><Regrouting /></PageTransition>} />
+      <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
+      <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+      <Route path="/quote" element={<PageTransition><Quote /></PageTransition>} />
+    </Routes>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <AnimatedRoutes />
+    </BrowserRouter>
+  );
+}

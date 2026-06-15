@@ -1,0 +1,6 @@
+{
+  "name": "Wilson Detailing",
+  "description": "Premium valeting and detailing service based in South West Scotland, featuring professional packages and bespoke care.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
