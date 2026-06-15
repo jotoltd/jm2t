@@ -8,7 +8,7 @@ export default function SplashScreen({ onComplete }: Props) {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-[9999] bg-[#050507] flex items-center justify-center overflow-hidden"
+        className="fixed inset-0 z-[9999] bg-white flex items-center justify-center overflow-hidden"
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
