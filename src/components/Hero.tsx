@@ -47,7 +47,7 @@ export default function Hero() {
             Professional wall &amp; floor tiling in Surrey &amp; West Sussex. Porcelain and natural
             stone specialists delivering premium wall &amp; floor installations for discerning homes and businesses.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center">
             <Link
               to="/quote"
               className="inline-flex items-center justify-center px-8 py-4 bg-[#c9a84c] hover:bg-[#e2c97e] text-[#0c0b0a] text-sm font-semibold tracking-widest uppercase transition-all duration-300"
@@ -61,7 +61,7 @@ export default function Hero() {
               Call Now
             </a>
           </div>
-          <div className="flex flex-row flex-wrap gap-x-4 gap-y-2">
+          <div className="flex flex-row flex-wrap gap-x-4 gap-y-2 justify-center">
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-0.5">
                 {[...Array(5)].map((_, i) => (
