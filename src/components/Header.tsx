@@ -109,6 +109,14 @@ export default function Header() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 z-40 bg-neutral-950/98 flex flex-col justify-center px-6 pt-24 animate-fade-in">
+          {/* Close button */}
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="absolute top-5 right-5 p-2 text-white hover:text-cyan-400 transition-colors"
+            aria-label="Close menu"
+          >
+            <X className="w-8 h-8" />
+          </button>
           <nav className="flex flex-col gap-6 text-center">
             {menuItems.map((item) => (
               item.isPage
