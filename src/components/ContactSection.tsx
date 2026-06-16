@@ -93,7 +93,7 @@ export default function ContactSection() {
                     value={form.name}
                     onChange={e => setForm({...form, name: e.target.value})}
                     placeholder="John Smith"
-                    className="w-full rounded-none border-0 border-b border-white/15 bg-transparent px-0 py-3 text-white placeholder:text-white/30 outline-none transition-colors focus:border-[#c9a84c]"
+                    className="w-full rounded-none border-0 border-b border-white/15 bg-transparent px-0 py-3 text-white placeholder:text-white/70 outline-none transition-colors focus:border-[#c9a84c]"
                   />
                 </div>
                 <div className="space-y-2">
@@ -104,7 +104,7 @@ export default function ContactSection() {
                     value={form.phone}
                     onChange={e => setForm({...form, phone: e.target.value})}
                     placeholder="07738 000000"
-                    className="w-full rounded-none border-0 border-b border-white/15 bg-transparent px-0 py-3 text-white placeholder:text-white/30 outline-none transition-colors focus:border-[#c9a84c]"
+                    className="w-full rounded-none border-0 border-b border-white/15 bg-transparent px-0 py-3 text-white placeholder:text-white/70 outline-none transition-colors focus:border-[#c9a84c]"
                   />
                 </div>
               </div>
@@ -117,7 +117,7 @@ export default function ContactSection() {
                   value={form.email}
                   onChange={e => setForm({...form, email: e.target.value})}
                   placeholder="you@example.com"
-                  className="w-full rounded-none border-0 border-b border-white/15 bg-transparent px-0 py-3 text-white placeholder:text-white/30 outline-none transition-colors focus:border-[#c9a84c]"
+                  className="w-full rounded-none border-0 border-b border-white/15 bg-transparent px-0 py-3 text-white placeholder:text-white/70 outline-none transition-colors focus:border-[#c9a84c]"
                 />
               </div>
               <div className="space-y-2">
@@ -146,7 +146,7 @@ export default function ContactSection() {
                   value={form.message}
                   onChange={e => setForm({...form, message: e.target.value})}
                   placeholder="Tell us about the room, tiles and timescale..."
-                  className="w-full rounded-none border-0 border-b border-white/15 bg-transparent px-0 py-3 text-white placeholder:text-white/30 outline-none transition-colors focus:border-[#c9a84c] resize-none"
+                  className="w-full rounded-none border-0 border-b border-white/15 bg-transparent px-0 py-3 text-white placeholder:text-white/70 outline-none transition-colors focus:border-[#c9a84c] resize-none"
                 />
               </div>
               <button

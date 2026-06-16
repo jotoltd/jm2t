@@ -18,39 +18,39 @@ export default function Quote() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 font-sans text-neutral-100">
-      <Header />
+    <div className="min-h-screen bg-[#0c0b0a] font-sans text-[#f5f0e8]">
+      <Header mobileMenuOpen={false} setMobileMenuOpen={() => {}} />
 
       {/* HERO */}
-      <section className="relative bg-[#050507] pt-32 pb-20 border-b border-white/10">
+      <section className="relative bg-[#0a0a0c] pt-32 pb-20 border-b border-white/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-          <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-cyan-400 font-mono text-xs font-bold tracking-[0.3em] uppercase">
+          <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[#c9a84c] font-mono text-xs font-bold tracking-[0.3em] uppercase">
             JM² Tiling Co
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-white uppercase mt-4 leading-tight"
+            className="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-[#f5f0e8] uppercase mt-4 leading-tight"
           >
-            Free <span className="text-transparent bg-clip-text bg-gradient-to-b from-cyan-300 to-cyan-500">Quote</span>
+            Free <span className="text-[#c9a84c]">Quote</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-neutral-400 mt-6 text-lg max-w-xl mx-auto">
+          <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-white/55 mt-6 text-lg max-w-xl mx-auto">
             Tell us about your project and we'll get back to you within 24 hours — no obligation.
           </motion.p>
         </div>
       </section>
 
-      <div className="h-1 bg-cyan-400 shadow-[0_0_12px_rgba(77,238,255,0.7)]" />
+      <div className="h-1 bg-[#c9a84c] shadow-[0_0_12px_rgba(201,168,76,0.5)]" />
 
-      <section className="py-20 bg-[#09090b]">
+      <section className="py-20 bg-[#0c0b0a]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1px_1.6fr] gap-10 lg:gap-16">
 
             {/* LEFT — WHY GET A QUOTE */}
             <div className="space-y-8">
               <div>
-                <h2 className="font-display text-2xl font-black text-white uppercase mb-5">What's Included</h2>
+                <h2 className="font-display text-2xl font-black text-[#f5f0e8] uppercase mb-5">What's Included</h2>
                 <ul className="space-y-3">
                   {[
                     'Full site assessment if needed',
@@ -60,8 +60,8 @@ export default function Quote() {
                     'Honest project timeline',
                     'Free advice on tile choices',
                   ].map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-neutral-300">
-                      <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0" />
+                    <li key={item} className="flex items-center gap-3 text-white/70">
+                      <CheckCircle2 className="w-5 h-5 text-[#c9a84c] shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -71,23 +71,23 @@ export default function Quote() {
               <div className="h-px bg-white/10" />
 
               <div className="space-y-3">
-                <h3 className="font-display text-lg font-black text-white uppercase">Prefer to call?</h3>
-                <a href="tel:07738427208" className="flex items-center gap-3 bg-neutral-900 border border-white/10 p-4 hover:border-cyan-500/50 transition-all group">
-                  <div className="w-10 h-10 bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center">
-                    <Phone className="w-5 h-5 text-cyan-400" />
+                <h3 className="font-display text-lg font-black text-[#f5f0e8] uppercase">Prefer to call?</h3>
+                <a href="tel:07738427208" className="flex items-center gap-3 bg-[#101012] border border-white/10 p-4 hover:border-[#c9a84c]/50 transition-all group">
+                  <div className="w-10 h-10 bg-[#c9a84c]/10 border border-[#c9a84c]/30 flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-[#c9a84c]" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Call us</p>
-                    <p className="text-white font-bold group-hover:text-cyan-400 transition-colors">07738 427208</p>
+                    <p className="text-[10px] font-mono uppercase tracking-widest text-white/40">Call us</p>
+                    <p className="text-white font-bold group-hover:text-[#c9a84c] transition-colors">07738 427208</p>
                   </div>
                 </a>
-                <a href="mailto:admin@jm2tilingco.com" className="flex items-center gap-3 bg-neutral-900 border border-white/10 p-4 hover:border-cyan-500/50 transition-all group">
-                  <div className="w-10 h-10 bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center">
-                    <Mail className="w-5 h-5 text-cyan-400" />
+                <a href="mailto:admin@jm2tilingco.com" className="flex items-center gap-3 bg-[#101012] border border-white/10 p-4 hover:border-[#c9a84c]/50 transition-all group">
+                  <div className="w-10 h-10 bg-[#c9a84c]/10 border border-[#c9a84c]/30 flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-[#c9a84c]" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Email us</p>
-                    <p className="text-white font-bold text-sm group-hover:text-cyan-400 transition-colors">admin@jm2tilingco.com</p>
+                    <p className="text-[10px] font-mono uppercase tracking-widest text-white/40">Email us</p>
+                    <p className="text-white font-bold text-sm group-hover:text-[#c9a84c] transition-colors">admin@jm2tilingco.com</p>
                   </div>
                 </a>
                 <a
@@ -108,44 +108,44 @@ export default function Quote() {
             </div>
 
             {/* DIVIDER */}
-            <div className="hidden lg:block w-px self-stretch bg-gradient-to-b from-transparent via-cyan-400 to-transparent shadow-[0_0_8px_rgba(77,238,255,0.8)]" />
+            <div className="hidden lg:block w-px self-stretch bg-gradient-to-b from-transparent via-[#c9a84c] to-transparent shadow-[0_0_8px_rgba(201,168,76,0.5)]" />
 
             {/* RIGHT — FORM */}
             <div>
-              <h2 className="font-display text-2xl font-black text-white uppercase mb-6">Project Details</h2>
+              <h2 className="font-display text-2xl font-black text-[#f5f0e8] uppercase mb-6">Project Details</h2>
 
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-cyan-500/10 border border-cyan-500/30 p-10 text-center"
+                  className="bg-[#c9a84c]/10 border border-[#c9a84c]/30 p-10 text-center"
                 >
-                  <CheckCircle2 className="w-14 h-14 text-cyan-400 mx-auto mb-4" />
+                  <CheckCircle2 className="w-14 h-14 text-[#c9a84c] mx-auto mb-4" />
                   <p className="text-white font-black text-2xl uppercase">Quote Request Sent!</p>
-                  <p className="text-neutral-400 mt-3">We'll be in touch within 24 hours with your free quote.</p>
+                  <p className="text-white/55 mt-3">We'll be in touch within 24 hours with your free quote.</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-[11px] font-mono uppercase tracking-widest text-neutral-400 mb-2">Full Name *</label>
-                      <input type="text" required value={form.name} onChange={e => setForm({...form, name: e.target.value})} placeholder="John Smith" className="w-full bg-neutral-900 border border-white/10 text-white px-4 py-3 text-base placeholder-neutral-600 focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_12px_rgba(77,238,255,0.2)] transition-all" />
+                      <label className="block text-[11px] font-mono uppercase tracking-widest text-white/50 mb-2">Full Name *</label>
+                      <input type="text" required value={form.name} onChange={e => setForm({...form, name: e.target.value})} placeholder="John Smith" className="w-full bg-[#101012] border border-white/10 text-white px-4 py-3 text-base placeholder-white/40 focus:outline-none focus:border-[#c9a84c] focus:shadow-[0_0_12px_rgba(201,168,76,0.2)] transition-all" />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-mono uppercase tracking-widest text-neutral-400 mb-2">Phone *</label>
-                      <input type="tel" required value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} placeholder="07700 000000" className="w-full bg-neutral-900 border border-white/10 text-white px-4 py-3 text-base placeholder-neutral-600 focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_12px_rgba(77,238,255,0.2)] transition-all" />
+                      <label className="block text-[11px] font-mono uppercase tracking-widest text-white/50 mb-2">Phone *</label>
+                      <input type="tel" required value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} placeholder="07700 000000" className="w-full bg-[#101012] border border-white/10 text-white px-4 py-3 text-base placeholder-white/40 focus:outline-none focus:border-[#c9a84c] focus:shadow-[0_0_12px_rgba(201,168,76,0.2)] transition-all" />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-mono uppercase tracking-widest text-neutral-400 mb-2">Email</label>
-                    <input type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} placeholder="john@example.com" className="w-full bg-neutral-900 border border-white/10 text-white px-4 py-3 text-base placeholder-neutral-600 focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_12px_rgba(77,238,255,0.2)] transition-all" />
+                    <label className="block text-[11px] font-mono uppercase tracking-widest text-white/50 mb-2">Email</label>
+                    <input type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} placeholder="john@example.com" className="w-full bg-[#101012] border border-white/10 text-white px-4 py-3 text-base placeholder-white/40 focus:outline-none focus:border-[#c9a84c] focus:shadow-[0_0_12px_rgba(201,168,76,0.2)] transition-all" />
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-[11px] font-mono uppercase tracking-widest text-neutral-400 mb-2">Service Required *</label>
-                      <select required value={form.service} onChange={e => setForm({...form, service: e.target.value})} className="w-full bg-neutral-900 border border-white/10 text-white px-4 py-3 text-base focus:outline-none focus:border-cyan-500 transition-all">
+                      <label className="block text-[11px] font-mono uppercase tracking-widest text-white/50 mb-2">Service Required *</label>
+                      <select required value={form.service} onChange={e => setForm({...form, service: e.target.value})} className="w-full bg-[#101012] border border-white/10 text-white px-4 py-3 text-base focus:outline-none focus:border-[#c9a84c] transition-all">
                         <option value="">Select...</option>
                         <option>Wall Tiling</option>
                         <option>Floor Tiling</option>
@@ -156,28 +156,28 @@ export default function Quote() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-[11px] font-mono uppercase tracking-widest text-neutral-400 mb-2">Approx. Area (m²)</label>
-                      <input type="text" value={form.area} onChange={e => setForm({...form, area: e.target.value})} placeholder="e.g. 10m²" className="w-full bg-neutral-900 border border-white/10 text-white px-4 py-3 text-base placeholder-neutral-600 focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_12px_rgba(77,238,255,0.2)] transition-all" />
+                      <label className="block text-[11px] font-mono uppercase tracking-widest text-white/50 mb-2">Approx. Area (m²)</label>
+                      <input type="text" value={form.area} onChange={e => setForm({...form, area: e.target.value})} placeholder="e.g. 10m²" className="w-full bg-[#101012] border border-white/10 text-white px-4 py-3 text-base placeholder-white/40 focus:outline-none focus:border-[#c9a84c] focus:shadow-[0_0_12px_rgba(201,168,76,0.2)] transition-all" />
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-[11px] font-mono uppercase tracking-widest text-neutral-400 mb-2">Ideal Start Date</label>
-                      <input type="text" value={form.timeline} onChange={e => setForm({...form, timeline: e.target.value})} placeholder="e.g. ASAP / August" className="w-full bg-neutral-900 border border-white/10 text-white px-4 py-3 text-base placeholder-neutral-600 focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_12px_rgba(77,238,255,0.2)] transition-all" />
+                      <label className="block text-[11px] font-mono uppercase tracking-widest text-white/50 mb-2">Ideal Start Date</label>
+                      <input type="text" value={form.timeline} onChange={e => setForm({...form, timeline: e.target.value})} placeholder="e.g. ASAP / August" className="w-full bg-[#101012] border border-white/10 text-white px-4 py-3 text-base placeholder-white/40 focus:outline-none focus:border-[#c9a84c] focus:shadow-[0_0_12px_rgba(201,168,76,0.2)] transition-all" />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-mono uppercase tracking-widest text-neutral-400 mb-2">Budget (optional)</label>
-                      <input type="text" value={form.budget} onChange={e => setForm({...form, budget: e.target.value})} placeholder="e.g. £500 – £1000" className="w-full bg-neutral-900 border border-white/10 text-white px-4 py-3 text-base placeholder-neutral-600 focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_12px_rgba(77,238,255,0.2)] transition-all" />
+                      <label className="block text-[11px] font-mono uppercase tracking-widest text-white/50 mb-2">Budget (optional)</label>
+                      <input type="text" value={form.budget} onChange={e => setForm({...form, budget: e.target.value})} placeholder="e.g. £500 – £1000" className="w-full bg-[#101012] border border-white/10 text-white px-4 py-3 text-base placeholder-white/40 focus:outline-none focus:border-[#c9a84c] focus:shadow-[0_0_12px_rgba(201,168,76,0.2)] transition-all" />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-mono uppercase tracking-widest text-neutral-400 mb-2">Project Description *</label>
-                    <textarea required rows={5} value={form.description} onChange={e => setForm({...form, description: e.target.value})} placeholder="Describe your project — room type, tile style, any specific requirements..." className="w-full bg-neutral-900 border border-white/10 text-white px-4 py-3 text-base placeholder-neutral-600 focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_12px_rgba(77,238,255,0.2)] transition-all resize-none" />
+                    <label className="block text-[11px] font-mono uppercase tracking-widest text-white/50 mb-2">Project Description *</label>
+                    <textarea required rows={5} value={form.description} onChange={e => setForm({...form, description: e.target.value})} placeholder="Describe your project — room type, tile style, any specific requirements..." className="w-full bg-[#101012] border border-white/10 text-white px-4 py-3 text-base placeholder-white/40 focus:outline-none focus:border-[#c9a84c] focus:shadow-[0_0_12px_rgba(201,168,76,0.2)] transition-all resize-none" />
                   </div>
 
-                  <button type="submit" className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-black uppercase tracking-widest py-4 text-base transition-all shadow-[0_0_20px_rgba(77,238,255,0.3)] hover:shadow-[0_0_35px_rgba(77,238,255,0.6)] flex items-center justify-center gap-3">
+                  <button type="submit" className="w-full bg-[#c9a84c] hover:bg-[#e2c97e] text-[#0c0b0a] font-black uppercase tracking-widest py-4 text-base transition-all shadow-[0_0_20px_rgba(201,168,76,0.3)] hover:shadow-[0_0_35px_rgba(201,168,76,0.5)] flex items-center justify-center gap-3">
                     <Send className="w-5 h-5" />
                     Request Free Quote
                   </button>
@@ -188,8 +188,8 @@ export default function Quote() {
         </div>
       </section>
 
-      <div className="h-1 bg-cyan-400 shadow-[0_0_12px_rgba(77,238,255,0.7)]" />
-      <Footer hideEnquiry />
+      <div className="h-1 bg-[#c9a84c] shadow-[0_0_12px_rgba(201,168,76,0.5)]" />
+      <Footer hideEnquiry={true} />
     </div>
   );
 }
