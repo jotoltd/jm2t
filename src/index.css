@@ -104,6 +104,19 @@
   animation: color-swap 2s ease-in-out infinite !important;
 }
 
+@keyframes pulse-border-gold {
+  0%, 100% {
+    border-color: rgba(201, 168, 76, 0.15);
+  }
+  50% {
+    border-color: rgba(201, 168, 76, 0.4);
+  }
+}
+
+.animate-pulse-border-gold {
+  animation: pulse-border-gold 4s ease-in-out infinite;
+}
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;

@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { Grid3X3, Bath, LayoutGrid, Brush, Table2, Hammer, ArrowRight, ShieldCheck, FileText, Gem, Layers, Building2, GraduationCap } from 'lucide-react';
 
 const services = [
-  { title: 'Floor Tiling', price: '£80–95 / m²', desc: 'Porcelain, ceramic and natural stone floors for homes and commercial spaces — straight-lay, herringbone and large-format, laid dead-level.', bullets: ['Herringbone & large-format', 'Residential & commercial', 'Built to last decades'], href: '/floor-tiling', image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80', icon: Grid3X3 },
-  { title: 'Bathroom Tiling', price: 'Full renovations', desc: 'Full bathroom renovations, feature walls and custom shower enclosures — properly waterproofed and finished to a spa-quality standard.', bullets: ['Wet rooms & showers', 'Waterproofing focus', 'Luxury, spa-inspired'], href: '/bathroom-tiling', image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=800&q=80', icon: Bath },
-  { title: 'Wall Tiling', price: '£50–60 / m²', desc: 'Kitchen splashbacks, feature walls and full-height installs set out perfectly square — from contemporary to decorative patterns.', bullets: ['Kitchen splashbacks', 'Feature walls', 'Flawless symmetry'], href: '/wall-tiling', image: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=800&q=80', icon: LayoutGrid },
-  { title: 'Re-grouting & Repair', price: '£200 / day', desc: 'Discoloured, cracked or mouldy grout renewed and loose, chipped or broken tiles replaced — restoring tired surfaces and sealing out moisture.', bullets: ['Tile repair & replacement', 'Mould & moisture sealing', 'A fresh, modern finish'], href: '/regrouting', image: 'https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=800&q=80', icon: Brush },
-  { title: 'Bespoke Tile Countertops', price: 'Bespoke quote', desc: 'Made-to-measure tiled worktops and surfaces — a hard-wearing statement piece designed around your kitchen or bathroom.', bullets: ['Custom worktops', 'Statement surfaces', 'Premium materials'], href: '/quote', image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&q=80', icon: Table2 },
-  { title: 'Renovation & Restoration', price: 'From £200 / day', desc: 'Older tiled areas brought back to life with modern techniques and materials — from single-room refreshes to full property transformations.', bullets: ['Full transformations', 'Modern techniques', 'Sympathetic restoration'], href: '/quote', image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80', icon: Hammer },
+  { title: 'Floor Tiling', price: '£80–95 / m²', desc: 'Porcelain, ceramic and natural stone floors for homes and commercial spaces — straight-lay, herringbone and large-format, laid dead-level.', bullets: ['Herringbone & large-format', 'Residential & commercial', 'Built to last decades'], href: '/floor-tiling', image: '/images/IMG_4101.jpeg', icon: Grid3X3 },
+  { title: 'Bathroom Tiling', price: 'Full renovations', desc: 'Full bathroom renovations, feature walls and custom shower enclosures — properly waterproofed and finished to a spa-quality standard.', bullets: ['Wet rooms & showers', 'Waterproofing focus', 'Luxury, spa-inspired'], href: '/bathroom-tiling', image: '/images/IMG_4102.jpeg', icon: Bath },
+  { title: 'Wall Tiling', price: '£50–60 / m²', desc: 'Kitchen splashbacks, feature walls and full-height installs set out perfectly square — from contemporary to decorative patterns.', bullets: ['Kitchen splashbacks', 'Feature walls', 'Flawless symmetry'], href: '/wall-tiling', image: '/images/luxe_kitchen01.jpg', icon: LayoutGrid },
+  { title: 'Re-grouting & Repair', price: '£200 / day', desc: 'Discoloured, cracked or mouldy grout renewed and loose, chipped or broken tiles replaced — restoring tired surfaces and sealing out moisture.', bullets: ['Tile repair & replacement', 'Mould & moisture sealing', 'A fresh, modern finish'], href: '/regrouting', image: '/images/IMG_4110.jpeg', icon: Brush },
+  { title: 'Bespoke Tile Countertops', price: 'Bespoke quote', desc: 'Made-to-measure tiled worktops and surfaces — a hard-wearing statement piece designed around your kitchen or bathroom.', bullets: ['Custom worktops', 'Statement surfaces', 'Premium materials'], href: '/quote', image: '/images/luxe_kitchen02.jpg', icon: Table2 },
+  { title: 'Renovation & Restoration', price: 'From £200 / day', desc: 'Older tiled areas brought back to life with modern techniques and materials — from single-room refreshes to full property transformations.', bullets: ['Full transformations', 'Modern techniques', 'Sympathetic restoration'], href: '/quote', image: '/images/luxe_apartment_01.jpg', icon: Hammer },
 ];
 
 export default function ServicesOverview() {
@@ -159,6 +159,7 @@ export default function ServicesOverview() {
                 )}
               </div>
               <div className="mt-4">
+                <span className="text-sm text-white/40 mr-1">From</span>
                 <span className="font-display text-4xl text-[#c9a84c]">{card.price}</span>
                 <span className="ml-2 text-sm text-white/50">{card.unit}</span>
               </div>

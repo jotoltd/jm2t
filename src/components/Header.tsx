@@ -2,10 +2,19 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, Menu, X, ChevronDown } from 'lucide-react';
 
-export default function Header() {
+interface HeaderProps {
+  mobileMenuOpen?: boolean;
+  setMobileMenuOpen?: (open: boolean) => void;
+}
+
+export default function Header({ mobileMenuOpen: externalMobileMenuOpen, setMobileMenuOpen: externalSetMobileMenuOpen }: HeaderProps = {}) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [internalMobileMenuOpen, setInternalMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  
+  // Use external state if provided, otherwise use internal
+  const mobileMenuOpen = externalMobileMenuOpen !== undefined ? externalMobileMenuOpen : internalMobileMenuOpen;
+  const setMobileMenuOpen = externalSetMobileMenuOpen || setInternalMobileMenuOpen;
   const [headerHeight, setHeaderHeight] = useState(72);
   const headerRef = useRef<HTMLElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
@@ -28,8 +37,20 @@ export default function Header() {
 
   useEffect(() => {
     setServicesOpen(false);
-    setMobileMenuOpen(false);
+    setInternalMobileMenuOpen(false);
+    if (externalSetMobileMenuOpen) externalSetMobileMenuOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -145,8 +166,7 @@ export default function Header() {
       {/* Mobile drawer */}
       {mobileMenuOpen && (
         <div
-          className="lg:hidden fixed inset-x-0 bottom-0 bg-[#111110] border-t border-white/10 overflow-y-auto flex flex-col px-6 py-8 z-50"
-          style={{ top: `${headerHeight}px` }}
+          className="lg:hidden fixed inset-0 bg-[#0c0b0a] flex flex-col px-6 pt-16 pb-20 z-[100] h-screen"
         >
           <button
             onClick={() => setMobileMenuOpen(false)}
@@ -154,59 +174,79 @@ export default function Header() {
           >
             <X className="w-6 h-6" />
           </button>
-          <nav className="flex flex-col gap-1 mt-4">
-            {/* Services Section with nested links */}
-            <div className="py-3 border-b border-white/5">
-              <span className="font-display text-2xl text-[#f5f0e8]">Services</span>
-              <div className="mt-2 ml-4 flex flex-col gap-2">
-                {serviceLinks.map((service) => (
-                  <Link
-                    key={service.href}
-                    to={service.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-sm text-[#a8a39a] hover:text-[#c9a84c] transition-colors py-1"
-                  >
-                    {service.label}
-                  </Link>
-                ))}
+          <div className="flex-1 overflow-y-auto -mx-6 px-6">
+            <nav className="flex flex-col">
+              {/* Services Section with nested links */}
+              <div className="space-y-3">
+                <div className="border border-[#c9a84c]/20 rounded-lg p-4 bg-white/[0.02]">
+                  <span className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]/60 mb-3 block">Services</span>
+                  <div className="grid grid-cols-2 gap-2">
+                    {serviceLinks.map((service) => (
+                      <Link
+                        key={service.href}
+                        to={service.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="text-sm text-white/80 hover:text-[#c9a84c] hover:bg-[#c9a84c]/5 transition-all py-2 px-3 rounded"
+                      >
+                        {service.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <div className="border border-[#c9a84c]/20 rounded-lg p-4 bg-white/[0.02]">
+                  <span className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]/60 mb-3 block">Menu</span>
+                  <div className="flex flex-col gap-1">
+                    {navLinks.filter(item => !item.hasDropdown).map((item) =>
+                      item.isPage ? (
+                        <Link
+                          key={item.href}
+                          to={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="text-lg text-white/90 hover:text-[#c9a84c] transition-all py-2 px-3 rounded hover:bg-white/5"
+                        >
+                          {item.label}
+                        </Link>
+                      ) : (
+                        <a
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="text-lg text-white/90 hover:text-[#c9a84c] transition-all py-2 px-3 rounded hover:bg-white/5"
+                        >
+                          {item.label}
+                        </a>
+                      )
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
-            {navLinks.filter(item => !item.hasDropdown).map((item) =>
-              item.isPage ? (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="font-display text-2xl text-[#f5f0e8] py-3 border-b border-white/5 hover:text-[#c9a84c] transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="font-display text-2xl text-[#f5f0e8] py-3 border-b border-white/5 hover:text-[#c9a84c] transition-colors"
-                >
-                  {item.label}
-                </a>
-              )
-            )}
-          </nav>
-          <div className="mt-8 flex flex-col gap-3">
-            <a
-              href="tel:+447738427208"
-              className="flex items-center justify-center gap-2 py-3.5 border border-white/10 text-[#f5f0e8] text-sm tracking-widest uppercase hover:border-[#c9a84c]/50 transition-colors"
-            >
-              <Phone className="w-4 h-4 text-[#c9a84c]" /> 07738 427208
-            </a>
+            </nav>
+          </div>
+          <div className="mt-4 flex flex-col gap-3">
             <Link
               to="/quote"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-3.5 bg-[#c9a84c] text-[#0c0b0a] text-sm font-semibold tracking-widest uppercase text-center hover:bg-[#e2c97e] transition-colors"
+              className="py-4 bg-[#c9a84c] text-[#0c0b0a] text-base font-semibold tracking-widest uppercase text-center hover:bg-[#e2c97e] transition-colors"
             >
               Get a Free Quote
             </Link>
+            <div className="flex items-center justify-center gap-3">
+              <a href="tel:+447738427208" className="flex h-12 w-12 items-center justify-center border border-[#c9a84c]/40 text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#0c0b0a] transition-colors">
+                <Phone className="h-5 w-5" />
+              </a>
+              <a href="https://www.instagram.com/jm2tilingco/" target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center border border-[#c9a84c]/40 text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#0c0b0a] transition-colors">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+                  <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"></circle>
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/jm2tilingco" target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center border border-[#c9a84c]/40 text-[#c9a84c] hover:bg-[#c9a84c] hover:text-[#0c0b0a] transition-colors">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       )}

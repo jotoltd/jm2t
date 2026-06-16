@@ -32,9 +32,11 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Quote = lazy(() => import('./pages/Quote'));
 
 function HomePage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-[#0c0b0a] font-sans selection:bg-[#c9a84c] selection:text-[#0c0b0a] pb-16 md:pb-0">
-      <Header />
+      <Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
       <main>
         <Hero />
         <Stats />
@@ -46,7 +48,7 @@ function HomePage() {
         <ContactSection />
       </main>
       <Footer hideEnquiry={true} />
-      <MobileBottomBar />
+      <MobileBottomBar isHidden={mobileMenuOpen} />
       <a
         href="https://wa.me/447738427208?text=Hi%20JM²TilingCo,%20I'm%20interested%20in%20a%20tiling%20quote"
         target="_blank"
