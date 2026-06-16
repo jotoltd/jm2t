@@ -52,50 +52,6 @@ export default function Process() {
         </div>
       </section>
 
-      {/* PROCESS STEPS */}
-      <section className="py-24 bg-[#0a0a0c]">
-        <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="space-y-24">
-            {processSteps.map((item, i) => (
-              <motion.div
-                key={item.step}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: i * 0.1 }}
-                className={`grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
-              >
-                <div className={`${i % 2 === 1 ? 'md:order-2' : ''}`}>
-                  <div className="inline-flex items-center gap-3 mb-6">
-                    <span className="text-5xl font-display text-[#c9a84c]/30">{item.step}</span>
-                    <span className="h-px w-12 bg-[#c9a84c]/40"></span>
-                  </div>
-                  <h2 className="font-display text-3xl sm:text-4xl text-[#f5f0e8] mb-4">{item.title}</h2>
-                  <p className="text-[#a8a39a] text-lg leading-relaxed">{item.desc}</p>
-                </div>
-                <motion.div
-                  className={`relative overflow-hidden border border-white/10 ${i % 2 === 1 ? 'md:order-1' : ''}`}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <img
-                    src={item.image}
-                    alt={`${item.title} - Porch tiling project`}
-                    className="w-full h-[400px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b0a]/60 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="text-[#c9a84c] text-xs font-mono tracking-[0.2em] uppercase">
-                      Porch Transformation
-                    </span>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 5 STEP PROCESS */}
       <section className="py-24 bg-[#111110] border-t border-white/5">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
@@ -134,6 +90,50 @@ export default function Process() {
                 <p className="font-mono text-[#c9a84c] text-xs tracking-widest mb-6">{step.num}</p>
                 <h3 className="font-display text-xl text-[#f5f0e8] mb-3">{step.title}</h3>
                 <p className="text-[#6b6560] text-sm leading-relaxed">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PORCH GALLERY */}
+      <section className="py-24 bg-[#0a0a0c] border-t border-white/5">
+        <div className="max-w-6xl mx-auto px-5 sm:px-8">
+          <div className="space-y-24">
+            {processSteps.map((item, i) => (
+              <motion.div
+                key={item.step}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.1 }}
+                className={`grid md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+              >
+                <div className={`${i % 2 === 1 ? 'md:order-2' : ''}`}>
+                  <div className="inline-flex items-center gap-3 mb-6">
+                    <span className="text-5xl font-display text-[#c9a84c]/30">{item.step}</span>
+                    <span className="h-px w-12 bg-[#c9a84c]/40"></span>
+                  </div>
+                  <h2 className="font-display text-3xl sm:text-4xl text-[#f5f0e8] mb-4">{item.title}</h2>
+                  <p className="text-[#a8a39a] text-lg leading-relaxed">{item.desc}</p>
+                </div>
+                <motion.div
+                  className={`relative overflow-hidden border border-white/10 ${i % 2 === 1 ? 'md:order-1' : ''}`}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <img
+                    src={item.image}
+                    alt={`${item.title} - Porch tiling project`}
+                    className="w-full h-[400px] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b0a]/60 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <span className="text-[#c9a84c] text-xs font-mono tracking-[0.2em] uppercase">
+                      Porch Transformation
+                    </span>
+                  </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
