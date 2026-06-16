@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 
 export default function Quote() {
   usePageTitle('Free Quote');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [form, setForm] = useState({
     name: '', phone: '', email: '', service: '', area: '', description: '', timeline: '', budget: '',
   });
@@ -19,7 +20,7 @@ export default function Quote() {
 
   return (
     <div className="min-h-screen bg-[#0c0b0a] font-sans text-[#f5f0e8]">
-      <Header mobileMenuOpen={false} setMobileMenuOpen={() => {}} />
+      <Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
 
       {/* HERO */}
       <section className="relative bg-[#0a0a0c] pt-32 pb-20 border-b border-white/10">
