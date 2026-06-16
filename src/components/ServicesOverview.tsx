@@ -116,6 +116,7 @@ export default function ServicesOverview() {
 
         {/* Transparent Pricing */}
         <motion.div
+          id="pricing"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
