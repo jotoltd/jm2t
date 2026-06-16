@@ -8,12 +8,14 @@ import { AnimatePresence } from 'motion/react';
 import { lazy, Suspense } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import Stats from './components/Stats';
 import ServicesOverview from './components/ServicesOverview';
-import WhyChooseUs from './components/WhyChooseUs';
-import Testimonials from './components/Testimonials';
 import Process from './components/Process';
-import Pricing from './components/Pricing';
-import { GalleryRow1, GalleryRow2 } from './components/ImageGallery';
+import ProjectsShowcase from './components/ProjectsShowcase';
+import Testimonials from './components/Testimonials';
+import LocationsMarquee from './components/LocationsMarquee';
+import ContactSection from './components/ContactSection';
+import MobileBottomBar from './components/MobileBottomBar';
 import Footer from './components/Footer';
 import { MessageCircle } from 'lucide-react';
 import ScrollToTop from './components/ScrollToTop';
@@ -31,27 +33,28 @@ const Quote = lazy(() => import('./pages/Quote'));
 
 function HomePage() {
   return (
-    <div className="min-h-screen bg-[#0c0b0a] font-sans selection:bg-[#c9a84c] selection:text-[#0c0b0a]">
+    <div className="min-h-screen bg-[#0c0b0a] font-sans selection:bg-[#c9a84c] selection:text-[#0c0b0a] pb-16 md:pb-0">
       <Header />
       <main>
         <Hero />
+        <Stats />
         <ServicesOverview />
-        <Pricing />
-        <WhyChooseUs />
         <Process />
-        <GalleryRow1 />
+        <ProjectsShowcase />
         <Testimonials />
-        <GalleryRow2 />
+        <LocationsMarquee />
+        <ContactSection />
       </main>
-      <Footer />
+      <Footer hideEnquiry={true} />
+      <MobileBottomBar />
       <a
-        href="https://wa.me/4407738427208?text=Hi%20JM²TilingCo,%20I'm%20interested%20in%20a%20tiling%20quote"
+        href="https://wa.me/447738427208?text=Hi%20JM²TilingCo,%20I'm%20interested%20in%20a%20tiling%20quote"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20bd5a] text-white p-4 rounded-full shadow-2xl shadow-black/50 transition-all duration-300 hover:scale-110 flex items-center gap-2 group"
+        className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-40 bg-[#25D366] hover:bg-[#20bd5a] text-white p-3 md:p-4 rounded-full shadow-2xl shadow-black/50 transition-all duration-300 hover:scale-110 flex items-center gap-2 group"
       >
         <MessageCircle className="w-6 h-6 fill-current" />
-        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap text-sm font-bold">
+        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap text-sm font-bold hidden md:inline">
           Chat on WhatsApp
         </span>
       </a>

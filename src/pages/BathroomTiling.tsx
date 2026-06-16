@@ -2,7 +2,6 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { GalleryRow2 } from '../components/ImageGallery';
 import usePageTitle from '../hooks/usePageTitle';
 
 const offers = [
@@ -35,7 +34,18 @@ export default function BathroomTiling() {
         </div>
       </section>
 
-      <GalleryRow2 />
+      <section className="py-12 bg-[#0a0a0c]">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="grid md:grid-cols-2 gap-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+              <img src="/images/luxe_apartment_01.jpg" alt="Bathroom tiling" className="w-full h-80 object-cover" />
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
+              <img src="/images/IMG_3880.jpeg" alt="Shower enclosure tiling" className="w-full h-80 object-cover" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       <section className="py-20 bg-[#0c0b0a]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8">

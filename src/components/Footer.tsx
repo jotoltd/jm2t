@@ -21,7 +21,7 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
                 Tell us what you have in mind and we'll arrange a free, no-obligation consultation. Prefer to talk it through? Give us a call.
               </p>
               <div className="space-y-4">
-                <a href="tel:+4407738427208" className="flex items-center gap-3 text-[#d6d3cc] hover:text-[#c9a84c] transition-colors">
+                <a href="tel:+447738427208" className="flex items-center gap-3 text-[#d6d3cc] hover:text-[#c9a84c] transition-colors">
                   <Phone className="w-4 h-4 text-[#c9a84c] shrink-0" />
                   <div>
                     <p className="text-[10px] font-mono uppercase tracking-widest text-[#6b6560] mb-0.5">Call</p>
@@ -94,17 +94,88 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
           </div>
         </div>
       )}
-      <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
-          <div className="flex items-center gap-3">
-            <img src="/images/trans_logo.png" alt="JM2 Tiling Co" className="h-10 w-auto opacity-80" />
-            <p className="text-[#6b6560] text-xs font-mono">Your trusted tiling partner — tiling across Surrey &amp; West Sussex since 2022.</p>
+      <div className="border-t border-white/5 bg-[#0c0b0a]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+          <div className="grid lg:grid-cols-4 gap-12 lg:gap-8">
+            {/* Brand Column */}
+            <div className="lg:col-span-1">
+              <img src="/images/logo_icon.png" alt="JM2 TilingCo" className="h-12 w-auto mb-4" />
+              <p className="text-sm text-white/50 leading-relaxed">
+                Your trusted tiling partner — tiling across Surrey &amp; West Sussex since 2022.
+              </p>
+              <div className="flex items-center gap-3 mt-6">
+                <a href="https://www.instagram.com/jm2tilingco/" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center border border-[#c9a84c]/40 text-[#c9a84c] transition-colors hover:bg-[#c9a84c] hover:text-[#0c0b0a]">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-5 w-5">
+                    <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"></circle>
+                  </svg>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61589832512547" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center border border-[#c9a84c]/40 text-[#c9a84c] transition-colors hover:bg-[#c9a84c] hover:text-[#0c0b0a]">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="h-5 w-5">
+                    <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Services Column */}
+            <div>
+              <h4 className="font-display text-lg text-[#c9a84c] mb-4">Services</h4>
+              <ul className="space-y-2">
+                <li><Link to="/floor-tiling" className="text-sm text-white/50 hover:text-[#c9a84c] transition-colors">Floor Tiling</Link></li>
+                <li><Link to="/wall-tiling" className="text-sm text-white/50 hover:text-[#c9a84c] transition-colors">Wall Tiling</Link></li>
+                <li><Link to="/bathroom-tiling" className="text-sm text-white/50 hover:text-[#c9a84c] transition-colors">Bathroom Tiling</Link></li>
+                <li><Link to="/regrouting" className="text-sm text-white/50 hover:text-[#c9a84c] transition-colors">Re-grouting &amp; Repair</Link></li>
+                <li><Link to="/quote" className="text-sm text-white/50 hover:text-[#c9a84c] transition-colors">Bespoke Countertops</Link></li>
+              </ul>
+            </div>
+
+            {/* Company Column */}
+            <div>
+              <h4 className="font-display text-lg text-[#c9a84c] mb-4">Company</h4>
+              <ul className="space-y-2">
+                <li><Link to="/projects" className="text-sm text-white/50 hover:text-[#c9a84c] transition-colors">Projects</Link></li>
+                <li><Link to="/quote" className="text-sm text-white/50 hover:text-[#c9a84c] transition-colors">Get a Quote</Link></li>
+                <li><Link to="/contact" className="text-sm text-white/50 hover:text-[#c9a84c] transition-colors">Contact</Link></li>
+                <li><a href="/#process" className="text-sm text-white/50 hover:text-[#c9a84c] transition-colors">Our Process</a></li>
+              </ul>
+            </div>
+
+            {/* Contact Column */}
+            <div>
+              <h4 className="font-display text-lg text-[#c9a84c] mb-4">Contact</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <Phone className="w-4 h-4 text-[#c9a84c] mt-0.5 shrink-0" />
+                  <div>
+                    <a href="tel:+447738427208" className="text-sm text-white/50 hover:text-[#c9a84c] transition-colors">07738 427208</a>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Mail className="w-4 h-4 text-[#c9a84c] mt-0.5 shrink-0" />
+                  <div>
+                    <a href="mailto:Enquiries@jm2tilingco.com" className="text-sm text-white/50 hover:text-[#c9a84c] transition-colors">Enquiries@jm2tilingco.com</a>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 text-[#c9a84c] mt-0.5 shrink-0" />
+                  <div>
+                    <span className="text-sm text-white/50">Surrey &amp; West Sussex</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
-          <nav className="flex flex-wrap gap-x-6 gap-y-2">
-            {([['Services', '/'], ['Projects', '/projects'], ['Quote', '/quote'], ['Contact', '/contact']] as [string, string][]).map(([label, href]) => (
-              <Link key={href} to={href} className="text-xs text-[#6b6560] hover:text-[#c9a84c] transition-colors uppercase tracking-wider font-mono">{label}</Link>
-            ))}
-          </nav>
+        </div>
+        <div className="border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-white/30">© 2026 JM2 TilingCo. All rights reserved.</p>
+            <div className="flex items-center gap-6">
+              <Link to="/" className="text-xs text-white/30 hover:text-[#c9a84c] transition-colors">Privacy Policy</Link>
+              <Link to="/" className="text-xs text-white/30 hover:text-[#c9a84c] transition-colors">Terms of Service</Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

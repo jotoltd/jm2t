@@ -19,8 +19,11 @@ export default function Process() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="text-[#c9a84c] text-xs font-mono tracking-[0.3em] uppercase mb-4">How it works</p>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#f5f0e8]">
+          <span className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.32em] text-[#c9a84c]">
+            <span className="h-px w-8 bg-[#c9a84c]/60"></span>
+            How it works
+          </span>
+          <h2 className="mt-5 font-display text-4xl text-[#f5f0e8] sm:text-5xl lg:text-6xl">
             Five steps to a finish<br />
             <em className="italic">you'll love.</em>
           </h2>
