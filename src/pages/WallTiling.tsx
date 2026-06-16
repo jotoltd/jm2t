@@ -41,7 +41,7 @@ export default function WallTiling() {
               <img src="/images/luxe_apartment_02.jpg" alt="Wall tiling feature" className="w-full h-80 object-cover" />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-              <img src="/images/IMG_3878.jpeg" alt="Kitchen splashback tiling" className="w-full h-80 object-cover" />
+              <img src="/images/IMG_4117.jpeg" alt="Kitchen splashback tiling" className="w-full h-80 object-cover" />
             </motion.div>
           </div>
         </div>

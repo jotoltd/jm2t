@@ -26,7 +26,7 @@ const projects = [
       '/images/luxe_kitchen01.jpg',
       '/images/luxe_kitchen02.jpg',
       '/images/luxe_kitchen03.jpg',
-      '/images/luxe_kitchen04.jpg',
+      '/images/luxe_kitchen04wall_tiling.jpeg',
     ],
     tags: ['Kitchen', 'Floor Tiling', 'Porcelain'],
   },

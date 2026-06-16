@@ -38,7 +38,7 @@ export default function Regrouting() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="grid md:grid-cols-2 gap-6">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <img src="/images/IMG_3879.jpeg" alt="Tile repair work" className="w-full h-80 object-cover" />
+              <img src="/images/IMG_4113.jpeg" alt="Tile repair work" className="w-full h-80 object-cover" />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
               <img src="/images/luxe_apartment_03.jpg" alt="Restored tiling" className="w-full h-80 object-cover" />

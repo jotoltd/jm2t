@@ -41,7 +41,7 @@ export default function FloorTiling() {
               <img src="/images/luxe_kitchen01.jpg" alt="Floor tiling installation" className="w-full h-80 object-cover" />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-              <img src="/images/IMG_3876.jpeg" alt="Precision floor tiling" className="w-full h-80 object-cover" />
+              <img src="/images/IMG_4112.jpeg" alt="Precision floor tiling" className="w-full h-80 object-cover" />
             </motion.div>
           </div>
         </div>
