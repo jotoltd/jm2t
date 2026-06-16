@@ -24,7 +24,7 @@ const projects = [
       'In this project, we transformed a traditional kitchen with clean floor tiling that combines style and functionality. The durable tiles are perfect for high-traffic areas and add a touch of luxury with their 33% offset.',
     images: [
       '/images/luxe_kitchen01.jpg',
-      '/images/luxe_kitchen02.jpg',
+      '/images/luxe_kitchen02_floor_tiling.jpg',
       '/images/luxe_kitchen03.jpg',
       '/images/luxe_kitchen04wall_tiling.jpeg',
     ],

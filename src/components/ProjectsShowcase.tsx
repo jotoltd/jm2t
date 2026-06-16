@@ -13,7 +13,7 @@ const projects = [
     id: 2,
     title: 'Horsham Kitchen Floor',
     location: 'West Sussex',
-    image: '/images/luxe_kitchen02.jpg',
+    image: '/images/luxe_kitchen02_floor_tiling.jpg',
     desc: 'Large-format porcelain tiles in herringbone pattern with underfloor heating.',
   },
   {
