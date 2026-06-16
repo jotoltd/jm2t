@@ -26,7 +26,7 @@ export default function SplashScreen({ onComplete }: Props) {
         <div className="relative z-10 flex flex-col items-center">
           {/* Logo — huge → normal → shrinks off */}
           <motion.img
-            src="/images/logo_icon.png"
+            src="/images/new_logo_trans.png"
             alt="JM² Tiling Co"
             className="w-[180px] sm:w-[240px] object-contain drop-shadow-[0_0_40px_rgba(201,168,76,0.5)]"
             initial={{ scale: 2.5, opacity: 0 }}
