@@ -72,7 +72,7 @@ export default function Header({ mobileMenuOpen: externalMobileMenuOpen, setMobi
   const navLinks = [
     { label: 'Services', href: '/#services', hasDropdown: true },
     { label: 'Pricing', href: '/#pricing' },
-    { label: 'Process', href: '/#process' },
+    { label: 'Process', href: '/process', isPage: true },
     { label: 'Projects', href: '/projects', isPage: true },
     { label: 'Contact', href: '/contact', isPage: true },
   ];
