@@ -85,7 +85,8 @@ export default function Hero() {
               className="block"
               tag="span"
               isAdmin={isAdmin}
-            />{' '}
+            />
+            <br />
             <span className="relative inline-block italic text-[#c9a84c]">
               <EditableText
                 contentKey="hero_title_line2"
