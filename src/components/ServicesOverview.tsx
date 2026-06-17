@@ -2,6 +2,8 @@ import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Grid3X3, Bath, LayoutGrid, Brush, Table2, Hammer, ArrowRight, ShieldCheck, FileText, Gem, Layers, Building2, GraduationCap } from 'lucide-react';
 import { useServices } from '../hooks/useContent';
+import EditableImage from './EditableImage';
+import { useAdmin } from '../contexts/AdminContext';
 
 // Icon mapping
 const iconMap: { [key: string]: any } = {
@@ -14,6 +16,7 @@ const iconMap: { [key: string]: any } = {
 };
 
 export default function ServicesOverview() {
+  const { isAdmin } = useAdmin();
   const { services, loading, error } = useServices(true); // Get featured services
   return (
     <section id="services" className="bg-[#0a0a0c] py-24 lg:py-32">
@@ -51,10 +54,12 @@ export default function ServicesOverview() {
                   className="group block overflow-hidden border border-white/10 bg-[#101012] transition-all hover:border-[#c9a84c]/40 hover:shadow-[0_0_30px_-10px_rgba(201,168,76,0.2)]"
                 >
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src={s.image_url}
+                  <EditableImage
+                    contentKey={`service_${s.id}_image`}
+                    fallback={s.image_url}
                     alt={s.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    isAdmin={isAdmin}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#101012] via-[#101012]/20 to-transparent"></div>
                   <span className="absolute right-4 top-4 bg-[#0c0b0a]/75 px-3 py-1 font-display text-lg text-[#c9a84c] backdrop-blur">
