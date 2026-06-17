@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Edit, Check, X, Image as ImageIcon } from 'lucide-react';
+import { Edit, Check, X, Image as ImageIcon, Upload } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { contentService } from '../lib/contentService';
+import { supabaseAdmin } from '../lib/supabase';
 
 interface EditableImageProps {
   contentKey: string;
@@ -25,8 +26,14 @@ export default function EditableImage({
   const [originalValue, setOriginalValue] = useState(fallback);
   const [loading, setLoading] = useState(false);
   const [showEditIcon, setShowEditIcon] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Skip hero image from upload functionality
+  const isHeroImage = contentKey === 'hero_image';
 
   // Load content from Supabase
   useEffect(() => {
@@ -97,6 +104,67 @@ export default function EditableImage({
     }
   };
 
+  const handleFileUpload = async (file: File) => {
+    if (!file || !file.type.startsWith('image/')) {
+      alert('Please select an image file');
+      return;
+    }
+
+    setUploading(true);
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${contentKey}_${Date.now()}.${fileExt}`;
+      
+      // Upload file to Supabase storage
+      const { data, error } = await supabaseAdmin.storage
+        .from('service-images')
+        .upload(fileName, file, {
+          cacheControl: '3600',
+          upsert: true
+        });
+
+      if (error) throw error;
+
+      // Get public URL
+      const { data: { publicUrl } } = supabaseAdmin.storage
+        .from('service-images')
+        .getPublicUrl(fileName);
+
+      setValue(publicUrl);
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      alert('Error uploading image');
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      handleFileUpload(e.dataTransfer.files[0]);
+    }
+  };
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      handleFileUpload(e.target.files[0]);
+    }
+  };
+
   if (!isAdmin) {
     return <img src={value} alt={alt} className={className} />;
   }
@@ -114,11 +182,49 @@ export default function EditableImage({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="bg-white p-4 rounded-lg shadow-xl border-2 border-cyan-500"
+            className="bg-white p-4 rounded-lg shadow-xl border-2 border-cyan-500 max-w-md"
           >
-            <div className="mb-3">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4">Edit Image</h3>
+            
+            {!isHeroImage && (
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Upload New Image:
+                </label>
+                <div
+                  className={`border-2 border-dashed rounded-lg p-4 text-center transition-colors ${
+                    dragActive ? 'border-cyan-500 bg-cyan-50' : 'border-gray-300 hover:border-gray-400'
+                  }`}
+                  onDragEnter={handleDrag}
+                  onDragLeave={handleDrag}
+                  onDragOver={handleDrag}
+                  onDrop={handleDrop}
+                >
+                  <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                  <p className="text-sm text-gray-600 mb-2">
+                    Drag & drop an image here, or click to browse
+                  </p>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileSelect}
+                    className="hidden"
+                  />
+                  <button
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={uploading}
+                    className="px-3 py-1 bg-cyan-500 hover:bg-cyan-600 disabled:bg-gray-400 text-white text-sm rounded transition-colors"
+                  >
+                    {uploading ? 'Uploading...' : 'Choose File'}
+                  </button>
+                </div>
+              </div>
+            )}
+            
+            <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Image URL:
+                {isHeroImage ? 'Image URL:' : 'Or enter image URL:'}
               </label>
               <input
                 ref={inputRef}
@@ -128,12 +234,12 @@ export default function EditableImage({
                 onKeyDown={handleKeyDown}
                 className="w-full bg-gray-50 text-black px-3 py-2 rounded border border-gray-300 focus:outline-none focus:border-cyan-500"
                 placeholder="https://example.com/image.jpg"
-                disabled={loading}
+                disabled={loading || uploading}
               />
             </div>
             
             {/* Image preview */}
-            <div className="mb-3">
+            <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Preview:
               </label>
@@ -159,7 +265,7 @@ export default function EditableImage({
             <div className="flex gap-2">
               <button
                 onClick={handleSave}
-                disabled={loading}
+                disabled={loading || uploading}
                 className="flex items-center gap-1 bg-green-500 hover:bg-green-600 disabled:bg-gray-400 text-white px-3 py-1 rounded text-sm transition-colors"
               >
                 <Check className="w-4 h-4" />
@@ -167,7 +273,7 @@ export default function EditableImage({
               </button>
               <button
                 onClick={handleCancel}
-                disabled={loading}
+                disabled={loading || uploading}
                 className="flex items-center gap-1 bg-red-500 hover:bg-red-600 disabled:bg-gray-400 text-white px-3 py-1 rounded text-sm transition-colors"
               >
                 <X className="w-4 h-4" />
