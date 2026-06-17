@@ -23,25 +23,53 @@ export default function AdminDashboard() {
 
   const loadContent = async () => {
     try {
-      // For now, we'll use localStorage for simplicity
-      // In production, you'd fetch from Supabase
-      const storedContent = localStorage.getItem('websiteContent');
-      if (storedContent) {
-        setContent(JSON.parse(storedContent));
+      const { data, error } = await supabase
+        .from('website_content')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      if (error) throw error;
+
+      if (data && data.length > 0) {
+        setContent(data.map(item => ({
+          id: item.id,
+          key: item.key,
+          value: item.value,
+          type: item.type,
+          description: item.description || ''
+        })));
       } else {
-        // Initialize with default content
-        const defaultContent: ContentItem[] = [
-          { id: '1', key: 'hero_title', value: 'Flawless Tiling, Perfect Finish', type: 'text', description: 'Main hero title' },
-          { id: '2', key: 'hero_subtitle', value: 'Expert tiling services across Surrey & West Sussex', type: 'text', description: 'Hero subtitle' },
-          { id: '3', key: 'phone', value: '07738 427208', type: 'text', description: 'Contact phone number' },
-          { id: '4', key: 'email', value: 'enquiries@jm2tilingco.com', type: 'text', description: 'Contact email' },
-          { id: '5', key: 'about_text', value: 'With over 15 years of experience, JM² Tiling Co delivers premium tiling solutions for residential and commercial properties.', type: 'textarea', description: 'About section text' },
+        // Initialize with default content if table is empty
+        const defaultContent = [
+          { key: 'hero_title', value: 'Flawless Tiling, Perfect Finish', type: 'text', description: 'Main hero title' },
+          { key: 'hero_subtitle', value: 'Expert tiling services across Surrey & West Sussex', type: 'text', description: 'Hero subtitle' },
+          { key: 'phone', value: '07738 427208', type: 'text', description: 'Contact phone number' },
+          { key: 'email', value: 'enquiries@jm2tilingco.com', type: 'text', description: 'Contact email' },
+          { key: 'about_text', value: 'With over 15 years of experience, JM² Tiling Co delivers premium tiling solutions for residential and commercial properties.', type: 'textarea', description: 'About section text' },
         ];
-        setContent(defaultContent);
-        localStorage.setItem('websiteContent', JSON.stringify(defaultContent));
+
+        const { data: insertedData, error: insertError } = await supabase
+          .from('website_content')
+          .insert(defaultContent)
+          .select();
+
+        if (insertError) throw insertError;
+
+        setContent(insertedData.map(item => ({
+          id: item.id,
+          key: item.key,
+          value: item.value,
+          type: item.type,
+          description: item.description || ''
+        })));
       }
     } catch (error) {
       console.error('Error loading content:', error);
+      // Fallback to localStorage if Supabase fails
+      const storedContent = localStorage.getItem('websiteContent');
+      if (storedContent) {
+        setContent(JSON.parse(storedContent));
+      }
     } finally {
       setLoading(false);
     }
@@ -50,15 +78,37 @@ export default function AdminDashboard() {
   const saveContent = async () => {
     setSaving(true);
     try {
-      // Save to localStorage (in production, save to Supabase)
+      // Save all content to Supabase
+      const promises = content.map(item => 
+        supabase
+          .from('website_content')
+          .upsert({
+            id: item.id,
+            key: item.key,
+            value: item.value,
+            type: item.type,
+            description: item.description
+          })
+          .select()
+      );
+
+      const results = await Promise.all(promises);
+      
+      // Check if any operations failed
+      const hasErrors = results.some(result => result.error);
+      if (hasErrors) {
+        throw new Error('Some items failed to save');
+      }
+
+      // Also save to localStorage as backup
       localStorage.setItem('websiteContent', JSON.stringify(content));
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      alert('Content saved successfully!');
+      alert('Content saved successfully to Supabase!');
     } catch (error) {
-      alert('Error saving content');
+      console.error('Error saving content:', error);
+      alert('Error saving content. Changes saved locally as backup.');
+      // Fallback to localStorage
+      localStorage.setItem('websiteContent', JSON.stringify(content));
     } finally {
       setSaving(false);
     }
@@ -70,19 +120,59 @@ export default function AdminDashboard() {
     ));
   };
 
-  const addContentItem = () => {
-    const newItem: ContentItem = {
-      id: Date.now().toString(),
-      key: `new_item_${Date.now()}`,
-      value: '',
-      type: 'text',
-      description: 'New content item'
-    };
-    setContent([...content, newItem]);
+  const addContentItem = async () => {
+    try {
+      const newItem = {
+        key: `new_item_${Date.now()}`,
+        value: '',
+        type: 'text' as const,
+        description: 'New content item'
+      };
+
+      const { data, error } = await supabase
+        .from('website_content')
+        .insert(newItem)
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      setContent([...content, {
+        id: data.id,
+        key: data.key,
+        value: data.value,
+        type: data.type,
+        description: data.description || ''
+      }]);
+    } catch (error) {
+      console.error('Error adding content:', error);
+      // Fallback to local state
+      const newItem: ContentItem = {
+        id: Date.now().toString(),
+        key: `new_item_${Date.now()}`,
+        value: '',
+        type: 'text',
+        description: 'New content item'
+      };
+      setContent([...content, newItem]);
+    }
   };
 
-  const deleteContentItem = (id: string) => {
-    setContent(content.filter(item => item.id !== id));
+  const deleteContentItem = async (id: string) => {
+    try {
+      const { error } = await supabase
+        .from('website_content')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+
+      setContent(content.filter(item => item.id !== id));
+    } catch (error) {
+      console.error('Error deleting content:', error);
+      // Still remove from local state even if Supabase fails
+      setContent(content.filter(item => item.id !== id));
+    }
   };
 
   const handleLogout = () => {
