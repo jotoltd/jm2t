@@ -78,7 +78,7 @@ export default function WallTiling() {
             </div>
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="border border-white/10 p-8 self-start">
               <p className="text-[#c9a84c] text-xs font-mono tracking-widest uppercase mb-3">Pricing Guide</p>
-              <p className="font-display text-5xl text-[#f5f0e8] font-medium">£50–60</p>
+              <p className="font-display text-5xl text-[#f5f0e8] font-medium">£60+</p>
               <p className="text-[#6b6560] text-sm mt-1 mb-6">per m²</p>
               <div className="space-y-2 mb-8">
                 {['Tile size dependent', 'Layout complexity', 'Surface prep included', 'Transparent pricing', 'Free quotation'].map((item) => (
