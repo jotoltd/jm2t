@@ -1,11 +1,35 @@
 import { useState, type FormEvent } from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useAdmin } from '../contexts/AdminContext';
 
 export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean }) {
   const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const { isAdmin, setIsAdmin, checkAdminStatus } = useAdmin();
   const handleSubmit = (e: FormEvent) => { e.preventDefault(); setSubmitted(true); };
+
+  const handleAdminLogin = () => {
+    const username = prompt('Username:');
+    const password = prompt('Password:');
+    
+    if (username === 'Josh' && password === 'lalala14') {
+      localStorage.setItem('adminLoggedIn', 'true');
+      localStorage.setItem('adminLoginTime', Date.now().toString());
+      setIsAdmin(true);
+      // Redirect to homepage with admin mode enabled
+      window.location.href = '/';
+    } else if (username && password) {
+      alert('Invalid credentials');
+    }
+  };
+
+  const handleAdminLogout = () => {
+    localStorage.removeItem('adminLoggedIn');
+    localStorage.removeItem('adminLoginTime');
+    setIsAdmin(false);
+    window.location.reload();
+  };
 
   return (
     <footer className="bg-[#111110] border-t border-white/5">
@@ -174,6 +198,13 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
             <div className="flex items-center gap-6">
               <Link to="/" className="text-xs text-white/30 hover:text-[#c9a84c] transition-colors">Privacy Policy</Link>
               <Link to="/" className="text-xs text-white/30 hover:text-[#c9a84c] transition-colors">Terms of Service</Link>
+              <button
+                onClick={isAdmin ? handleAdminLogout : handleAdminLogin}
+                className="flex items-center gap-1 text-xs text-white/20 hover:text-[#c9a84c] transition-colors"
+              >
+                <Settings className="w-3 h-3" />
+                {isAdmin ? 'Logout' : 'Admin'}
+              </button>
             </div>
           </div>
         </div>
