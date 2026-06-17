@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 const tiers = [
   {
     title: 'Wall Tiling',
-    price: '£50–60',
+    price: '£60+',
     unit: 'per m²',
     desc: 'Splashbacks, feature walls and full-height installs.',
     popular: false,
   },
   {
     title: 'Floor Tiling',
-    price: '£80–95',
+    price: '£80+',
     unit: 'per m²',
     desc: 'Porcelain, ceramic & natural stone, any pattern.',
     popular: true,

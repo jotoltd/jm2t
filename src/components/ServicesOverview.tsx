@@ -144,8 +144,8 @@ export default function ServicesOverview() {
         {/* Pricing Cards */}
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { title: 'WALL TILING', price: '£50–60', unit: 'per m²', desc: 'Splashbacks, feature walls and full-height installs.', href: '/quote' },
-            { title: 'FLOOR TILING', price: '£80–95', unit: 'per m²', desc: 'Porcelain, ceramic & natural stone, any pattern.', href: '/quote', popular: true },
+            { title: 'WALL TILING', price: 'from £60', unit: 'per m²', desc: 'Splashbacks, feature walls and full-height installs.', href: '/quote' },
+            { title: 'FLOOR TILING', price: 'from £80', unit: 'per m²', desc: 'Porcelain, ceramic & natural stone, any pattern.', href: '/quote', popular: true },
             { title: 'RE-GRouting & REPAIR', price: '£200', unit: 'per day', desc: 'Tile repair, replacement and grout renewal.', href: '/quote' },
           ].map((card, i) => (
             <motion.div
