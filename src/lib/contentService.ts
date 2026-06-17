@@ -33,7 +33,7 @@ class ContentService {
   private servicesCache: Service[] = [];
   private lastFetch: number = 0;
   private readonly CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
-  private readonly TIMEOUT = 10000; // 10 seconds timeout
+  private readonly TIMEOUT = 30000; // 30 seconds timeout
   private isOnline = true;
 
   async getContent(key?: string, category?: string, section?: string): Promise<ContentItem[] | ContentItem | null> {
