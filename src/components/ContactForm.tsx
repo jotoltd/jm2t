@@ -12,22 +12,41 @@ export default function ContactForm() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Send email to enquiries@jm2tilingco.com
-    const subject = encodeURIComponent(`New Enquiry: ${formData.service || 'General'} - ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Phone: ${formData.phone}\n` +
-      `Email: ${formData.email}\n` +
-      `Service: ${formData.service}\n` +
-      `Message: ${formData.message}`
-    );
-    
-    window.location.href = `mailto:enquiries@jm2tilingco.com?subject=${subject}&body=${body}`;
-    
-    setSubmitted(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          to: 'enquiries@jm2tilingco.com',
+          subject: `New Enquiry: ${formData.service || 'General'} - ${formData.name}`,
+        }),
+      });
+      
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      // Fallback to mailto if API fails
+      const subject = encodeURIComponent(`New Enquiry: ${formData.service || 'General'} - ${formData.name}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\n` +
+        `Phone: ${formData.phone}\n` +
+        `Email: ${formData.email}\n` +
+        `Service: ${formData.service}\n` +
+        `Message: ${formData.message}`
+      );
+      
+      window.location.href = `mailto:enquiries@jm2tilingco.com?subject=${subject}&body=${body}`;
+      setSubmitted(true);
+    }
   };
 
   const inputClass = "w-full bg-neutral-950 border-b-2 border-white/20 text-white placeholder-neutral-600 px-0 py-3 focus:outline-none focus:border-cyan-400 transition-all duration-300 text-base font-sans";

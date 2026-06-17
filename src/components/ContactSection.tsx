@@ -5,22 +5,41 @@ import { useState, type FormEvent } from 'react';
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     
-    // Send email to enquiries@jm2tilingco.com
-    const subject = encodeURIComponent(`Contact Form: ${form.service || 'General'} - ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\n` +
-      `Phone: ${form.phone}\n` +
-      `Email: ${form.email}\n` +
-      `Service: ${form.service}\n` +
-      `Message: ${form.message}`
-    );
-    
-    window.location.href = `mailto:enquiries@jm2tilingco.com?subject=${subject}&body=${body}`;
-    
-    setSubmitted(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...form,
+          to: 'enquiries@jm2tilingco.com',
+          subject: `Contact Form: ${form.service || 'General'} - ${form.name}`,
+        }),
+      });
+      
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      // Fallback to mailto if API fails
+      const subject = encodeURIComponent(`Contact Form: ${form.service || 'General'} - ${form.name}`);
+      const body = encodeURIComponent(
+        `Name: ${form.name}\n` +
+        `Phone: ${form.phone}\n` +
+        `Email: ${form.email}\n` +
+        `Service: ${form.service}\n` +
+        `Message: ${form.message}`
+      );
+      
+      window.location.href = `mailto:enquiries@jm2tilingco.com?subject=${subject}&body=${body}`;
+      setSubmitted(true);
+    }
   };
 
   return (

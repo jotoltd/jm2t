@@ -13,25 +13,44 @@ export default function Quote() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     
-    // Send email to enquiries@jm2tilingco.com
-    const subject = encodeURIComponent(`Quote Request: ${form.service || 'General'} - ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\n` +
-      `Phone: ${form.phone}\n` +
-      `Email: ${form.email}\n` +
-      `Service: ${form.service}\n` +
-      `Area: ${form.area} m²\n` +
-      `Description: ${form.description}\n` +
-      `Timeline: ${form.timeline}\n` +
-      `Budget: ${form.budget}`
-    );
-    
-    window.location.href = `mailto:enquiries@jm2tilingco.com?subject=${subject}&body=${body}`;
-    
-    setSubmitted(true);
+    try {
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...form,
+          to: 'enquiries@jm2tilingco.com',
+          subject: `Quote Request: ${form.service || 'General'} - ${form.name}`,
+        }),
+      });
+      
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        throw new Error('Failed to send quote request');
+      }
+    } catch (error) {
+      // Fallback to mailto if API fails
+      const subject = encodeURIComponent(`Quote Request: ${form.service || 'General'} - ${form.name}`);
+      const body = encodeURIComponent(
+        `Name: ${form.name}\n` +
+        `Phone: ${form.phone}\n` +
+        `Email: ${form.email}\n` +
+        `Service: ${form.service}\n` +
+        `Area: ${form.area} m²\n` +
+        `Description: ${form.description}\n` +
+        `Timeline: ${form.timeline}\n` +
+        `Budget: ${form.budget}`
+      );
+      
+      window.location.href = `mailto:enquiries@jm2tilingco.com?subject=${subject}&body=${body}`;
+      setSubmitted(true);
+    }
   };
 
   return (
