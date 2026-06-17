@@ -10,17 +10,25 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
   const handleSubmit = (e: FormEvent) => { e.preventDefault(); setSubmitted(true); };
 
   const handleAdminLogin = () => {
+    console.log('Footer - Admin login clicked');
     const username = prompt('Username:');
     const password = prompt('Password:');
     
+    console.log('Footer - Credentials entered:', { username, password: password ? '***' : null });
+    
     if (username === 'Josh' && password === 'lalala14') {
+      console.log('Footer - Login successful, setting localStorage');
       localStorage.setItem('adminLoggedIn', 'true');
       localStorage.setItem('adminLoginTime', Date.now().toString());
       setIsAdmin(true);
+      console.log('Footer - Admin state set, redirecting to homepage');
       // Redirect to homepage with admin mode enabled
       window.location.href = '/';
     } else if (username && password) {
+      console.log('Footer - Invalid credentials');
       alert('Invalid credentials');
+    } else {
+      console.log('Footer - Login cancelled');
     }
   };
 
