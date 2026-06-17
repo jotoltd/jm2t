@@ -9,8 +9,8 @@ const images = [
   '/images/IMG_4112.jpeg',
   '/images/IMG_4113.jpeg',
   '/images/IMG_4117.jpeg',
-  '/images/IMG_4118.jpeg',
-  '/images/IMG_4126.jpeg',
+  '/images/wall_tiling_5.jpeg',
+  '/images/wall_tiling_6.jpeg',
 ];
 
 function GalleryRow({ reversed = false }: { reversed?: boolean }) {
