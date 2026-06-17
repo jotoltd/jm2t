@@ -5,7 +5,23 @@ import { useState, type FormEvent } from 'react';
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
-  const handleSubmit = (e: FormEvent) => { e.preventDefault(); setSubmitted(true); };
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    
+    // Send email to enquiries@jm2tilingco.com
+    const subject = encodeURIComponent(`Contact Form: ${form.service || 'General'} - ${form.name}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\n` +
+      `Phone: ${form.phone}\n` +
+      `Email: ${form.email}\n` +
+      `Service: ${form.service}\n` +
+      `Message: ${form.message}`
+    );
+    
+    window.location.href = `mailto:enquiries@jm2tilingco.com?subject=${subject}&body=${body}`;
+    
+    setSubmitted(true);
+  };
 
   return (
     <section id="contact" className="relative overflow-hidden bg-[#0c0b0a] py-24 lg:py-32">
@@ -44,7 +60,7 @@ export default function ContactSection() {
                 07738 427208
               </span>
             </a>
-            <a href="mailto:Enquiries@jm2tilingco.com" className="group flex items-center gap-4 text-white/80 hover:text-[#c9a84c]">
+            <a href="mailto:enquiries@jm2tilingco.com" className="group flex items-center gap-4 text-white/80 hover:text-[#c9a84c]">
               <span className="flex h-12 w-12 items-center justify-center border border-[#c9a84c]/40 text-[#c9a84c] transition-colors group-hover:bg-[#c9a84c] group-hover:text-[#0c0b0a]">
                 <Mail className="h-5 w-5" />
               </span>

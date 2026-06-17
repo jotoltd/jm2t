@@ -15,6 +15,22 @@ export default function Quote() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    
+    // Send email to enquiries@jm2tilingco.com
+    const subject = encodeURIComponent(`Quote Request: ${form.service || 'General'} - ${form.name}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\n` +
+      `Phone: ${form.phone}\n` +
+      `Email: ${form.email}\n` +
+      `Service: ${form.service}\n` +
+      `Area: ${form.area} m²\n` +
+      `Description: ${form.description}\n` +
+      `Timeline: ${form.timeline}\n` +
+      `Budget: ${form.budget}`
+    );
+    
+    window.location.href = `mailto:enquiries@jm2tilingco.com?subject=${subject}&body=${body}`;
+    
     setSubmitted(true);
   };
 
