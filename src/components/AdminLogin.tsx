@@ -20,7 +20,7 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
 
     try {
       // Simple authentication with hardcoded credentials
-      if (credentials.username === 'Josh' && credentials.password === 'lalala14') {
+      if (credentials.username === 'Josh' && credentials.password === 'Managethesite26') {
         // Store login state in localStorage
         localStorage.setItem('adminLoggedIn', 'true');
         localStorage.setItem('adminLoginTime', Date.now().toString());
