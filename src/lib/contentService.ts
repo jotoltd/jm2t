@@ -99,22 +99,24 @@ class ContentService {
     try {
       // Fetch content with timeout
       const { data: contentData, error: contentError } = await this.withTimeout(
-        supabase
-          .from('website_content')
-          .select('*')
-          .order('order_index', { ascending: true })
-          .then()
+        Promise.resolve(
+          supabase
+            .from('website_content')
+            .select('*')
+            .order('order_index', { ascending: true })
+        )
       );
 
       if (contentError) throw contentError;
 
       // Fetch services with timeout
       const { data: servicesData, error: servicesError } = await this.withTimeout(
-        supabase
-          .from('services')
-          .select('*')
-          .order('order_index', { ascending: true })
-          .then()
+        Promise.resolve(
+          supabase
+            .from('services')
+            .select('*')
+            .order('order_index', { ascending: true })
+        )
       );
 
       if (servicesError) throw servicesError;
@@ -211,11 +213,12 @@ class ContentService {
 
     try {
       const { error } = await this.withTimeout(
-        supabaseAdmin
-          .from('website_content')
-          .update({ value, updated_at: new Date().toISOString() })
-          .eq('key', key)
-          .then()
+        Promise.resolve(
+          supabaseAdmin
+            .from('website_content')
+            .update({ value, updated_at: new Date().toISOString() })
+            .eq('key', key)
+        )
       );
 
       if (error) throw error;
