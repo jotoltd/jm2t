@@ -23,16 +23,6 @@ CREATE POLICY "Anyone can read content" ON website_content
 CREATE POLICY "Service role can manage content" ON website_content
   FOR ALL USING (auth.role() = 'service_role');
 
--- Insert default content
-INSERT INTO website_content (key, value, type, description) VALUES
-  ('hero_title', 'Flawless Tiling, Perfect Finish', 'text', 'Main hero title'),
-  ('hero_subtitle', 'Expert tiling services across Surrey & West Sussex', 'text', 'Hero subtitle'),
-  ('phone', '07738 427208', 'text', 'Contact phone number'),
-  ('email', 'enquiries@jm2tilingco.com', 'text', 'Contact email'),
-  ('about_text', 'With over 15 years of experience, JM² Tiling Co delivers premium tiling solutions for residential and commercial properties.', 'textarea', 'About section text'),
-  ('contact_form_success', 'Thank you! We'll be in touch within 24 hours.', 'text', 'Contact form success message')
-ON CONFLICT (key) DO NOTHING;
-
 -- Create function to automatically update updated_at timestamp
 CREATE OR REPLACE FUNCTION update_updated_at_column()
 RETURNS TRIGGER AS $$
