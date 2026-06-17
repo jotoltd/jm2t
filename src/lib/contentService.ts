@@ -103,6 +103,7 @@ class ContentService {
           .from('website_content')
           .select('*')
           .order('order_index', { ascending: true })
+          .then()
       );
 
       if (contentError) throw contentError;
@@ -113,6 +114,7 @@ class ContentService {
           .from('services')
           .select('*')
           .order('order_index', { ascending: true })
+          .then()
       );
 
       if (servicesError) throw servicesError;
@@ -213,6 +215,7 @@ class ContentService {
           .from('website_content')
           .update({ value, updated_at: new Date().toISOString() })
           .eq('key', key)
+          .then()
       );
 
       if (error) throw error;
