@@ -31,6 +31,7 @@ const Projects = lazy(() => import('./pages/Projects'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Quote = lazy(() => import('./pages/Quote'));
 const ProcessPage = lazy(() => import('./pages/Process'));
+const Admin = lazy(() => import('./pages/Admin'));
 
 function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -79,6 +80,7 @@ function AnimatedRoutes() {
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
         <Route path="/quote" element={<PageTransition><Quote /></PageTransition>} />
         <Route path="/process" element={<PageTransition><ProcessPage /></PageTransition>} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </Suspense>
   );
