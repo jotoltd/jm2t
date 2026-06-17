@@ -5,6 +5,11 @@ import { useAdmin } from '../contexts/AdminContext';
 
 export default function Hero() {
   const { isAdmin } = useAdmin();
+  
+  // Debug: Log admin state
+  React.useEffect(() => {
+    console.log('Hero - Admin state:', isAdmin);
+  }, [isAdmin]);
   return (
     <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#0c0b0a]">
       <div className="absolute inset-0 z-0">

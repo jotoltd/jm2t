@@ -18,8 +18,21 @@ const iconMap: { [key: string]: any } = {
 export default function ServicesOverview() {
   const { isAdmin } = useAdmin();
   const { services, loading, error } = useServices(true); // Get featured services
+  
+  // Debug: Log admin state and services
+  React.useEffect(() => {
+    console.log('ServicesOverview - Admin state:', isAdmin);
+    console.log('ServicesOverview - Services:', services);
+    console.log('ServicesOverview - Loading:', loading);
+    console.log('ServicesOverview - Error:', error);
+  }, [isAdmin, services, loading, error]);
   return (
     <section id="services" className="bg-[#0a0a0c] py-24 lg:py-32">
+      {isAdmin && (
+        <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50">
+          Admin Mode Active - Click images to edit
+        </div>
+      )}
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
