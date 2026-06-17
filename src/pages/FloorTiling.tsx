@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import usePageTitle from '../hooks/usePageTitle';
+import { useContentImage } from '../hooks/useContentImage';
 
 const offers = [
   'Porcelain floor tiling',
@@ -15,6 +16,11 @@ const offers = [
   'Grout & seal finishing',
   'Residential & commercial projects',
 ];
+
+function PageImage({ contentKey, fallback, alt, className }: { contentKey: string; fallback: string; alt: string; className?: string }) {
+  const { imageUrl } = useContentImage(contentKey, fallback);
+  return <img src={imageUrl} alt={alt} className={className} />;
+}
 
 export default function FloorTiling() {
   usePageTitle('Floor Tiling');
@@ -38,10 +44,20 @@ export default function FloorTiling() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="grid md:grid-cols-2 gap-6">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <img src="/images/luxe_kitchen01.jpg" alt="Floor tiling installation" className="w-full h-80 object-cover" />
+              <PageImage 
+                contentKey="floor_tiling_image_1" 
+                fallback="/images/luxe_kitchen01.jpg" 
+                alt="Floor tiling installation" 
+                className="w-full h-80 object-cover" 
+              />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-              <img src="/images/IMG_4112.jpeg" alt="Precision floor tiling" className="w-full h-80 object-cover" />
+              <PageImage 
+                contentKey="floor_tiling_image_2" 
+                fallback="/images/luxe_kitchen02_floor_tiling.jpg" 
+                alt="Precision floor tiling" 
+                className="w-full h-80 object-cover" 
+              />
             </motion.div>
           </div>
         </div>

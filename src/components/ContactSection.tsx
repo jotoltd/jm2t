@@ -1,12 +1,28 @@
 import { motion } from 'motion/react';
 import { Phone, Mail, ArrowRight } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
+import { supabase } from '../lib/supabase';
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    
+    // Save to Supabase database
+    const { error } = await supabase.from('submissions').insert({
+      type: 'contact',
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      service: form.service,
+      message: form.message,
+      status: 'new'
+    });
+    
+    if (error) {
+      console.error('Error saving submission:', error);
+    }
     
     try {
       const response = await fetch('/api/contact', {

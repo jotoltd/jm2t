@@ -4,12 +4,32 @@ import usePageTitle from '../hooks/usePageTitle';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { supabase } from '../lib/supabase';
 
 export default function Contact() {
   usePageTitle('Contact Us');
   const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
-  const handleSubmit = (e: FormEvent) => { e.preventDefault(); setSubmitted(true); };
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    
+    // Save to Supabase database
+    const { error } = await supabase.from('submissions').insert({
+      type: 'contact',
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      service: form.service,
+      message: form.message,
+      status: 'new'
+    });
+    
+    if (error) {
+      console.error('Error saving submission:', error);
+    }
+    
+    setSubmitted(true);
+  };
 
   return (
     <div className="min-h-screen bg-[#0c0b0a]">

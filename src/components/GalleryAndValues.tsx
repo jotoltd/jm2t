@@ -2,16 +2,16 @@ import { motion } from 'motion/react';
 import { ShieldCheck, Ruler, Hammer, Sparkles, HeartHandshake, Grid3X3, Droplets } from 'lucide-react';
 
 const galleryImages = [
-  '/images/IMG_3876.jpeg',
-  '/images/IMG_3878.jpeg',
-  '/images/IMG_3879.jpeg',
-  '/images/IMG_3880.jpeg',
-  '/images/IMG_4101.jpeg',
-  '/images/IMG_4112.jpeg',
-  '/images/IMG_4113.jpeg',
-  '/images/IMG_4117.jpeg',
+  '/images/wall_tiling_3.jpeg',
+  '/images/wall_tiling_4.jpeg',
   '/images/wall_tiling_5.jpeg',
   '/images/wall_tiling_6.jpeg',
+  '/images/wall_tiling_7.jpeg',
+  '/images/wall_tiling2.jpeg',
+  '/images/bathroom_tiling.jpeg',
+  '/images/bahtroom_tiling_2.jpeg',
+  '/images/tiled_porch_before.jpeg',
+  '/images/tiled_porch_after.jpeg',
 ];
 
 export default function GalleryAndValues() {
@@ -200,7 +200,7 @@ export default function GalleryAndValues() {
       <div className="bg-cyan-400 h-2 w-full" />
       <div className="w-full overflow-hidden">
         <div className="flex flex-row-reverse">
-          {['/images/IMG_3879.jpeg', '/images/IMG_3880.jpeg', '/images/IMG_3876.jpeg', '/images/IMG_3878.jpeg', '/images/IMG_4101.jpeg', '/images/IMG_4112.jpeg', '/images/IMG_4113.jpeg', '/images/IMG_4117.jpeg'].map((img, idx) => (
+          {['/images/wall_tiling_3.jpeg', '/images/wall_tiling_4.jpeg', '/images/wall_tiling_5.jpeg', '/images/wall_tiling_6.jpeg', '/images/wall_tiling_7.jpeg', '/images/wall_tiling2.jpeg', '/images/bathroom_tiling.jpeg', '/images/bahtroom_tiling_2.jpeg'].map((img, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0 }}

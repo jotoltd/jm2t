@@ -1,10 +1,16 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, Menu, X, ChevronDown } from 'lucide-react';
+import { useContentImage } from '../hooks/useContentImage';
 
 interface HeaderProps {
   mobileMenuOpen?: boolean;
   setMobileMenuOpen?: (open: boolean) => void;
+}
+
+function LogoImage() {
+  const { imageUrl } = useContentImage('logo_icon', '/images/logo_icon.png');
+  return <img src={imageUrl} alt="JM2 TilingCo" className="h-12 md:h-14 w-auto" />;
 }
 
 export default function Header({ mobileMenuOpen: externalMobileMenuOpen, setMobileMenuOpen: externalSetMobileMenuOpen }: HeaderProps = {}) {
@@ -77,6 +83,23 @@ export default function Header({ mobileMenuOpen: externalMobileMenuOpen, setMobi
     { label: 'Contact', href: '/contact', isPage: true },
   ];
 
+  const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const hash = href.split('#')[1];
+    if (!hash) return;
+    
+    // If already on homepage, scroll directly
+    if (location.pathname === '/') {
+      e.preventDefault();
+      const element = document.getElementById(hash);
+      if (element) {
+        const headerOffset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <header
       ref={headerRef}
@@ -87,7 +110,7 @@ export default function Header({ mobileMenuOpen: externalMobileMenuOpen, setMobi
       <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16 sm:h-18">
         {/* Logo */}
         <Link to="/" className="flex items-center group shrink-0">
-          <img src="/images/logo_icon.png" alt="JM2 TilingCo" className="h-12 md:h-14 w-auto" />
+          <LogoImage />
         </Link>
 
         {/* Desktop nav */}
@@ -125,13 +148,14 @@ export default function Header({ mobileMenuOpen: externalMobileMenuOpen, setMobi
                 {item.label}
               </Link>
             ) : (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
+                onClick={(e) => handleHashClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, item.href)}
                 className="text-sm text-[#a8a39a] hover:text-[#f5f0e8] transition-colors tracking-wide"
               >
                 {item.label}
-              </a>
+              </Link>
             )
           )}
         </nav>
@@ -207,14 +231,17 @@ export default function Header({ mobileMenuOpen: externalMobileMenuOpen, setMobi
                           {item.label}
                         </Link>
                       ) : (
-                        <a
+                        <Link
                           key={item.href}
-                          href={item.href}
-                          onClick={() => setMobileMenuOpen(false)}
+                          to={item.href}
+                          onClick={(e) => {
+                            handleHashClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, item.href);
+                            setMobileMenuOpen(false);
+                          }}
                           className="text-lg text-white/90 hover:text-[#c9a84c] transition-all py-2 px-3 rounded hover:bg-white/5"
                         >
                           {item.label}
-                        </a>
+                        </Link>
                       )
                     )}
                   </div>

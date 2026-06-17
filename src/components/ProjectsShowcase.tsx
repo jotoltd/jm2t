@@ -27,7 +27,7 @@ const projects = [
     id: 4,
     title: 'Redhill Feature Wall',
     location: 'Surrey',
-    image: '/images/IMG_3880.jpeg',
+    image: '/images/wall_tiling2.jpeg',
     desc: 'Statement kitchen splashback with handmade artisan tiles.',
   },
 ];

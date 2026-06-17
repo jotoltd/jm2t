@@ -1,25 +1,18 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import EditableImage from './EditableImage';
-import { useAdmin } from '../contexts/AdminContext';
+import { useContentImage } from '../hooks/useContentImage';
 
 export default function Hero() {
-  const { isAdmin } = useAdmin();
+  const { imageUrl } = useContentImage('hero_image', '/images/hero.jpeg');
   
-  // Debug: Log admin state
-  React.useEffect(() => {
-    console.log('Hero - Admin state:', isAdmin);
-  }, [isAdmin]);
   return (
     <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#0c0b0a]">
       <div className="absolute inset-0 z-0">
-        <EditableImage
-          contentKey="hero_image"
-          fallback="/images/hero.jpeg"
+        <img
+          src={imageUrl}
           alt="Premium tiling work"
           className="w-full h-full object-cover object-center scale-110"
-          isAdmin={isAdmin}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0c0b0a]/70 via-[#0c0b0a]/30 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b0a]/40 via-transparent to-transparent" />

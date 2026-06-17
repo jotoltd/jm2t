@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import usePageTitle from '../hooks/usePageTitle';
+import { useContentImage } from '../hooks/useContentImage';
 
 const offers = [
   'Full re-grouting service',
@@ -15,6 +16,11 @@ const offers = [
   'Shower enclosure restoration',
   'Floor & wall tile repairs',
 ];
+
+function PageImage({ contentKey, fallback, alt, className }: { contentKey: string; fallback: string; alt: string; className?: string }) {
+  const { imageUrl } = useContentImage(contentKey, fallback);
+  return <img src={imageUrl} alt={alt} className={className} />;
+}
 
 export default function Regrouting() {
   usePageTitle('Re-grouting & Repair');
@@ -38,10 +44,20 @@ export default function Regrouting() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="grid md:grid-cols-2 gap-6">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <img src="/images/IMG_4113.jpeg" alt="Tile repair work" className="w-full h-80 object-cover" />
+              <PageImage 
+                contentKey="regrouting_image_1" 
+                fallback="/images/tiled_porch_before.jpeg" 
+                alt="Tile repair work" 
+                className="w-full h-80 object-cover" 
+              />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-              <img src="/images/luxe_apartment_03.jpg" alt="Restored tiling" className="w-full h-80 object-cover" />
+              <PageImage 
+                contentKey="regrouting_image_2" 
+                fallback="/images/tiled_porch_after.jpeg" 
+                alt="Restored tiling" 
+                className="w-full h-80 object-cover" 
+              />
             </motion.div>
           </div>
         </div>

@@ -4,17 +4,19 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import usePageTitle from '../hooks/usePageTitle';
+import { useContentImage } from '../hooks/useContentImage';
 
-const projects = [
+// Project data with content keys for editable images
+const projectsData = [
   {
     title: 'The Luxe Apartment',
     description:
       'This stunning apartment features an elegant metro wall tile backsplash and a porcelain marble style floor in the bathroom. A sleek design that enhances the overall aesthetic. The unique tile layout creates a modern and sophisticated ambiance, perfect for urban living.',
-    images: [
-      '/images/luxe_apartment_01.jpg',
-      '/images/luxe_apartment_02.jpg',
-      '/images/luxe_apartment_03.jpg',
-      '/images/luxe_apartment_04.jpg',
+    imageKeys: [
+      { key: 'project_luxe_apt_1', fallback: '/images/luxe_apartment_01.jpg' },
+      { key: 'project_luxe_apt_2', fallback: '/images/luxe_apartment_02.jpg' },
+      { key: 'project_luxe_apt_3', fallback: '/images/luxe_apartment_03.jpg' },
+      { key: 'project_luxe_apt_4', fallback: '/images/luxe_apartment_04.jpg' },
     ],
     tags: ['Bathroom', 'Wall Tiling', 'Floor Tiling', 'Porcelain'],
   },
@@ -22,15 +24,20 @@ const projects = [
     title: 'Luxury Kitchen',
     description:
       'In this project, we transformed a traditional kitchen with clean floor tiling that combines style and functionality. The durable tiles are perfect for high-traffic areas and add a touch of luxury with their 33% offset.',
-    images: [
-      '/images/luxe_kitchen01.jpg',
-      '/images/luxe_kitchen02_floor_tiling.jpg',
-      '/images/luxe_kitchen03.jpg',
-      '/images/luxe_kitchen04wall_tiling.jpeg',
+    imageKeys: [
+      { key: 'project_luxe_kitchen_1', fallback: '/images/luxe_kitchen01.jpg' },
+      { key: 'project_luxe_kitchen_2', fallback: '/images/luxe_kitchen02_floor_tiling.jpg' },
+      { key: 'project_luxe_kitchen_3', fallback: '/images/luxe_kitchen03.jpg' },
+      { key: 'project_luxe_kitchen_4', fallback: '/images/luxe_kitchen04wall_tiling.jpeg' },
     ],
     tags: ['Kitchen', 'Floor Tiling', 'Porcelain'],
   },
 ];
+
+function ProjectImage({ contentKey, fallback, alt, className }: { contentKey: string; fallback: string; alt: string; className?: string }) {
+  const { imageUrl } = useContentImage(contentKey, fallback);
+  return <img src={imageUrl} alt={alt} className={className} />;
+}
 
 export default function Projects() {
   usePageTitle('Our Projects');
@@ -134,7 +141,7 @@ export default function Projects() {
 
       <section className="py-20 bg-[#0c0b0a]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-24">
-          {projects.map((project, pIdx) => (
+          {projectsData.map((project, pIdx) => (
             <motion.div
               key={pIdx}
               initial={{ opacity: 0, y: 30 }}
@@ -157,27 +164,24 @@ export default function Projects() {
 
               {/* Image grid */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-1 mb-8">
-                {project.images.map((img, iIdx) => (
+                {project.imageKeys.map((imgKey, iIdx) => (
                   <div
                     key={iIdx}
-                    onClick={() => img && setLightbox({ images: project.images.filter(Boolean) as string[], index: iIdx })}
-                    className={`relative aspect-square bg-[#111110] border border-white/5 flex items-center justify-center overflow-hidden group ${img ? 'cursor-zoom-in' : ''}`}
+                    onClick={() => setLightbox({ 
+                      images: project.imageKeys.map(k => k.fallback), 
+                      index: iIdx 
+                    })}
+                    className="relative aspect-square bg-[#111110] border border-white/5 flex items-center justify-center overflow-hidden group cursor-zoom-in"
                   >
-                    {img ? (
-                      <>
-                        <img src={img} alt={`${project.title} ${iIdx + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-                          <span className="text-white text-xs font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all">View</span>
-                        </div>
-                      </>
-                    ) : (
-                      <div className="flex flex-col items-center gap-2 text-[#3a3730]">
-                        <div className="w-10 h-10 border border-dashed border-[#3a3730] flex items-center justify-center">
-                          <span className="text-lg">{iIdx + 1}</span>
-                        </div>
-                        <span className="text-[10px] font-mono uppercase tracking-widest">Coming soon</span>
-                      </div>
-                    )}
+                    <ProjectImage 
+                      contentKey={imgKey.key} 
+                      fallback={imgKey.fallback}
+                      alt={`${project.title} ${iIdx + 1}`} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                      <span className="text-white text-xs font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all">View</span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -188,7 +192,7 @@ export default function Projects() {
               </p>
 
               {/* Divider between projects */}
-              {pIdx < projects.length - 1 && (
+              {pIdx < projectsData.length - 1 && (
                 <div className="mt-24 h-px bg-white/5" />
               )}
             </motion.div>

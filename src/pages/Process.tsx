@@ -3,27 +3,36 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import usePageTitle from '../hooks/usePageTitle';
 import { useState } from 'react';
+import { useContentImage } from '../hooks/useContentImage';
 
 const processSteps = [
   {
     step: '01',
     title: 'Before',
     desc: 'The existing porch area before transformation — ready for a complete tiling overhaul.',
-    image: '/images/tiled_porch_before.jpeg',
+    contentKey: 'process_before',
+    fallback: '/images/tiled_porch_before.jpeg',
   },
   {
     step: '02',
     title: 'During',
     desc: 'Precision installation in progress — careful preparation and expert tile laying.',
-    image: '/images/tiled_porch_during.jpeg',
+    contentKey: 'process_during',
+    fallback: '/images/tiled_porch_during.jpeg',
   },
   {
     step: '03',
     title: 'After',
     desc: 'The finished result — a beautifully tiled porch that transforms the entrance.',
-    image: '/images/tiled_porch_after.jpeg',
+    contentKey: 'process_after',
+    fallback: '/images/tiled_porch_after.jpeg',
   },
 ];
+
+function ProcessImage({ contentKey, fallback, alt, className }: { contentKey: string; fallback: string; alt: string; className?: string }) {
+  const { imageUrl } = useContentImage(contentKey, fallback);
+  return <img src={imageUrl} alt={alt} className={className} />;
+}
 
 export default function Process() {
   usePageTitle('Our Process');
@@ -122,8 +131,9 @@ export default function Process() {
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <img
-                    src={item.image}
+                  <ProcessImage
+                    contentKey={item.contentKey}
+                    fallback={item.fallback}
                     alt={`${item.title} - Porch tiling project`}
                     className="w-full h-[400px] object-cover"
                   />

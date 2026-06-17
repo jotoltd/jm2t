@@ -97,27 +97,25 @@ class ContentService {
     if (!this.isOnline) return;
 
     try {
-      // Fetch content with timeout
-      const { data: contentData, error: contentError } = await this.withTimeout(
-        Promise.resolve(
-          supabase
-            .from('website_content')
-            .select('*')
-            .order('order_index', { ascending: true })
-        )
-      );
+      console.log('ContentService: Starting refreshCache...');
+      
+      // Fetch content without timeout for now
+      const { data: contentData, error: contentError } = await supabase
+        .from('website_content')
+        .select('*')
+        .order('order_index', { ascending: true });
+
+      console.log('ContentService: Content fetch result:', { contentData: contentData?.length, contentError });
 
       if (contentError) throw contentError;
 
-      // Fetch services with timeout
-      const { data: servicesData, error: servicesError } = await this.withTimeout(
-        Promise.resolve(
-          supabase
-            .from('services')
-            .select('*')
-            .order('order_index', { ascending: true })
-        )
-      );
+      // Fetch services without timeout for now
+      const { data: servicesData, error: servicesError } = await supabase
+        .from('services')
+        .select('*')
+        .order('order_index', { ascending: true });
+
+      console.log('ContentService: Services fetch result:', { servicesData: servicesData?.length, servicesError });
 
       if (servicesError) throw servicesError;
 
@@ -212,14 +210,10 @@ class ContentService {
     }
 
     try {
-      const { error } = await this.withTimeout(
-        Promise.resolve(
-          supabaseAdmin
-            .from('website_content')
-            .update({ value, updated_at: new Date().toISOString() })
-            .eq('key', key)
-        )
-      );
+      const { error } = await supabaseAdmin
+        .from('website_content')
+        .update({ value, updated_at: new Date().toISOString() })
+        .eq('key', key);
 
       if (error) throw error;
 

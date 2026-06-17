@@ -1,16 +1,16 @@
 import { motion } from 'motion/react';
 
 const images = [
-  '/images/IMG_3876.jpeg',
-  '/images/IMG_3878.jpeg',
-  '/images/IMG_3879.jpeg',
-  '/images/IMG_3880.jpeg',
-  '/images/IMG_4101.jpeg',
-  '/images/IMG_4112.jpeg',
-  '/images/IMG_4113.jpeg',
-  '/images/IMG_4117.jpeg',
+  '/images/wall_tiling_3.jpeg',
+  '/images/wall_tiling_4.jpeg',
   '/images/wall_tiling_5.jpeg',
   '/images/wall_tiling_6.jpeg',
+  '/images/wall_tiling_7.jpeg',
+  '/images/wall_tiling2.jpeg',
+  '/images/bathroom_tiling.jpeg',
+  '/images/bahtroom_tiling_2.jpeg',
+  '/images/tiled_porch_before.jpeg',
+  '/images/tiled_porch_after.jpeg',
 ];
 
 function GalleryRow({ reversed = false }: { reversed?: boolean }) {

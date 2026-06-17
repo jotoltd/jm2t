@@ -4,9 +4,11 @@ import usePageTitle from '../hooks/usePageTitle';
 import { CheckCircle2, Send, Phone, Mail } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { supabase } from '../lib/supabase';
 
 export default function Quote() {
   usePageTitle('Free Quote');
+  console.log('Quote page loaded!');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [form, setForm] = useState({
     name: '', phone: '', email: '', service: '', area: '', description: '', timeline: '', budget: '',
@@ -15,6 +17,24 @@ export default function Quote() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    
+    // Save to Supabase database
+    const { error } = await supabase.from('submissions').insert({
+      type: 'quote',
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      service: form.service,
+      area: form.area,
+      description: form.description,
+      timeline: form.timeline,
+      budget: form.budget,
+      status: 'new'
+    });
+    
+    if (error) {
+      console.error('Error saving submission:', error);
+    }
     
     try {
       const response = await fetch('/api/quote', {

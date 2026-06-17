@@ -35,6 +35,11 @@ export default function EditableImage({
   // Skip hero image from upload functionality
   const isHeroImage = contentKey === 'hero_image';
 
+  // Debug: Log admin state
+  React.useEffect(() => {
+    console.log(`EditableImage (${contentKey}) - isAdmin:`, isAdmin);
+  }, [isAdmin, contentKey]);
+
   // Load content from Supabase
   useEffect(() => {
     const loadContent = async () => {
@@ -288,7 +293,10 @@ export default function EditableImage({
             exit={{ opacity: 0, scale: 0.95 }}
             className="inline-block"
           >
-            <div className="relative cursor-pointer group" onClick={() => setIsEditing(true)}>
+            <div className="relative cursor-pointer group" onClick={() => {
+              console.log(`EditableImage (${contentKey}) - Image clicked! isAdmin:`, isAdmin);
+              setIsEditing(true);
+            }}>
               <img 
                 src={value} 
                 alt={alt} 
