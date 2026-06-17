@@ -1,17 +1,20 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Grid3X3, Bath, LayoutGrid, Brush, Table2, Hammer, ArrowRight, ShieldCheck, FileText, Gem, Layers, Building2, GraduationCap } from 'lucide-react';
+import { useServices } from '../hooks/useContent';
 
-const services = [
-  { title: 'Floor Tiling', price: '£80–95 / m²', desc: 'Porcelain, ceramic and natural stone floors for homes and commercial spaces — straight-lay, herringbone and large-format, laid dead-level.', bullets: ['Herringbone & large-format', 'Residential & commercial', 'Built to last decades'], href: '/floor-tiling', image: '/images/luxe_kitchen02_floor_tiling.jpg', icon: Grid3X3 },
-  { title: 'Bathroom Tiling', price: 'Full renovations', desc: 'Full bathroom renovations, feature walls and custom shower enclosures — properly waterproofed and finished to a spa-quality standard.', bullets: ['Wet rooms & showers', 'Waterproofing focus', 'Luxury, spa-inspired'], href: '/bathroom-tiling', image: '/images/bathroom_tiling.jpeg', icon: Bath },
-  { title: 'Wall Tiling', price: '£50–60 / m²', desc: 'Kitchen splashbacks, feature walls and full-height installs set out perfectly square — from contemporary to decorative patterns.', bullets: ['Kitchen splashbacks', 'Feature walls', 'Flawless symmetry'], href: '/wall-tiling', image: '/images/luxe_kitchen04wall_tiling.jpeg', icon: LayoutGrid },
-  { title: 'Re-grouting & Repair', price: '£200 / day', desc: 'Discoloured, cracked or mouldy grout renewed and loose, chipped or broken tiles replaced — restoring tired surfaces and sealing out moisture.', bullets: ['Tile repair & replacement', 'Mould & moisture sealing', 'A fresh, modern finish'], href: '/regrouting', image: '/images/wall_tiling_4.jpeg', icon: Brush },
-  { title: 'Bespoke Tile Countertops', price: 'Bespoke quote', desc: 'Made-to-measure tiled worktops and surfaces — a hard-wearing statement piece designed around your kitchen or bathroom.', bullets: ['Custom worktops', 'Statement surfaces', 'Premium materials'], href: '/quote', image: '/images/luxe_kitchen02_floor_tiling.jpg', icon: Table2 },
-  { title: 'Renovation & Restoration', price: 'From £200 / day', desc: 'Older tiled areas brought back to life with modern techniques and materials — from single-room refreshes to full property transformations.', bullets: ['Full transformations', 'Modern techniques', 'Sympathetic restoration'], href: '/quote', image: '/images/luxe_apartment_01.jpg', icon: Hammer },
-];
+// Icon mapping
+const iconMap: { [key: string]: any } = {
+  Grid3X3,
+  Bath,
+  LayoutGrid,
+  Brush,
+  Table2,
+  Hammer,
+};
 
 export default function ServicesOverview() {
+  const { services, loading, error } = useServices(true); // Get featured services
   return (
     <section id="services" className="bg-[#0a0a0c] py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -34,10 +37,10 @@ export default function ServicesOverview() {
         {/* Services Grid */}
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => {
-            const Icon = s.icon;
+            const Icon = iconMap[s.icon_name] || Grid3X3;
             return (
               <motion.div
-                key={s.title}
+                key={s.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -49,7 +52,7 @@ export default function ServicesOverview() {
                 >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
-                    src={s.image}
+                    src={s.image_url}
                     alt={s.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -65,7 +68,7 @@ export default function ServicesOverview() {
                     </span>
                     <h3 className="font-display text-2xl text-[#f5f0e8]">{s.title}</h3>
                   </div>
-                  <p className="mt-4 text-sm leading-relaxed text-white/55">{s.desc}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-white/55">{s.description}</p>
                   <ul className="mt-5 space-y-2">
                     {s.bullets.map((b) => (
                       <li key={b} className="flex items-center gap-2 text-sm text-white/60">

@@ -1,12 +1,18 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { useContentValue } from '../hooks/useContent';
 
 export default function Hero() {
+  const heroTitle = useContentValue('hero_title', 'Flawless Tiling, Perfect Finish');
+  const heroSubtitle = useContentValue('hero_subtitle', 'Expert tiling services across Surrey & West Sussex');
+  const heroCtaText = useContentValue('hero_cta_text', 'Get Your Free Quote');
+  const heroCtaLink = useContentValue('hero_cta_link', '/quote');
+  const heroImage = useContentValue('hero_image', '/images/hero.jpeg');
   return (
     <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#0c0b0a]">
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero.jpeg"
+          src={heroImage}
           alt="Premium tiling work"
           className="w-full h-full object-cover object-center scale-110"
           fetchPriority="high"
@@ -68,25 +74,17 @@ export default function Hero() {
             </span>
           </div>
           <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl xl:text-[88px] text-[#f5f0e8] leading-[1.0] mb-8 font-medium">
-            Tiling crafted to a<br />
-            <span className="relative inline-block italic text-[#c9a84c]">
-              flawless
-              <svg className="absolute -bottom-2 left-0 w-full text-[#c9a84c]/60" viewBox="0 0 200 12" fill="none" preserveAspectRatio="none">
-                <path d="M2 9C50 3 150 3 198 9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-              </svg>
-            </span>{' '}
-            finish.
+            {heroTitle}
           </h1>
           <p className="text-[#a8a39a] text-lg sm:text-xl max-w-2xl leading-relaxed mb-10">
-            Professional wall &amp; floor tiling in Surrey &amp; West Sussex. Porcelain and natural
-            stone specialists delivering premium wall &amp; floor installations for discerning homes and businesses.
+            {heroSubtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <Link
-              to="/quote"
+              to={heroCtaLink}
               className="group inline-flex items-center justify-center gap-2 bg-[#c9a84c] hover:bg-[#e2c97e] text-[#0c0b0a] text-sm uppercase tracking-[0.18em] px-8 py-4 shadow-[0_0_40px_-8px_rgba(201,168,76,0.6)] hover:shadow-[0_0_60px_-6px_rgba(201,168,76,0.8)] transition-all"
             >
-              Get a Free Quote
+              {heroCtaText}
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                 <path d="M7 7h10v10"></path>
                 <path d="M7 17 17 7"></path>

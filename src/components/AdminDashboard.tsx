@@ -1,75 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Save, LogOut, Edit2, Check, X, Plus, Trash2 } from 'lucide-react';
+import { Save, LogOut, Edit2, Check, X, Plus, Trash2, Settings, Type, Image } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-
-interface ContentItem {
-  id: string;
-  key: string;
-  value: string;
-  type: 'text' | 'textarea' | 'image';
-  description: string;
-}
+import { contentService, ContentItem, Service } from '../lib/contentService';
 
 export default function AdminDashboard() {
   const [content, setContent] = useState<ContentItem[]>([]);
+  const [services, setServices] = useState<Service[]>([]);
+  const [activeTab, setActiveTab] = useState<'content' | 'services'>('content');
   const [editing, setEditing] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     loadContent();
+    loadServices();
   }, []);
 
   const loadContent = async () => {
     try {
-      const { data, error } = await supabase
-        .from('website_content')
-        .select('*')
-        .order('created_at', { ascending: true });
-
-      if (error) throw error;
-
-      if (data && data.length > 0) {
-        setContent(data.map(item => ({
-          id: item.id,
-          key: item.key,
-          value: item.value,
-          type: item.type,
-          description: item.description || ''
-        })));
-      } else {
-        // Initialize with default content if table is empty
-        const defaultContent = [
-          { key: 'hero_title', value: 'Flawless Tiling, Perfect Finish', type: 'text', description: 'Main hero title' },
-          { key: 'hero_subtitle', value: 'Expert tiling services across Surrey & West Sussex', type: 'text', description: 'Hero subtitle' },
-          { key: 'phone', value: '07738 427208', type: 'text', description: 'Contact phone number' },
-          { key: 'email', value: 'enquiries@jm2tilingco.com', type: 'text', description: 'Contact email' },
-          { key: 'about_text', value: 'With over 15 years of experience, JM² Tiling Co delivers premium tiling solutions for residential and commercial properties.', type: 'textarea', description: 'About section text' },
-        ];
-
-        const { data: insertedData, error: insertError } = await supabase
-          .from('website_content')
-          .insert(defaultContent)
-          .select();
-
-        if (insertError) throw insertError;
-
-        setContent(insertedData.map(item => ({
-          id: item.id,
-          key: item.key,
-          value: item.value,
-          type: item.type,
-          description: item.description || ''
-        })));
+      const contentData = await contentService.getContent();
+      if (contentData && Array.isArray(contentData)) {
+        setContent(contentData);
       }
     } catch (error) {
       console.error('Error loading content:', error);
-      // Fallback to localStorage if Supabase fails
-      const storedContent = localStorage.getItem('websiteContent');
-      if (storedContent) {
-        setContent(JSON.parse(storedContent));
-      }
+    }
+  };
+
+  const loadServices = async () => {
+    try {
+      const servicesData = await contentService.getServices();
+      setServices(servicesData);
+    } catch (error) {
+      console.error('Error loading services:', error);
     } finally {
       setLoading(false);
     }
