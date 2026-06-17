@@ -3,6 +3,13 @@ import { motion } from 'motion/react';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
 
 export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    service: '',
+    message: '',
+  });
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -76,35 +83,32 @@ export default function ContactForm() {
                   <Send className="w-9 h-9 text-black" />
                 </div>
                 <h3 className="font-display text-3xl font-black text-white uppercase">Enquiry Sent!</h3>
-                <p className="text-neutral-400">We'll be in touch shortly with your free quote.</p>
+                <p className="text-neutral-400">Thank you! We'll be in touch within 24 hours.</p>
               </motion.div>
             ) : (
               <form 
-                action="mailto:enquiries@jm2tilingco.com" 
-                method="post" 
-                encType="text/plain"
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-7"
               >
                 <div className="grid sm:grid-cols-2 gap-7">
                   <div>
                     <label className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 block mb-2">Your Name</label>
-                    <input type="text" name="name" placeholder="John Smith" required className={inputClass} />
+                    <input type="text" name="name" placeholder="John Smith" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} className={inputClass} />
                   </div>
                   <div>
                     <label className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 block mb-2">Phone Number</label>
-                    <input type="tel" name="phone" placeholder="07700 000000" className={inputClass} />
+                    <input type="tel" name="phone" placeholder="07700 000000" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} className={inputClass} />
                   </div>
                 </div>
 
                 <div>
                   <label className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 block mb-2">Email Address</label>
-                  <input type="email" name="email" placeholder="you@example.com" required className={inputClass} />
+                  <input type="email" name="email" placeholder="you@example.com" required value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} className={inputClass} />
                 </div>
 
                 <div>
                   <label className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 block mb-2">Service Required</label>
-                  <select name="service" required className={inputClass + " bg-neutral-950 cursor-pointer"}>
+                  <select name="service" required value={formData.service} onChange={e => setFormData({ ...formData, service: e.target.value })} className={inputClass + " bg-neutral-950 cursor-pointer"}>
                     <option value="" disabled>Select a service...</option>
                     <option>Wall Tiling</option>
                     <option>Floor Tiling</option>
@@ -116,7 +120,7 @@ export default function ContactForm() {
 
                 <div>
                   <label className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 block mb-2">Project Details</label>
-                  <textarea name="message" placeholder="Tell us about your project, room size, tile preference..." rows={4} className={inputClass + " resize-none"} />
+                  <textarea name="message" placeholder="Tell us about your project, room size, tile preference..." rows={4} value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })} className={inputClass + " resize-none"} />
                 </div>
 
                 <button type="submit"
