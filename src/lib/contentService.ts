@@ -1,4 +1,4 @@
-import { supabase } from './supabase';
+import { supabase, supabaseAdmin } from './supabase';
 
 export interface ContentItem {
   id: string;
@@ -178,7 +178,7 @@ class ContentService {
 
   async updateContent(id: string, updates: Partial<ContentItem>): Promise<boolean> {
     try {
-      const { error } = await supabase
+      const { error } = await supabaseAdmin
         .from('website_content')
         .update(updates)
         .eq('id', id);
@@ -207,7 +207,7 @@ class ContentService {
 
     try {
       const { error } = await this.withTimeout(
-        supabase
+        supabaseAdmin
           .from('website_content')
           .update({ value, updated_at: new Date().toISOString() })
           .eq('key', key)
@@ -241,7 +241,7 @@ class ContentService {
 
   async createContent(content: Omit<ContentItem, 'id' | 'created_at' | 'updated_at'>): Promise<ContentItem | null> {
     try {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('website_content')
         .insert(content)
         .select()
@@ -260,7 +260,7 @@ class ContentService {
 
   async deleteContent(id: string): Promise<boolean> {
     try {
-      const { error } = await supabase
+      const { error } = await supabaseAdmin
         .from('website_content')
         .delete()
         .eq('id', id);
@@ -279,7 +279,7 @@ class ContentService {
   // Service management methods
   async updateService(id: string, updates: Partial<Service>): Promise<boolean> {
     try {
-      const { error } = await supabase
+      const { error } = await supabaseAdmin
         .from('services')
         .update(updates)
         .eq('id', id);
@@ -297,7 +297,7 @@ class ContentService {
 
   async createService(service: Omit<Service, 'id' | 'created_at' | 'updated_at'>): Promise<Service | null> {
     try {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('services')
         .insert(service)
         .select()
@@ -316,7 +316,7 @@ class ContentService {
 
   async deleteService(id: string): Promise<boolean> {
     try {
-      const { error } = await supabase
+      const { error } = await supabaseAdmin
         .from('services')
         .delete()
         .eq('id', id);
