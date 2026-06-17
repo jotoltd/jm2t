@@ -3,50 +3,11 @@ import { motion } from 'motion/react';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service: '',
-    message: '',
-  });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          to: 'enquiries@jm2tilingco.com',
-          subject: `New Enquiry: ${formData.service || 'General'} - ${formData.name}`,
-        }),
-      });
-      
-      if (response.ok) {
-        setSubmitted(true);
-      } else {
-        throw new Error('Failed to send message');
-      }
-    } catch (error) {
-      // Fallback to mailto if API fails
-      const subject = encodeURIComponent(`New Enquiry: ${formData.service || 'General'} - ${formData.name}`);
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\n` +
-        `Phone: ${formData.phone}\n` +
-        `Email: ${formData.email}\n` +
-        `Service: ${formData.service}\n` +
-        `Message: ${formData.message}`
-      );
-      
-      window.location.href = `mailto:enquiries@jm2tilingco.com?subject=${subject}&body=${body}`;
-      setSubmitted(true);
-    }
+    setSubmitted(true);
   };
 
   const inputClass = "w-full bg-neutral-950 border-b-2 border-white/20 text-white placeholder-neutral-600 px-0 py-3 focus:outline-none focus:border-cyan-400 transition-all duration-300 text-base font-sans";
@@ -118,34 +79,32 @@ export default function ContactForm() {
                 <p className="text-neutral-400">We'll be in touch shortly with your free quote.</p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-7">
+              <form 
+                action="mailto:enquiries@jm2tilingco.com" 
+                method="post" 
+                encType="text/plain"
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-7"
+              >
                 <div className="grid sm:grid-cols-2 gap-7">
                   <div>
                     <label className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 block mb-2">Your Name</label>
-                    <input type="text" placeholder="John Smith" required value={formData.name}
-                      onChange={e => setFormData({ ...formData, name: e.target.value })}
-                      className={inputClass} />
+                    <input type="text" name="name" placeholder="John Smith" required className={inputClass} />
                   </div>
                   <div>
                     <label className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 block mb-2">Phone Number</label>
-                    <input type="tel" placeholder="07700 000000" value={formData.phone}
-                      onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                      className={inputClass} />
+                    <input type="tel" name="phone" placeholder="07700 000000" className={inputClass} />
                   </div>
                 </div>
 
                 <div>
                   <label className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 block mb-2">Email Address</label>
-                  <input type="email" placeholder="you@example.com" required value={formData.email}
-                    onChange={e => setFormData({ ...formData, email: e.target.value })}
-                    className={inputClass} />
+                  <input type="email" name="email" placeholder="you@example.com" required className={inputClass} />
                 </div>
 
                 <div>
                   <label className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 block mb-2">Service Required</label>
-                  <select required value={formData.service}
-                    onChange={e => setFormData({ ...formData, service: e.target.value })}
-                    className={inputClass + " bg-neutral-950 cursor-pointer"}>
+                  <select name="service" required className={inputClass + " bg-neutral-950 cursor-pointer"}>
                     <option value="" disabled>Select a service...</option>
                     <option>Wall Tiling</option>
                     <option>Floor Tiling</option>
@@ -157,10 +116,7 @@ export default function ContactForm() {
 
                 <div>
                   <label className="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-500 block mb-2">Project Details</label>
-                  <textarea placeholder="Tell us about your project, room size, tile preference..." rows={4}
-                    value={formData.message}
-                    onChange={e => setFormData({ ...formData, message: e.target.value })}
-                    className={inputClass + " resize-none"} />
+                  <textarea name="message" placeholder="Tell us about your project, room size, tile preference..." rows={4} className={inputClass + " resize-none"} />
                 </div>
 
                 <button type="submit"
