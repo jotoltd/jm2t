@@ -141,13 +141,15 @@ class ContentService {
     // Set fallback content if cache is empty
     if (this.contentCache.size === 0) {
       const fallbackContent = [
-        { id: '1', key: 'hero_title', value: 'Flawless Tiling, Perfect Finish', type: 'text' as const, description: 'Main hero title', category: 'hero', section: 'main', order_index: 1, created_at: '', updated_at: '' },
-        { id: '2', key: 'hero_subtitle', value: 'Expert tiling services across Surrey & West Sussex', type: 'text' as const, description: 'Hero subtitle', category: 'hero', section: 'main', order_index: 2, created_at: '', updated_at: '' },
-        { id: '3', key: 'hero_cta_text', value: 'Get Your Free Quote', type: 'text' as const, description: 'Hero CTA button text', category: 'hero', section: 'main', order_index: 3, created_at: '', updated_at: '' },
-        { id: '4', key: 'hero_cta_link', value: '/quote', type: 'text' as const, description: 'Hero CTA button link', category: 'hero', section: 'main', order_index: 4, created_at: '', updated_at: '' },
-        { id: '5', key: 'hero_image', value: '/images/hero.jpeg', type: 'image' as const, description: 'Hero background image', category: 'hero', section: 'main', order_index: 5, created_at: '', updated_at: '' },
-        { id: '6', key: 'phone', value: '07738 427208', type: 'text' as const, description: 'Contact phone number', category: 'contact', section: 'main', order_index: 1, created_at: '', updated_at: '' },
-        { id: '7', key: 'email', value: 'enquiries@jm2tilingco.com', type: 'text' as const, description: 'Contact email', category: 'contact', section: 'main', order_index: 2, created_at: '', updated_at: '' },
+        { id: '1', key: 'hero_title_line1', value: 'Tiling crafted to a', type: 'text' as const, description: 'Hero title line 1', category: 'hero', section: 'main', order_index: 1, created_at: '', updated_at: '' },
+        { id: '2', key: 'hero_title_line2', value: 'flawless', type: 'text' as const, description: 'Hero title line 2 (italic)', category: 'hero', section: 'main', order_index: 2, created_at: '', updated_at: '' },
+        { id: '3', key: 'hero_title_line3', value: 'finish.', type: 'text' as const, description: 'Hero title line 3', category: 'hero', section: 'main', order_index: 3, created_at: '', updated_at: '' },
+        { id: '4', key: 'hero_subtitle', value: 'Expert tiling services across Surrey & West Sussex', type: 'text' as const, description: 'Hero subtitle', category: 'hero', section: 'main', order_index: 4, created_at: '', updated_at: '' },
+        { id: '5', key: 'hero_cta_text', value: 'Get Your Free Quote', type: 'text' as const, description: 'Hero CTA button text', category: 'hero', section: 'main', order_index: 5, created_at: '', updated_at: '' },
+        { id: '6', key: 'hero_cta_link', value: '/quote', type: 'text' as const, description: 'Hero CTA button link', category: 'hero', section: 'main', order_index: 6, created_at: '', updated_at: '' },
+        { id: '7', key: 'hero_image', value: '/images/hero.jpeg', type: 'image' as const, description: 'Hero background image', category: 'hero', section: 'main', order_index: 7, created_at: '', updated_at: '' },
+        { id: '8', key: 'phone', value: '07738 427208', type: 'text' as const, description: 'Contact phone number', category: 'contact', section: 'main', order_index: 1, created_at: '', updated_at: '' },
+        { id: '9', key: 'email', value: 'enquiries@jm2tilingco.com', type: 'text' as const, description: 'Contact email', category: 'contact', section: 'main', order_index: 2, created_at: '', updated_at: '' },
       ];
 
       fallbackContent.forEach(item => {

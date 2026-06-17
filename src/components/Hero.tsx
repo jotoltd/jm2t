@@ -80,9 +80,28 @@ export default function Hero() {
           </div>
           <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl xl:text-[88px] text-[#f5f0e8] leading-[1.0] mb-8 font-medium">
             <EditableText
-              contentKey="hero_title"
-              fallback="Flawless Tiling, Perfect Finish"
+              contentKey="hero_title_line1"
+              fallback="Tiling crafted to a"
               className="block"
+              tag="span"
+              isAdmin={isAdmin}
+            />{' '}
+            <span className="relative inline-block italic text-[#c9a84c]">
+              <EditableText
+                contentKey="hero_title_line2"
+                fallback="flawless"
+                className="relative inline-block italic"
+                tag="span"
+                isAdmin={isAdmin}
+              />
+              <svg className="absolute -bottom-2 left-0 w-full text-[#c9a84c]/60" viewBox="0 0 200 12" fill="none" preserveAspectRatio="none">
+                <path d="M2 9C50 3 150 3 198 9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+              </svg>
+            </span>{' '}
+            <EditableText
+              contentKey="hero_title_line3"
+              fallback="finish."
+              className="inline-block"
               tag="span"
               isAdmin={isAdmin}
             />
