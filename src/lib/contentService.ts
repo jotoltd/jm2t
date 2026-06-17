@@ -134,6 +134,24 @@ class ContentService {
     }
   }
 
+  async updateContentByKey(key: string, value: string): Promise<boolean> {
+    try {
+      const { error } = await supabase
+        .from('website_content')
+        .update({ value, updated_at: new Date().toISOString() })
+        .eq('key', key);
+
+      if (error) throw error;
+
+      // Refresh cache
+      await this.refreshCache();
+      return true;
+    } catch (error) {
+      console.error('Error updating content by key:', error);
+      return false;
+    }
+  }
+
   async createContent(content: Omit<ContentItem, 'id' | 'created_at' | 'updated_at'>): Promise<ContentItem | null> {
     try {
       const { data, error } = await supabase

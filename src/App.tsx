@@ -6,6 +6,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'motion/react';
 import { lazy, Suspense } from 'react';
+import { AdminProvider } from './contexts/AdminContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Stats from './components/Stats';
@@ -97,10 +98,12 @@ export default function App() {
   return (
     <>
       {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-      <BrowserRouter>
-        <ScrollToTop />
-        <AnimatedRoutes />
-      </BrowserRouter>
+      <AdminProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <AnimatedRoutes />
+        </BrowserRouter>
+      </AdminProvider>
     </>
   );
 }
