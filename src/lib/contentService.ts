@@ -165,7 +165,7 @@ class ContentService {
         {
           id: '1',
           title: 'Floor Tiling',
-          price: '£80–95 / m²',
+          price: 'from £80 / m²',
           description: 'Porcelain, ceramic and natural stone floors for homes and commercial spaces.',
           bullets: ['Herringbone & large-format', 'Residential & commercial', 'Built to last decades'],
           href: '/floor-tiling',
