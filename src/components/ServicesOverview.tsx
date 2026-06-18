@@ -54,7 +54,7 @@ const services = [
     description: 'Restore tired grout and fix cracked or loose tiles without full replacement.',
     bullets: ['Colour matching', 'Structural repairs', 'Sealing & protection'],
     href: '/regrouting',
-    image_url: '/images/regrouting_hero.jpg',
+    image_url: '/images/luxe_apartment_03.jpg',
     icon_name: 'Hammer',
     featured: true,
   },
