@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Grid3X3, Bath, LayoutGrid, Brush, Table2, Hammer, ArrowRight, ShieldCheck, FileText, Gem, Layers, Building2, GraduationCap } from 'lucide-react';
-import { useServices } from '../hooks/useContent';
 
 // Icon mapping
 const iconMap: { [key: string]: any } = {
@@ -14,9 +13,54 @@ const iconMap: { [key: string]: any } = {
   Hammer,
 };
 
+const services = [
+  {
+    id: '1',
+    title: 'Floor Tiling',
+    price: 'from £80 / m²',
+    description: 'Porcelain, ceramic and natural stone floors for homes and commercial spaces.',
+    bullets: ['Herringbone & large-format', 'Residential & commercial', 'Built to last decades'],
+    href: '/floor-tiling',
+    image_url: '/images/luxe_kitchen02_floor_tiling.jpg',
+    icon_name: 'Grid3X3',
+    featured: true,
+  },
+  {
+    id: '2',
+    title: 'Wall Tiling',
+    price: 'from £60 / m²',
+    description: 'Feature walls, splashbacks and full-height tile installations with flawless grout lines.',
+    bullets: ['Mosaic to large-format', 'Wet rooms & kitchens', 'Precision cutting'],
+    href: '/wall-tiling',
+    image_url: '/images/luxe_apartment_01.jpg',
+    icon_name: 'Grid3X3',
+    featured: true,
+  },
+  {
+    id: '3',
+    title: 'Bathroom Tiling',
+    price: 'from £60 / m²',
+    description: 'Complete bathroom transformations with waterproofing and precision finishing.',
+    bullets: ['Waterproof tanking', 'Underfloor heating ready', 'Wet room specialists'],
+    href: '/bathroom-tiling',
+    image_url: '/images/luxe_apartment_02.jpg',
+    icon_name: 'Bath',
+    featured: true,
+  },
+  {
+    id: '4',
+    title: 'Regrouting & Repair',
+    price: '£200 / day',
+    description: 'Restore tired grout and fix cracked or loose tiles without full replacement.',
+    bullets: ['Colour matching', 'Structural repairs', 'Sealing & protection'],
+    href: '/regrouting',
+    image_url: '/images/regrouting_hero.jpg',
+    icon_name: 'Hammer',
+    featured: true,
+  },
+];
+
 export default function ServicesOverview() {
-  const { services, loading, error } = useServices(true); // Get featured services
-  
   return (
     <section id="services" className="bg-[#0a0a0c] py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
