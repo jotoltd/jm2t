@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Grid3X3, Bath, LayoutGrid, Brush, Table2, Hammer, ArrowRight, ShieldCheck, FileText, Gem, Layers, Building2, GraduationCap } from 'lucide-react';
+import { useAdmin } from '../contexts/AdminContext';
+import EditableImage from './EditableImage';
 
 // Icon mapping
 const iconMap: { [key: string]: any } = {
@@ -32,7 +34,7 @@ const services = [
     description: 'Feature walls, splashbacks and full-height tile installations with flawless grout lines.',
     bullets: ['Mosaic to large-format', 'Wet rooms & kitchens', 'Precision cutting'],
     href: '/wall-tiling',
-    image_url: '/images/luxe_apartment_01.jpg',
+    image_url: '/images/WALL_TILING_WHAT_WE_DO.jpeg',
     icon_name: 'Grid3X3',
     featured: true,
   },
@@ -43,7 +45,7 @@ const services = [
     description: 'Complete bathroom transformations with waterproofing and precision finishing.',
     bullets: ['Waterproof tanking', 'Underfloor heating ready', 'Wet room specialists'],
     href: '/bathroom-tiling',
-    image_url: '/images/luxe_apartment_02.jpg',
+    image_url: '/images/BATHROOM_TILING_WHAT_WE_DO.png',
     icon_name: 'Bath',
     featured: true,
   },
@@ -54,13 +56,14 @@ const services = [
     description: 'Restore tired grout and fix cracked or loose tiles without full replacement.',
     bullets: ['Colour matching', 'Structural repairs', 'Sealing & protection'],
     href: '/regrouting',
-    image_url: '/images/luxe_apartment_03.jpg',
+    image_url: '/images/regrouting_service.jpg',
     icon_name: 'Hammer',
     featured: true,
   },
 ];
 
 export default function ServicesOverview() {
+  const { isAdmin } = useAdmin();
   return (
     <section id="services" className="bg-[#0a0a0c] py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
@@ -97,10 +100,12 @@ export default function ServicesOverview() {
                   className="group block overflow-hidden border border-white/10 bg-[#101012] transition-all hover:border-[#c9a84c]/40 hover:shadow-[0_0_30px_-10px_rgba(201,168,76,0.2)]"
                 >
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src={s.image_url}
+                  <EditableImage
+                    contentKey={`service_card_image_${s.id}`}
+                    fallback={s.image_url}
                     alt={s.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    isAdmin={isAdmin}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#101012] via-[#101012]/20 to-transparent"></div>
                   <span className="absolute right-4 top-4 bg-[#0c0b0a]/75 px-3 py-1 font-display text-lg text-[#c9a84c] backdrop-blur">

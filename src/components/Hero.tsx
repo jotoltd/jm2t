@@ -1,18 +1,21 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { useContentImage } from '../hooks/useContentImage';
+import { useAdmin } from '../contexts/AdminContext';
+import EditableImage from './EditableImage';
 
 export default function Hero() {
-  const { imageUrl } = useContentImage('hero_image', '/images/hero.jpeg');
-  
+  const { isAdmin } = useAdmin();
+
   return (
     <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-[#0c0b0a]">
       <div className="absolute inset-0 z-0">
-        <img
-          src={imageUrl}
+        <EditableImage
+          contentKey="hero_image"
+          fallback="/images/hero.jpeg"
           alt="Premium tiling work"
           className="w-full h-full object-cover object-center scale-110"
+          isAdmin={isAdmin}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0c0b0a]/70 via-[#0c0b0a]/30 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b0a]/40 via-transparent to-transparent" />

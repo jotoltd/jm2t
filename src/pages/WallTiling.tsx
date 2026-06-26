@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import usePageTitle from '../hooks/usePageTitle';
-import { useContentImage } from '../hooks/useContentImage';
+import { useAdmin } from '../contexts/AdminContext';
+import EditableImage from '../components/EditableImage';
 
 const offers = [
   'Kitchen splashback tiling',
@@ -17,13 +18,9 @@ const offers = [
   'Residential & commercial projects',
 ];
 
-function PageImage({ contentKey, fallback, alt, className }: { contentKey: string; fallback: string; alt: string; className?: string }) {
-  const { imageUrl } = useContentImage(contentKey, fallback);
-  return <img src={imageUrl} alt={alt} className={className} />;
-}
-
 export default function WallTiling() {
   usePageTitle('Wall Tiling');
+  const { isAdmin } = useAdmin();
   return (
     <div className="min-h-screen bg-[#0c0b0a]">
       <Header />
@@ -44,19 +41,21 @@ export default function WallTiling() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="grid md:grid-cols-2 gap-6">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <PageImage 
-                contentKey="wall_tiling_image_1" 
-                fallback="/images/wall_tiling2.jpeg" 
-                alt="Wall tiling feature" 
-                className="w-full h-80 object-cover" 
+              <EditableImage
+                contentKey="wall_tiling_image_1"
+                fallback="/images/WALL_TILING_SERVICES_LEFT_IMAGE.jpeg"
+                alt="Wall tiling feature"
+                className="w-full h-80 object-contain bg-[#0a0a0c]"
+                isAdmin={isAdmin}
               />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-              <PageImage 
-                contentKey="wall_tiling_image_2" 
-                fallback="/images/wall_tiling_3.jpeg" 
-                alt="Kitchen splashback tiling" 
-                className="w-full h-80 object-cover" 
+              <EditableImage
+                contentKey="wall_tiling_image_2"
+                fallback="/images/wall_tiling_3.jpeg"
+                alt="Kitchen splashback tiling"
+                className="w-full h-80 object-cover"
+                isAdmin={isAdmin}
               />
             </motion.div>
           </div>

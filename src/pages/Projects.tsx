@@ -4,7 +4,8 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import usePageTitle from '../hooks/usePageTitle';
-import { useContentImage } from '../hooks/useContentImage';
+import { useAdmin } from '../contexts/AdminContext';
+import EditableImage from '../components/EditableImage';
 
 // Project data with content keys for editable images
 const projectsData = [
@@ -28,19 +29,15 @@ const projectsData = [
       { key: 'project_luxe_kitchen_1', fallback: '/images/luxe_kitchen01.jpg' },
       { key: 'project_luxe_kitchen_2', fallback: '/images/luxe_kitchen02_floor_tiling.jpg' },
       { key: 'project_luxe_kitchen_3', fallback: '/images/luxe_kitchen03.jpg' },
-      { key: 'project_luxe_kitchen_4', fallback: '/images/luxe_kitchen04wall_tiling.jpeg' },
+      { key: 'project_luxe_kitchen_4', fallback: '/images/luxe_kitchen04.jpg' },
     ],
     tags: ['Kitchen', 'Floor Tiling', 'Porcelain'],
   },
 ];
 
-function ProjectImage({ contentKey, fallback, alt, className }: { contentKey: string; fallback: string; alt: string; className?: string }) {
-  const { imageUrl } = useContentImage(contentKey, fallback);
-  return <img src={imageUrl} alt={alt} className={className} />;
-}
-
 export default function Projects() {
   usePageTitle('Our Projects');
+  const { isAdmin } = useAdmin();
   const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
 
   const close = useCallback(() => setLightbox(null), []);
@@ -173,11 +170,12 @@ export default function Projects() {
                     })}
                     className="relative aspect-square bg-[#111110] border border-white/5 flex items-center justify-center overflow-hidden group cursor-zoom-in"
                   >
-                    <ProjectImage 
-                      contentKey={imgKey.key} 
+                    <EditableImage
+                      contentKey={imgKey.key}
                       fallback={imgKey.fallback}
-                      alt={`${project.title} ${iIdx + 1}`} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      alt={`${project.title} ${iIdx + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      isAdmin={isAdmin}
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
                       <span className="text-white text-xs font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all">View</span>

@@ -3,7 +3,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import usePageTitle from '../hooks/usePageTitle';
 import { useState } from 'react';
-import { useContentImage } from '../hooks/useContentImage';
+import { useAdmin } from '../contexts/AdminContext';
+import EditableImage from '../components/EditableImage';
 
 const processSteps = [
   {
@@ -29,14 +30,10 @@ const processSteps = [
   },
 ];
 
-function ProcessImage({ contentKey, fallback, alt, className }: { contentKey: string; fallback: string; alt: string; className?: string }) {
-  const { imageUrl } = useContentImage(contentKey, fallback);
-  return <img src={imageUrl} alt={alt} className={className} />;
-}
-
 export default function Process() {
   usePageTitle('Our Process');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isAdmin } = useAdmin();
 
   return (
     <div className="min-h-screen bg-[#0c0b0a]">
@@ -131,11 +128,12 @@ export default function Process() {
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.4 }}
                 >
-                  <ProcessImage
+                  <EditableImage
                     contentKey={item.contentKey}
                     fallback={item.fallback}
                     alt={`${item.title} - Porch tiling project`}
-                    className="w-full h-[400px] object-cover"
+                    className={`w-full object-cover ${item.step === '03' ? 'h-[600px] object-bottom' : 'h-[400px]'}`}
+                    isAdmin={isAdmin}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0c0b0a]/60 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6">

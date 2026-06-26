@@ -1,12 +1,14 @@
 import { motion } from 'motion/react';
 import { MapPin } from 'lucide-react';
+import { useAdmin } from '../contexts/AdminContext';
+import EditableImage from './EditableImage';
 
 const projects = [
   {
     id: 1,
     title: 'Crawley Family Bathroom',
     location: 'West Sussex',
-    image: '/images/bathroom_tiling.jpeg',
+    image: '/images/regrouting_and_repair.jpeg',
     desc: 'Complete bathroom renovation with floor-to-ceiling porcelain tiles and custom shower enclosure.',
   },
   {
@@ -20,7 +22,7 @@ const projects = [
     id: 3,
     title: 'Reigate Wet Room',
     location: 'Surrey',
-    image: '/images/bahtroom_tiling_2.jpeg',
+    image: '/images/bathroom_tiling_2.jpeg',
     desc: 'Level-access wet room with anti-slip flooring and full waterproofing system.',
   },
   {
@@ -33,6 +35,7 @@ const projects = [
 ];
 
 export default function ProjectsShowcase() {
+  const { isAdmin } = useAdmin();
   return (
     <section id="projects" className="border-t border-white/10 bg-[#0a0a0c] py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -62,10 +65,12 @@ export default function ProjectsShowcase() {
               className="group relative overflow-hidden border border-white/10 bg-[#101012]"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
-                <img
-                  src={project.image}
+                <EditableImage
+                  contentKey={`showcase_project_${project.id}`}
+                  fallback={project.image}
                   alt={project.title}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  isAdmin={isAdmin}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#101012] via-[#101012]/40 to-transparent"></div>
                 <div className="absolute inset-0 bg-[#0c0b0a]/0 transition-colors duration-300 group-hover:bg-[#0c0b0a]/20"></div>

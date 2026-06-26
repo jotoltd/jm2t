@@ -3,12 +3,11 @@ import { motion } from 'motion/react';
 const images = [
   '/images/wall_tiling_3.jpeg',
   '/images/wall_tiling_4.jpeg',
-  '/images/wall_tiling_5.jpeg',
   '/images/wall_tiling_6.jpeg',
   '/images/wall_tiling_7.jpeg',
   '/images/wall_tiling2.jpeg',
-  '/images/bathroom_tiling.jpeg',
-  '/images/bahtroom_tiling_2.jpeg',
+  '/images/bathroom_tiling_2.jpeg',
+  '/images/regrouting_and_repair.jpeg',
   '/images/tiled_porch_before.jpeg',
   '/images/tiled_porch_after.jpeg',
 ];

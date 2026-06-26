@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import usePageTitle from '../hooks/usePageTitle';
-import { useContentImage } from '../hooks/useContentImage';
+import { useAdmin } from '../contexts/AdminContext';
+import EditableImage from '../components/EditableImage';
 
 const offers = [
   'Full re-grouting service',
@@ -17,13 +18,9 @@ const offers = [
   'Floor & wall tile repairs',
 ];
 
-function PageImage({ contentKey, fallback, alt, className }: { contentKey: string; fallback: string; alt: string; className?: string }) {
-  const { imageUrl } = useContentImage(contentKey, fallback);
-  return <img src={imageUrl} alt={alt} className={className} />;
-}
-
 export default function Regrouting() {
   usePageTitle('Re-grouting & Repair');
+  const { isAdmin } = useAdmin();
   return (
     <div className="min-h-screen bg-[#0c0b0a]">
       <Header />
@@ -44,19 +41,21 @@ export default function Regrouting() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8">
           <div className="grid md:grid-cols-2 gap-6">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <PageImage 
-                contentKey="regrouting_image_1" 
-                fallback="/images/tiled_porch_before.jpeg" 
-                alt="Tile repair work" 
-                className="w-full h-80 object-cover" 
+              <EditableImage
+                contentKey="regrouting_image_1"
+                fallback="/images/regrouting_service.jpg"
+                alt="Tile repair work"
+                className="w-full h-80 object-contain bg-[#0a0a0c]"
+                isAdmin={isAdmin}
               />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}>
-              <PageImage 
-                contentKey="regrouting_image_2" 
-                fallback="/images/tiled_porch_after.jpeg" 
-                alt="Restored tiling" 
-                className="w-full h-80 object-cover" 
+              <EditableImage
+                contentKey="regrouting_image_2"
+                fallback="/images/regrouting_service_right.jpeg"
+                alt="Restored tiling"
+                className="w-full h-80 object-cover"
+                isAdmin={isAdmin}
               />
             </motion.div>
           </div>

@@ -4,12 +4,11 @@ import { ShieldCheck, Ruler, Hammer, Sparkles, HeartHandshake, Grid3X3, Droplets
 const galleryImages = [
   '/images/wall_tiling_3.jpeg',
   '/images/wall_tiling_4.jpeg',
-  '/images/wall_tiling_5.jpeg',
   '/images/wall_tiling_6.jpeg',
   '/images/wall_tiling_7.jpeg',
   '/images/wall_tiling2.jpeg',
-  '/images/bathroom_tiling.jpeg',
-  '/images/bahtroom_tiling_2.jpeg',
+  '/images/bathroom_tiling_2.jpeg',
+  '/images/regrouting_and_repair.jpeg',
   '/images/tiled_porch_before.jpeg',
   '/images/tiled_porch_after.jpeg',
 ];
@@ -200,7 +199,7 @@ export default function GalleryAndValues() {
       <div className="bg-cyan-400 h-2 w-full" />
       <div className="w-full overflow-hidden">
         <div className="flex flex-row-reverse">
-          {['/images/wall_tiling_3.jpeg', '/images/wall_tiling_4.jpeg', '/images/wall_tiling_5.jpeg', '/images/wall_tiling_6.jpeg', '/images/wall_tiling_7.jpeg', '/images/wall_tiling2.jpeg', '/images/bathroom_tiling.jpeg', '/images/bahtroom_tiling_2.jpeg'].map((img, idx) => (
+          {['/images/wall_tiling_3.jpeg', '/images/wall_tiling_4.jpeg', '/images/wall_tiling_6.jpeg', '/images/wall_tiling_7.jpeg', '/images/wall_tiling2.jpeg', '/images/bathroom_tiling_2.jpeg', '/images/regrouting_and_repair.jpeg', '/images/regrouting_service.jpg'].map((img, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0 }}

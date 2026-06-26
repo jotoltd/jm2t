@@ -1,7 +1,9 @@
-import { useState, type FormEvent } from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import React, { useState, type FormEvent } from 'react';
+import { Mail, Phone, MapPin, Lock, Eye, EyeOff, X, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
 import { useContentImage } from '../hooks/useContentImage';
+import { useAdmin } from '../contexts/AdminContext';
 
 function LogoImage({ className }: { className?: string }) {
   const { imageUrl } = useContentImage('logo_icon', '/images/logo_icon.png');
@@ -12,6 +14,37 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
   const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const handleSubmit = (e: FormEvent) => { e.preventDefault(); setSubmitted(true); };
+
+  const { isAdmin, setIsAdmin } = useAdmin();
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [loginCredentials, setLoginCredentials] = useState({ username: '', password: '' });
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginError, setLoginError] = useState('');
+  const [loginLoading, setLoginLoading] = useState(false);
+
+  const handleAdminLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginLoading(true);
+    setLoginError('');
+    setTimeout(() => {
+      if (loginCredentials.username === 'Josh' && loginCredentials.password === 'Managethesite26') {
+        localStorage.setItem('adminLoggedIn', 'true');
+        localStorage.setItem('adminLoginTime', Date.now().toString());
+        setIsAdmin(true);
+        setShowLoginModal(false);
+        setLoginCredentials({ username: '', password: '' });
+      } else {
+        setLoginError('Invalid credentials');
+      }
+      setLoginLoading(false);
+    }, 300);
+  };
+
+  const handleAdminLogout = () => {
+    localStorage.removeItem('adminLoggedIn');
+    localStorage.removeItem('adminLoginTime');
+    setIsAdmin(false);
+  };
 
   return (
     <footer className="bg-[#111110] border-t border-white/5">
@@ -180,10 +213,90 @@ export default function Footer({ hideEnquiry = false }: { hideEnquiry?: boolean 
             <div className="flex items-center gap-6">
               <Link to="/" className="text-xs text-white/30 hover:text-[#c9a84c] transition-colors">Privacy Policy</Link>
               <Link to="/" className="text-xs text-white/30 hover:text-[#c9a84c] transition-colors">Terms of Service</Link>
+              {isAdmin ? (
+                <button onClick={handleAdminLogout} className="flex items-center gap-1 text-xs text-[#c9a84c]/60 hover:text-[#c9a84c] transition-colors">
+                  <LogOut className="w-3 h-3" /> Admin Logout
+                </button>
+              ) : (
+                <button onClick={() => setShowLoginModal(true)} className="text-xs text-white/10 hover:text-white/30 transition-colors">
+                  Admin
+                </button>
+              )}
             </div>
           </div>
         </div>
       </div>
+      {/* Admin Login Modal */}
+      <AnimatePresence>
+        {showLoginModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[100] px-4"
+            onClick={() => setShowLoginModal(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              className="w-full max-w-sm bg-[#111110] border border-white/10 p-8 relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button onClick={() => setShowLoginModal(false)} className="absolute top-4 right-4 text-white/30 hover:text-white/70 transition-colors">
+                <X className="w-5 h-5" />
+              </button>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="flex h-10 w-10 items-center justify-center border border-[#c9a84c]/30 text-[#c9a84c]">
+                  <Lock className="w-4 h-4" />
+                </div>
+                <div>
+                  <h2 className="font-display text-xl text-[#f5f0e8]">Admin Login</h2>
+                  <p className="text-xs text-white/30">JM² Tiling Co</p>
+                </div>
+              </div>
+              <form onSubmit={handleAdminLogin} className="space-y-5">
+                <div>
+                  <label className="block text-[10px] font-mono uppercase tracking-[0.25em] text-[#6b6560] mb-2">Username</label>
+                  <input
+                    type="text"
+                    value={loginCredentials.username}
+                    onChange={(e) => setLoginCredentials({ ...loginCredentials, username: e.target.value })}
+                    className="w-full bg-[#0c0b0a] border-b-2 border-white/20 text-[#f5f0e8] placeholder-[#3a3730] px-0 py-2.5 focus:outline-none focus:border-[#c9a84c] transition-all"
+                    placeholder="Username"
+                    required
+                    autoFocus
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-mono uppercase tracking-[0.25em] text-[#6b6560] mb-2">Password</label>
+                  <div className="relative">
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      value={loginCredentials.password}
+                      onChange={(e) => setLoginCredentials({ ...loginCredentials, password: e.target.value })}
+                      className="w-full bg-[#0c0b0a] border-b-2 border-white/20 text-[#f5f0e8] placeholder-[#3a3730] px-0 py-2.5 pr-8 focus:outline-none focus:border-[#c9a84c] transition-all"
+                      placeholder="Password"
+                      required
+                    />
+                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-0 top-1/2 -translate-y-1/2 text-[#6b6560] hover:text-white/70 transition-colors">
+                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    </button>
+                  </div>
+                </div>
+                {loginError && <p className="text-red-400 text-xs">{loginError}</p>}
+                <button
+                  type="submit"
+                  disabled={loginLoading}
+                  className="w-full bg-[#c9a84c] hover:bg-[#e2c97e] disabled:opacity-50 text-[#0c0b0a] text-xs font-bold uppercase tracking-[0.2em] py-3.5 transition-all"
+                >
+                  {loginLoading ? 'Logging in...' : 'Login'}
+                </button>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 }
