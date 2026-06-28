@@ -45,7 +45,7 @@ export default function BathroomTiling() {
                 contentKey="bathroom_tiling_image_1"
                 fallback="/images/BATHROOM_TILING_SERVICES_LEFT.png"
                 alt="Bathroom tiling"
-                className="w-full h-80 object-contain bg-[#0a0a0c]"
+                className="w-full h-80 object-cover"
                 isAdmin={isAdmin}
               />
             </motion.div>
